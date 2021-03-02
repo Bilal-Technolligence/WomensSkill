@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "51832170673",
+    "firebase_url": "https://womanskills-d0efe-default-rtdb.firebaseio.com",
+    "project_id": "womanskills-d0efe",
+    "storage_bucket": "womanskills-d0efe.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:51832170673:android:6db341f59bfbecc69f1a90",
+        "android_client_info": {
+          "package_name": "com.example.womanskills"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "51832170673-5146lbqgjckubfrsern4f2ku321vf25j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA_XVLa4uOdtmNB9HGG7WZlV5LtVq2eUI4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "51832170673-5146lbqgjckubfrsern4f2ku321vf25j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:51832170673:android:bbf190c85e8bee9d9f1a90",
+        "android_client_info": {
+          "package_name": "com.example.womensskill"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "51832170673-5146lbqgjckubfrsern4f2ku321vf25j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA_XVLa4uOdtmNB9HGG7WZlV5LtVq2eUI4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "51832170673-5146lbqgjckubfrsern4f2ku321vf25j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

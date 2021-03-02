@@ -1,0 +1,418 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".EarningActivity">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="55dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:orientation="vertical">
+
+
+
+                <LinearLayout
+                    android:id="@+id/topLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/profileCard"
+                        android:layout_width="match_parent"
+                        android:layout_height="250dp"
+                        android:layout_marginBottom="10dp"
+                        app:cardElevation="2dp">
+
+                        <LinearLayout
+                            android:id="@+id/toplayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:orientation="horizontal"
+                            android:padding="20dp">
+                                <TextView
+                                    android:id="@+id/txtName"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="5dp"
+                                    android:layout_marginTop="1dp"
+                                    android:gravity="left"
+                                    android:text="RS:  "
+                                    android:textColor="@color/black"
+                                    android:textSize="27sp"
+                                    android:textStyle="bold" />
+                                <TextView
+                                    android:id="@+id/txtBalance"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="5dp"
+                                    android:layout_marginTop="1dp"
+                                    android:gravity="right"
+                                    android:text="0 "
+                                    android:textColor="@color/colorgreen"
+                                    android:textSize="25sp"
+                                    android:textStyle="bold" />
+
+
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:layout_marginTop="150dp"
+                            android:padding="10dp">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="5dp"
+                                android:layout_marginTop="1dp"
+                                android:gravity="right"
+                                android:text="Personal Balance "
+                                android:textColor="@color/black"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+
+
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="left"
+                            android:orientation="vertical"
+                            android:layout_marginTop="200dp"
+                            android:padding="10dp">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="5dp"
+                                android:layout_marginTop="1dp"
+                                android:gravity="right"
+                                android:text="Analytics "
+                                android:textColor="@color/gray"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+
+
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                </LinearLayout>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:backgroundTint="@color/white"
+                app:cardElevation="5dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="15dp">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:weightSum="2">
+
+                        <TextView
+                            android:layout_width="220dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="1dp"
+                            android:layout_weight="1.5"
+                            android:gravity="left"
+                            android:text="Earning in March"
+                            android:textColor="@color/colorBlack" />
+                        <TextView
+                            android:id="@+id/txtEarningPerMonth"
+                            android:layout_width="20dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".50"
+                            android:textColor="@color/black"
+                            android:text="RS:0" />
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal"
+                        android:weightSum="2">
+
+                        <TextView
+                            android:layout_width="220dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="1dp"
+                            android:layout_weight="1.5"
+                            android:gravity="left"
+                            android:text="Avg. Selling Price"
+                            android:textColor="@color/colorBlack" />
+                        <TextView
+                            android:id="@+id/txtAvgSellingPrice"
+                            android:layout_width="20dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".50"
+                            android:textColor="@color/black"
+                            android:text="RS:0" />
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="10dp"
+
+                        android:weightSum="2">
+
+                        <TextView
+                            android:layout_width="220dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="1dp"
+                            android:layout_weight="1.5"
+                            android:gravity="left"
+                            android:text="Active Orders"
+                            android:textColor="@color/colorBlack" />
+                        <TextView
+                            android:id="@+id/txtActiveOrders"
+                            android:layout_width="20dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".50"
+                            android:textColor="@color/black"
+                            android:text="0 ($0)" />
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="10dp"
+
+                        android:weightSum="2">
+
+                        <TextView
+                            android:layout_width="220dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="1dp"
+                            android:layout_weight="1.5"
+                            android:gravity="left"
+                            android:text="Available for Withdrawal"
+                            android:textColor="@color/colorBlack" />
+                        <TextView
+                            android:id="@+id/txtAvailableforWidthdrawal"
+                            android:layout_width="20dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".50"
+                            android:textColor="@color/black"
+                            android:text="RS:0" />
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="10dp"
+
+                        android:orientation="horizontal"
+                        android:weightSum="2">
+
+                        <TextView
+                            android:layout_width="220dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="1dp"
+                            android:layout_weight="1.5"
+                            android:gravity="left"
+                            android:text="Complete Orders"
+                            android:textColor="@color/colorBlack" />
+                        <TextView
+                            android:id="@+id/txtCompletedOrder"
+                            android:layout_width="20dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".50"
+                            android:textColor="@color/black"
+                            android:text="0 ($0)" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:text="Revenues "
+                android:textColor="@color/gray"
+                android:textStyle="bold"
+                android:padding="20dp"
+                android:textSize="18sp" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/btnCancelledOrders"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="#ffffff"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="50dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:padding="15dp"
+                    android:weightSum="2">
+
+                 <TextView
+                            android:layout_width="220dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="1dp"
+                            android:layout_weight="1.5"
+                            android:gravity="left"
+                            android:textStyle="bold"
+                            android:text="Cancelled Orders"
+                            android:textColor="@color/colorBlack" />
+                        <TextView
+                            android:layout_width="20dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".50"
+                            android:drawableRight="@drawable/ic_baseline_arrow_forward_ios_24"
+                            android:textColor="@color/black"
+                            android:text="$0" />
+
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:id="@+id/btnPendingClearance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="#ffffff"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="50dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:padding="15dp"
+                    android:weightSum="2">
+
+                    <TextView
+                        android:layout_width="220dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="1dp"
+                        android:layout_weight="1.5"
+                        android:gravity="left"
+                        android:textStyle="bold"
+                        android:text="Pending Clearance"
+                        android:textColor="@color/colorBlack" />
+                    <TextView
+                        android:layout_width="20dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".50"
+                        android:drawableRight="@drawable/ic_baseline_arrow_forward_ios_24"
+                        android:textColor="@color/black"
+                        android:text="$0" />
+
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:id="@+id/btnWithdrawal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="#ffffff"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="50dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:padding="15dp"
+                    android:weightSum="2">
+
+                    <TextView
+                        android:layout_width="220dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="1dp"
+                        android:layout_weight="1.5"
+                        android:textStyle="bold"
+                        android:gravity="left"
+                        android:text="Earning in March"
+                        android:textColor="@color/colorBlack" />
+                    <TextView
+                        android:layout_width="20dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".50"
+                        android:drawableRight="@drawable/ic_baseline_arrow_forward_ios_24"
+                        android:textColor="@color/black"
+                        android:text="$0" />
+
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:id="@+id/btnShareProducts"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="#ffffff"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="50dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:padding="15dp"
+                    android:weightSum="2">
+
+                    <TextView
+                        android:layout_width="220dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="1dp"
+                        android:layout_weight="1.5"
+                        android:gravity="left"
+                        android:text="Used for Purchases"
+                        android:textStyle="bold"
+                        android:textColor="@color/colorBlack" />
+                    <TextView
+                        android:layout_width="20dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".50"
+                        android:drawableRight="@drawable/ic_baseline_arrow_forward_ios_24"
+                        android:textColor="@color/black"
+                        android:text="$0" />
+
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+            </LinearLayout>
+
+    </ScrollView>
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/navigationView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="0dp"
+        android:background="?android:attr/windowBackground"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_alignParentBottom="true"
+        app:menu="@menu/navigation"/>
+</RelativeLayout>

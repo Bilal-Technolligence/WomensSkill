@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#00BCD4</color>
+    <color name="purple_500">#1976BF</color>
+    <color name="purple_700">#1F45FC</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="lightgray">#C3C3C3</color>
+
+    <color name="gray">#777</color>
+    <color name="navigationBarColorSkipped">#1F45FC</color>
+    <color name="violet">#00BCD4</color>
+    <color name="dark_blue">#1F45FC</color>
+    <color name="light_blue">#239DB3</color>
+
+    <color name="sky_blue">#33b5e5</color>
+    <color name="appblue">#000032</color>
+
+    <color name="buttoncolor">#00BCD4</color>
+
+    <color name="colorAccent">#417318</color>
+    <color name="colorgreen">#1dbf73</color>
+    <color name="colorPrimary">#d61361</color>
+    <color name="colorPrimaryDark">#800a39</color>
+    <color name="sky_blue_pressed">#245e61</color>
+    <color name="orange">#DF8602</color>
+    <color name="light_blue_600">#FF039BE5</color>
+    <color name="light_blue_900">#FF01579B</color>
+    <color name="light_blue_A200">#FF40C4FF</color>
+    <color name="light_blue_A400">#FF00B0FF</color>
+    <color name="black_overlay">#66000000</color>
+    <color name="colorBlack">#000000</color>
+</resources>

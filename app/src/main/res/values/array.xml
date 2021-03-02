@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<array name="indicator_colors">
+		<item>#FFFFFFFF</item>
+		<!--Default-->
+		<item>@color/white</item>
+		<!--Wrong-->
+		<item>@color/white</item>
+		<!--Right-->
+		<item>@color/white</item>
+		<!--Skipped-->
+		<item>@color/white</item>
+		<!--Current-->
+		<item>@color/white</item>
+		<!--Processed-->
+
+	</array>
+	<array name="border_state_colors">
+		<item>@color/white</item>
+		<!--Default-->
+		<item>@color/white</item>
+		<!--Wrong-->
+		<item>@color/white</item>
+		<!--Right-->
+		<item>@color/white</item>
+		<!--Skipped-->
+		<item>@color/white</item>
+		<!--Current-->
+		<item>@color/white</item>
+		<!--Processed-->
+
+	</array>
+
+	<array name="text_state_colors">
+		<item>@color/white</item>
+		<!--Default-->
+		<item>@color/white</item>
+		<!--Wrong-->
+		<item>@color/white</item>
+		<!--Right-->
+		<item>@color/white</item>
+		<!--Skipped-->
+		<item>@color/white</item>
+		<!--Current-->
+		<item>@color/white</item>
+		<!--Processed-->
+	</array>
+
+</resources>

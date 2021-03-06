@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.WomensSkill">
-        <activity android:name=".StorePerformanceActivity"></activity>
+        <activity android:name=".ProductFormActivity"></activity>
+        <activity android:name=".SkillFormActivity" />
+        <activity android:name=".StorePerformanceActivity" />
         <activity android:name=".MesgChatActivity" />
         <activity android:name=".ManageSkillsOrProductActivity" />
         <activity android:name=".NotificationsActivity" />
@@ -17,18 +19,19 @@
         <activity android:name=".MyProfileActivity" />
         <activity android:name=".MySkillOrProducts" />
         <activity android:name=".ShareMyProductActivity" />
-        <activity android:name=".BuyersRequestActivity"
-            android:parentActivityName=".ProfileDetailsActivity"/>
-        <activity android:name=".EarningActivity"
-            android:parentActivityName=".ProfileDetailsActivity"/>
-
-        <activity android:name=".ProfileOffSellerActivity"
-            android:parentActivityName=".ProfileDetailsActivity"/>
-        <activity android:name=".ProfileDetailsActivity" >
-
-        </activity>
-        <activity android:name=".ForgetPassword"
-            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar"/>
+        <activity
+            android:name=".BuyersRequestActivity"
+            android:parentActivityName=".ProfileDetailsActivity" />
+        <activity
+            android:name=".EarningActivity"
+            android:parentActivityName=".ProfileDetailsActivity" />
+        <activity
+            android:name=".ProfileOffSellerActivity"
+            android:parentActivityName=".ProfileDetailsActivity" />
+        <activity android:name=".ProfileDetailsActivity" />
+        <activity
+            android:name=".ForgetPassword"
+            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar" />
         <activity
             android:name=".SignupActivity"
             android:theme="@style/Theme.MaterialComponents.Light.NoActionBar" />
@@ -45,8 +48,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".ProfileActivity" />
-        <activity android:name=".MainActivity">
-        </activity>
+        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>

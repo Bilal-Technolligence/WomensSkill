@@ -11,6 +11,7 @@ public class ServiceAttr {
     String Image3;
     String Tag;
     String Status;
+    String Price;
 
     public String getId() {
         return Id;
@@ -92,7 +93,15 @@ public class ServiceAttr {
         Status = status;
     }
 
-    public ServiceAttr(String id, String userId, String title, String decription, String category, String image1, String image2, String image3, String tag, String status) {
+    public String getPrice() {
+        return Price;
+    }
+
+    public void setPrice(String price) {
+        Price = price;
+    }
+
+    public ServiceAttr(String id, String userId, String title, String decription, String category, String image1, String image2, String image3, String tag, String status, String price) {
         Id = id;
         UserId = userId;
         Title = title;
@@ -103,6 +112,7 @@ public class ServiceAttr {
         Image3 = image3;
         Tag = tag;
         Status = status;
+        Price = price;
     }
 
     public ServiceAttr() {

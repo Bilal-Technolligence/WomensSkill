@@ -2,8 +2,33 @@ package com.example.womensskill;
 
 public class UserAttr {
 
-    String id, username, fullname, email, date, phone,province,distric,address, gender,summary , img  , currency , outofoffice ;
+    String id, username, fullname, email, date, phone,province,distric,address, gender,summary , img  , currency , outofoffice , balance;
 
+    public String getBalance() {
+        return balance;
+    }
+
+    public void setBalance(String balance) {
+        this.balance = balance;
+    }
+
+    public UserAttr(String id, String username, String fullname, String email, String date, String phone, String province, String distric, String address, String gender, String summary, String img, String currency, String outofoffice, String balance) {
+        this.id = id;
+        this.username = username;
+        this.fullname = fullname;
+        this.email = email;
+        this.date = date;
+        this.phone = phone;
+        this.province = province;
+        this.distric = distric;
+        this.address = address;
+        this.gender = gender;
+        this.summary = summary;
+        this.img = img;
+        this.currency = currency;
+        this.outofoffice = outofoffice;
+        this.balance = balance;
+    }
 
     public String getCurrency() {
         return currency;
@@ -18,23 +43,6 @@ public class UserAttr {
     }
 
     public void setOutofoffice(String outofoffice) {
-        this.outofoffice = outofoffice;
-    }
-
-    public UserAttr(String id, String username, String fullname, String email, String date, String phone, String province, String distric, String address, String gender, String summary, String img, String currency, String outofoffice) {
-        this.id = id;
-        this.username = username;
-        this.fullname = fullname;
-        this.email = email;
-        this.date = date;
-        this.phone = phone;
-        this.province = province;
-        this.distric = distric;
-        this.address = address;
-        this.gender = gender;
-        this.summary = summary;
-        this.img = img;
-        this.currency = currency;
         this.outofoffice = outofoffice;
     }
 

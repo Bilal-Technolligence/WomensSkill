@@ -193,9 +193,10 @@ public class SignupActivity extends AppCompatActivity implements NavigationBar.O
                             userAttr.setDistric(District);
                             userAttr.setProvince(Province);
                             userAttr.setDate(date);
-                            userAttr.setCurrency("dollar");
+                            userAttr.setCurrency("$");
                             userAttr.setOutofoffice("no");
                             userAttr.setImg(" ");
+                            userAttr.setBalance("0");
                             reference.child(uid).setValue(userAttr);
                             Toast.makeText(getApplicationContext(), "Account Created", Toast.LENGTH_SHORT).show();
                             // getApplicationContext().finish();

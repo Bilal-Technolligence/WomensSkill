@@ -30,7 +30,7 @@ import com.google.firebase.storage.UploadTask;
 import java.io.IOException;
 
 public class SkillFormActivity extends AppCompatActivity {
-    EditText title, description ,tag;
+    EditText title, description ,tag ,price;
     ImageView img1, img2, img3;
     Spinner category;
     String cat = "";
@@ -39,7 +39,7 @@ public class SkillFormActivity extends AppCompatActivity {
     int count2 = 0;
     int count3 = 0;
     CardView save ;
-    String tit , des ,t;
+    String tit , des ,t , p;
     ProgressDialog progressDialog;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     final DatabaseReference reference = database.getReference("Services");
@@ -49,6 +49,7 @@ public class SkillFormActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_skill_form);
         title = findViewById(R.id.txtTitle);
+        price = findViewById(R.id.txtPrice);
         description = findViewById(R.id.txtDes);
         img1 = findViewById(R.id.img1);
         img2 = findViewById(R.id.img2);
@@ -96,6 +97,7 @@ public class SkillFormActivity extends AppCompatActivity {
                 tit = title.getText().toString();
                 des = description.getText().toString();
                 t = tag.getText().toString();
+                p = price.getText().toString();
                 if (tit.equals("")) {
                     title.setError("Enter Valid Title");
                     title.setFocusable(true);
@@ -105,6 +107,9 @@ public class SkillFormActivity extends AppCompatActivity {
                 }else if (t.equals("")) {
                     tag.setError("Enter Valid Tags");
                     tag.setFocusable(true);
+                }else if (p.equals("")) {
+                    price.setError("Enter Valid Price");
+                    price.setFocusable(true);
                 }  else if (count1 == 0 || count2 ==0 ||count3 ==0) {
                     Snackbar.make(view, "Please Select All Image", Snackbar.LENGTH_LONG).show();
                 } else {
@@ -138,13 +143,14 @@ public class SkillFormActivity extends AppCompatActivity {
                                             ServiceAttr serviceAttr = new ServiceAttr();
                                             serviceAttr.setId(push);
                                             serviceAttr.setUserId(uid);
-                                            serviceAttr.setTitle(tit);
+                                            serviceAttr.setTitle("i will create "+tit);
                                             serviceAttr.setDecription(des);
                                             serviceAttr.setCategory(cat);
                                             serviceAttr.setImage1(img1);
                                             serviceAttr.setImage2(img2);
                                             serviceAttr.setImage3(img3);
                                             serviceAttr.setTag(t);
+                                            serviceAttr.setPrice(p);
                                             serviceAttr.setStatus("not");
                                             reference.child(push).setValue(serviceAttr);
 

@@ -71,7 +71,28 @@
                         android:hint="i will create...."
                         android:inputType="textPersonName"/>
                 </com.google.android.material.textfield.TextInputLayout>
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:gravity="left"
+                    android:text="Price"
+                    android:textColor="@color/buttoncolor" />
 
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:backgroundTint="@color/white">
+
+                    <EditText
+                        android:id="@+id/txtPrice"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/white"
+                        android:hint="100"
+                        android:inputType="number"/>
+                </com.google.android.material.textfield.TextInputLayout>
                 <TextView
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"

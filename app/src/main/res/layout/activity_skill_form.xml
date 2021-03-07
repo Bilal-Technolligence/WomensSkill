@@ -131,7 +131,7 @@
                         android:layout_height="wrap_content"
                         android:backgroundTint="@color/white"
                         android:hint=" "
-                        android:inputType="textPersonName"/>
+                        android:inputType="text"/>
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <View

@@ -55,6 +55,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-database:19.6.0'
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0-alpha'
     implementation 'com.jjoe64:graphview:4.2.2'
+    implementation 'com.amulyakhare:com.amulyakhare.textdrawable:1.0.1'
 
 
 }

@@ -683,36 +683,22 @@
                 </LinearLayout>
 
 
-                <RelativeLayout
+                <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:layout_weight=".28"
-                    android:background="@color/white"
-                    android:orientation="horizontal">
+                    android:layout_marginBottom="8dp"
+                    android:backgroundTint="@color/white">
 
-                    <Spinner
-                        android:id="@+id/spinner_distric"
+                    <EditText
+                        android:id="@+id/txtDistrict"
                         android:layout_width="match_parent"
-                        android:layout_height="33dp"
-                        android:layout_centerVertical="true"
-                        android:layout_gravity="center"
-                        android:background="@android:color/transparent"
-                        android:entries="@array/distric_array"
-                        android:gravity="center"
-                        android:prompt="@string/distric"
-                        android:spinnerMode="dropdown" />
-
-                    <ImageView
-                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:layout_gravity="right"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginRight="10dp"
-                        android:src="@drawable/down_arrow" />
-
-                </RelativeLayout>
+                        android:backgroundTint="@color/white"
+                        android:hint="Rawalpindi"
+                        android:maxLength="11"
+                        android:textColor="@color/black"
+                        android:inputType="number" />
+                </com.google.android.material.textfield.TextInputLayout>
 
                 <View
                     android:layout_width="match_parent"

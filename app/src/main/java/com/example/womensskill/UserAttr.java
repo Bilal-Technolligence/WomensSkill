@@ -2,9 +2,26 @@ package com.example.womensskill;
 
 public class UserAttr {
 
-    String id, username, fullname, email, date, phone,province,distric,address, gender,summary , img;
+    String id, username, fullname, email, date, phone,province,distric,address, gender,summary , img  , currency , outofoffice ;
 
-    public UserAttr(String id, String username, String fullname, String email, String date, String phone, String province, String distric, String address, String gender, String summary, String img) {
+
+    public String getCurrency() {
+        return currency;
+    }
+
+    public void setCurrency(String currency) {
+        this.currency = currency;
+    }
+
+    public String getOutofoffice() {
+        return outofoffice;
+    }
+
+    public void setOutofoffice(String outofoffice) {
+        this.outofoffice = outofoffice;
+    }
+
+    public UserAttr(String id, String username, String fullname, String email, String date, String phone, String province, String distric, String address, String gender, String summary, String img, String currency, String outofoffice) {
         this.id = id;
         this.username = username;
         this.fullname = fullname;
@@ -17,6 +34,8 @@ public class UserAttr {
         this.gender = gender;
         this.summary = summary;
         this.img = img;
+        this.currency = currency;
+        this.outofoffice = outofoffice;
     }
 
     public String getId() {

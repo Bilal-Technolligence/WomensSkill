@@ -40,8 +40,8 @@ public class SignupActivity extends AppCompatActivity implements NavigationBar.O
     ProgressDialog progressDialog;
     private NavigationBar bar;
     private int position = 0;
-    EditText mDisplayDate,userName,password,rePassword,fullName,userEmail,userPhoneno,userAddress;
-    Spinner userProvince,userDistrict;
+    EditText mDisplayDate,userName,password,rePassword,fullName,userEmail,userPhoneno,userAddress , district;
+    Spinner userProvince;
     Button btnMale,btnFemale,btnOther;
     private DatePickerDialog.OnDateSetListener mDateSetListener;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -73,7 +73,7 @@ public class SignupActivity extends AppCompatActivity implements NavigationBar.O
         userPhoneno = (EditText) findViewById(R.id.txtPhoneNumber);
         userAddress = (EditText) findViewById(R.id.txtAddress);
         //userProvince = (EditText) findViewById(R.id.);
-        userDistrict = (Spinner) findViewById(R.id.spinner_distric);
+        district = (EditText) findViewById(R.id.txtDistrict);
         userProvince = (Spinner) findViewById(R.id.spinner_province);
 
         //Button
@@ -108,7 +108,7 @@ public class SignupActivity extends AppCompatActivity implements NavigationBar.O
                 String Address = userAddress.getText().toString();
                 String Password = password.getText().toString();
                 String Province =userProvince.getSelectedItem().toString();
-                String Distric = userDistrict.getSelectedItem().toString();
+                String Distric = district.getText().toString();
                 String Password2 = rePassword.getText().toString();
                 String Date = mDisplayDate.getText().toString();
                 if (Username.isEmpty())
@@ -125,14 +125,13 @@ public class SignupActivity extends AppCompatActivity implements NavigationBar.O
                     userAddress.setError("Field can not be Empty");
                 else if (Date.isEmpty())
                     mDisplayDate.setError("Field can not be Empty");
-                else if (Province.isEmpty())
-                    mDisplayDate.setError("Field can not be Empty");
                 else if (Distric.isEmpty())
-                    mDisplayDate.setError("Field can not be Empty");
+                    district.setError("Field can not be Empty");
                 else
                 {
                     progressDialog.show();
-                    RegisterUser(Username, Fullname, Email, Phone,Address, Password, Date , gender,Distric,Province );
+                    RegisterUser(Username, Fullname, Email, Phone,Province,Distric, Address, Password, Date, gender);
+
                 }
 
             }
@@ -185,15 +184,18 @@ public class SignupActivity extends AppCompatActivity implements NavigationBar.O
                             final String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
                             UserAttr userAttr = new UserAttr();
                             userAttr.setEmail(email);
-                            userAttr.setFullname(fullname);
+                            userAttr.setFullname(username);
                             userAttr.setAddress(address);
-                            userAttr.setUsername(username);
+                            userAttr.setUsername(fullname);
                             userAttr.setId(uid);
                             userAttr.setPhone(phone);
                             userAttr.setGender(gender);
                             userAttr.setDistric(District);
                             userAttr.setProvince(Province);
                             userAttr.setDate(date);
+                            userAttr.setCurrency("dollar");
+                            userAttr.setOutofoffice("no");
+                            userAttr.setImg(" ");
                             reference.child(uid).setValue(userAttr);
                             Toast.makeText(getApplicationContext(), "Account Created", Toast.LENGTH_SHORT).show();
                             // getApplicationContext().finish();

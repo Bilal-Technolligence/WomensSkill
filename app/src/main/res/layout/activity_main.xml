@@ -37,7 +37,7 @@
                             android:id="@+id/txtUserName"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
-                            android:text="razahaider401"
+                            android:text=""
                             android:gravity="center|right"
                             android:textStyle="bold"
                             android:textColor="@color/black"
@@ -101,7 +101,7 @@
                     android:layout_marginLeft="30dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp"
-                    android:id="@+id/skillCard"
+                    android:id="@+id/skilluploadCard"
                     android:gravity="center"
                     app:cardElevation="8dp"
                     app:cardCornerRadius="20dp">

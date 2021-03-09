@@ -29,6 +29,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.library.NavigationBar;
 import com.library.NvTab;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class SignupActivity extends AppCompatActivity implements NavigationBar.OnTabSelected, NavigationBar.OnTabClick {
@@ -46,6 +47,9 @@ public class SignupActivity extends AppCompatActivity implements NavigationBar.O
     private DatePickerDialog.OnDateSetListener mDateSetListener;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     final DatabaseReference reference = database.getReference("Users");
+    private Calendar calendar;
+    private SimpleDateFormat dateFormat;
+    private String date;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,6 +66,9 @@ public class SignupActivity extends AppCompatActivity implements NavigationBar.O
         setup(true, 3);
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Registering..... ");
+        calendar = Calendar.getInstance();
+        dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        date = dateFormat.format(calendar.getTime());
         //StateProgressBar stateProgressBar = (StateProgressBar) findViewById(R.id.your_state_progress_bar_id);
         // stateProgressBar.setStateDescriptionData(descriptionData);    }
         password = (EditText) findViewById(R.id.txtPassword);
@@ -130,7 +137,7 @@ public class SignupActivity extends AppCompatActivity implements NavigationBar.O
                 else
                 {
                     progressDialog.show();
-                    RegisterUser(Username, Fullname, Email, Phone,Province,Distric, Address, Password, Date, gender);
+                    RegisterUser(Username, Fullname, Email, Phone,Province,Distric, Address, Password, Date, gender ,date);
 
                 }
 
@@ -175,7 +182,7 @@ public class SignupActivity extends AppCompatActivity implements NavigationBar.O
 
     }
 
-    private void RegisterUser(String username, String fullname, String email, String phone,String Province,String District, String address, String password, String date, String gender) {
+    private void RegisterUser(String username, String fullname, String email, String phone, String Province, String District, String address, String password, String date, String gender, String dat) {
         FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -197,6 +204,7 @@ public class SignupActivity extends AppCompatActivity implements NavigationBar.O
                             userAttr.setOutofoffice("no");
                             userAttr.setImg(" ");
                             userAttr.setBalance("0");
+                            userAttr.setMemberFrom(dat);
                             reference.child(uid).setValue(userAttr);
                             Toast.makeText(getApplicationContext(), "Account Created", Toast.LENGTH_SHORT).show();
                             // getApplicationContext().finish();

@@ -152,42 +152,6 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="Avg. response time"
-                        />
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="1 hour"
-                        android:textColor="@color/black"
-                        android:layout_marginStart="5dp"
-                        android:id="@+id/txtResponseTime"
-                        />
-
-                </LinearLayout>
-
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"
-                android:orientation="horizontal"
-                android:gravity="center"
-                android:elevation="16dp">
-                <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_margin="10dp"
-                    android:src="@drawable/profile"/>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="5dp"
-                    >
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
                         android:text="Last Active"
                         />
                     <TextView
@@ -218,6 +182,7 @@
                 android:layout_marginEnd="10dp"
                 android:orientation="horizontal"
                 android:gravity="center"
+                android:id="@+id/l1"
                 android:elevation="16dp">
                 <ImageView
                     android:layout_width="50dp"
@@ -234,6 +199,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:text="English"
+                        android:id="@+id/txtLanguage"
                         android:textColor="@color/black"
 
                         />
@@ -241,12 +207,51 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:text="Fluent"
-                        android:id="@+id/txtLanguage"
+                        android:id="@+id/txtSpeed"
                         />
 
                 </LinearLayout>
 
             </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:id="@+id/l2"
+                android:elevation="16dp">
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="10dp"
+                    android:src="@drawable/profile"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="5dp"
+                    >
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="English"
+                        android:id="@+id/edtLanguage"
+                        android:textColor="@color/black"
+
+                        />
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="Fluent"
+                        android:id="@+id/edtSpeed"
+                        />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -261,16 +266,24 @@
                 android:layout_height="wrap_content"
                 android:padding="20dp"
                 android:textColor="@color/black"
-                android:text="Hello,\n I am Naveed Khan from Pakistan. I am expert in android development 3year experience" />
-            <TextView
+                android:text=""
+                android:id="@+id/txtDes"/>
+            <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="start"
-                android:text="Skills "
-                android:textColor="@color/black"
-                android:textStyle="bold"
                 android:padding="20dp"
-                android:textSize="18sp" />
+                android:id="@+id/edtDes"
+                android:maxLines="10"
+                android:textColor="@color/black"
+                android:text="" />
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="20dp"
+                android:id="@+id/btnUpdate"
+                android:textColor="@color/black"
+                android:text="Save" />
+
         </LinearLayout>
     </ScrollView>
 

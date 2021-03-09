@@ -2,7 +2,7 @@ package com.example.womensskill;
 
 public class UserAttr {
 
-    String id, username, fullname, email, date, phone,province,distric,address, gender,summary , img  , currency , outofoffice , balance;
+    String id, username, fullname, email, date, phone,province,distric,address, gender,summary , img  , currency , outofoffice , balance , memberFrom , language  ,speed ;
 
     public String getBalance() {
         return balance;
@@ -12,7 +12,31 @@ public class UserAttr {
         this.balance = balance;
     }
 
-    public UserAttr(String id, String username, String fullname, String email, String date, String phone, String province, String distric, String address, String gender, String summary, String img, String currency, String outofoffice, String balance) {
+    public String getMemberFrom() {
+        return memberFrom;
+    }
+
+    public void setMemberFrom(String memberFrom) {
+        this.memberFrom = memberFrom;
+    }
+
+    public String getLanguage() {
+        return language;
+    }
+
+    public void setLanguage(String language) {
+        this.language = language;
+    }
+
+    public String getSpeed() {
+        return speed;
+    }
+
+    public void setSpeed(String speed) {
+        this.speed = speed;
+    }
+
+    public UserAttr(String id, String username, String fullname, String email, String date, String phone, String province, String distric, String address, String gender, String summary, String img, String currency, String outofoffice, String balance, String memberFrom, String language, String speed) {
         this.id = id;
         this.username = username;
         this.fullname = fullname;
@@ -28,6 +52,9 @@ public class UserAttr {
         this.currency = currency;
         this.outofoffice = outofoffice;
         this.balance = balance;
+        this.memberFrom = memberFrom;
+        this.language = language;
+        this.speed = speed;
     }
 
     public String getCurrency() {

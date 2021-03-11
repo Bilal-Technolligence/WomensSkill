@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.WomensSkill">
-        <activity android:name=".ProductFormActivity"></activity>
+        <activity android:name=".SearchSkilllsActivity"></activity>
+        <activity android:name=".ProductFormActivity" />
         <activity android:name=".SkillFormActivity" />
         <activity android:name=".StorePerformanceActivity" />
         <activity android:name=".MesgChatActivity" />

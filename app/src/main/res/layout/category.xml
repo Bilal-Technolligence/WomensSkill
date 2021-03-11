@@ -10,6 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="80dp"
         app:cardBackgroundColor="#ffffff"
+        android:layout_marginTop="5dp"
         app:cardCornerRadius="10dp"
         app:cardElevation="50dp">
         <RelativeLayout
@@ -45,6 +46,7 @@
     </androidx.cardview.widget.CardView>
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
+        android:layout_marginTop="5dp"
         android:layout_height="80dp"
         app:cardBackgroundColor="#ffffff"
         app:cardCornerRadius="10dp"
@@ -83,6 +85,8 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="80dp"
+        android:layout_marginTop="5dp"
+
         app:cardBackgroundColor="#ffffff"
         app:cardCornerRadius="10dp"
         app:cardElevation="50dp">
@@ -120,6 +124,7 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="80dp"
+        android:layout_marginTop="5dp"
         app:cardBackgroundColor="#ffffff"
         app:cardCornerRadius="10dp"
         app:cardElevation="50dp">
@@ -158,6 +163,8 @@
         android:id="@+id/btnRelatives"
         android:layout_width="match_parent"
         android:layout_height="80dp"
+        android:layout_marginTop="5dp"
+
         app:cardBackgroundColor="#ffffff"
         app:cardCornerRadius="10dp"
         app:cardElevation="50dp">

@@ -67,6 +67,10 @@ public abstract class BaseClass extends AppCompatActivity implements BottomNavig
             startActivity(new Intent(this, MainActivity.class));
             finish();
         }
+        else if (itemId == R.id.nav_search) {
+            startActivity(new Intent(this, SearchSkilllsActivity.class));
+            finish();
+        }
         else if (itemId == R.id.nav_notification) {
             Intent intent = new Intent(this , MainActivity.class);
             startActivity(intent);

@@ -10,6 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WomensSkill">
         <activity android:name=".Chat"></activity>
+        <activity android:name=".SearchSkilllsActivity"></activity>
         <activity android:name=".ProductFormActivity" />
         <activity android:name=".SkillFormActivity" />
         <activity android:name=".StorePerformanceActivity" />

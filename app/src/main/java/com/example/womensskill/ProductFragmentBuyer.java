@@ -1,17 +1,17 @@
 package com.example.womensskill;
 
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -23,8 +23,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.Collections;
 
-
-public class SkillFragment extends Fragment {
+public class ProductFragmentBuyer extends Fragment {
     RecyclerView recyclerView;
     final String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
     FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
@@ -36,14 +35,14 @@ public class SkillFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View v =  inflater.inflate(R.layout.fragment_skill, container, false);
-        recyclerView = v.findViewById(R.id.recyclerServices);
+        View v =  inflater.inflate(R.layout.fragment_product_buyer, container, false);
+        recyclerView = v.findViewById(R.id.recyclerProducts);
         progressDialog = new ProgressDialog(getContext());
         progressDialog.setMessage("Loading..... ");
         progressDialog.show();
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         serviceAttrs = new ArrayList<ServiceAttr>();
-        databaseReference.child("Services").orderByChild("userId").equalTo(uid).addValueEventListener(new ValueEventListener() {
+        databaseReference.child("Products").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {
@@ -67,6 +66,6 @@ public class SkillFragment extends Fragment {
 
             }
         });
-        return v;
+        return  v;
     }
 }

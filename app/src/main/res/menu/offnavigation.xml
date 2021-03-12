@@ -3,7 +3,7 @@
     xmlns:aapt="http://schemas.android.com/aapt"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/nav_home"
+        android:id="@+id/nav_homebuyer"
         android:icon="@drawable/home"
         android:title="Home" />
     <item

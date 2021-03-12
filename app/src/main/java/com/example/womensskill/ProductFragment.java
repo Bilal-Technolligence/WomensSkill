@@ -44,7 +44,7 @@ public class ProductFragment extends Fragment {
         progressDialog.show();
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         serviceAttrs = new ArrayList<ServiceAttr>();
-        databaseReference.child("Products").addValueEventListener(new ValueEventListener() {
+        databaseReference.child("Products").orderByChild("userId").equalTo(uid).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {

@@ -145,7 +145,7 @@ public class SkillFormActivity extends AppCompatActivity {
                                             serviceAttr.setUserId(uid);
                                             serviceAttr.setTitle("i will create "+tit);
                                             serviceAttr.setDecription(des);
-                                            serviceAttr.setCategory(cat);
+                                            serviceAttr.setCategory(cat.toUpperCase());
                                             serviceAttr.setImage1(img1);
                                             serviceAttr.setImage2(img2);
                                             serviceAttr.setImage3(img3);

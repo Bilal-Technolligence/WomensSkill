@@ -54,11 +54,11 @@ public abstract class BaseClass extends AppCompatActivity implements BottomNavig
             startActivity(intent);
             finish();
         }
-//        else if (itemId == R.id.nav_history) {
-//            Intent intent=new Intent(this, History.class);
-//            startActivity(intent);
-//            finish();
-//        }
+        else if (itemId == R.id.nav_homebuyer) {
+            Intent intent=new Intent(this, HomeBuyer.class);
+            startActivity(intent);
+            finish();
+        }
         else if (itemId == R.id.nav_profile) {
             startActivity(new Intent(this, ProfileDetailsActivity.class));
             finish();

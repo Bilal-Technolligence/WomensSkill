@@ -13,7 +13,7 @@ public class SearchSkilllsActivity extends BaseClass {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_search_skillls);
+        //setContentView(R.layout.activity_search_skillls);
 
 
         TabLayout tabLayout=(TabLayout) findViewById(R.id.productTabLayout);

@@ -5,6 +5,13 @@
     android:layout_height="match_parent"
     tools:context=".ProductFragmentBuyer"
     android:orientation="vertical">
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_margin="10dp"
+        android:paddingLeft="10dp"
+        android:id="@+id/find"
+        android:drawableLeft="@drawable/ic_search_black_24dp"/>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerProducts"
         android:layout_width="match_parent"

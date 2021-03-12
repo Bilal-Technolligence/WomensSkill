@@ -43,7 +43,7 @@ public class SkillFragment extends Fragment {
         progressDialog.show();
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         serviceAttrs = new ArrayList<ServiceAttr>();
-        databaseReference.child("Services").orderByChild("userId").equalTo(uid).addValueEventListener(new ValueEventListener() {
+        databaseReference.child("Services").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {

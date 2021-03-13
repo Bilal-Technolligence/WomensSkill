@@ -108,8 +108,6 @@ public abstract class BaseClass extends AppCompatActivity implements BottomNavig
             Intent intent = new Intent(getApplicationContext(), LoginActivity.class );
             startActivity( intent );
             finish();
-
-
         }
         else{
             //when user loged in

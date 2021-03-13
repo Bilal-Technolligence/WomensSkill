@@ -20,22 +20,26 @@ import com.google.firebase.database.ValueEventListener;
 public class SplashActivity extends AppCompatActivity {
     Boolean session;
     DatabaseReference dref = FirebaseDatabase.getInstance().getReference();
-     String userMode;
-     String uid;
+    String userMode;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-        ImageView imageView = findViewById( R.id.imagelogo );
-        Animation animation = AnimationUtils.loadAnimation( getApplicationContext(),R.anim.fade );
-        imageView.startAnimation( animation );
-        uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        ImageView imageView = findViewById(R.id.imagelogo);
+        Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade);
+        imageView.startAnimation(animation);
+
 
         dref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(snapshot.exists()){
-                   userMode= snapshot.child("UserMode").child(uid).child("Mode").getValue().toString();
+                if (snapshot.exists()) {
+                    try {
+                        String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                        userMode = snapshot.child("UserMode").child(uid).child("Mode").getValue().toString();
+                    } catch (Exception e) {
+                    }
                 }
             }
 
@@ -45,11 +49,11 @@ public class SplashActivity extends AppCompatActivity {
             }
         });
 
-        Thread timer = new Thread(  ) {
+        Thread timer = new Thread() {
             @Override
             public void run() {
                 try {
-                    sleep( 5000 );
+                    sleep(5000);
                     SESSION();
 
 //                    Intent intent = new Intent(getApplicationContext(), LoginActivity.class );
@@ -66,29 +70,28 @@ public class SplashActivity extends AppCompatActivity {
         timer.start();
     }
 
-    public void SESSION(){
+    public void SESSION() {
         //default value false
-        session = Boolean.valueOf(SaveLogin.read(getApplicationContext(),"session","false"));
-        if (!session){
+        session = Boolean.valueOf(SaveLogin.read(getApplicationContext(), "session", "false"));
+        if (!session) {
 
             //when user first or logout
-            Intent intent = new Intent(getApplicationContext(), HomeBuyer.class );
-            startActivity( intent );
+            Intent intent = new Intent(getApplicationContext(), HomeBuyer.class);
+            startActivity(intent);
             finish();
 
 
-        }
-        else{
+        } else {
             //when user loged in
             //here value true
             //how the value can change true
-            if(userMode.equals("Seller")){
+            if (userMode.equals("Seller")) {
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
                 finish();
-            } else if(userMode.equals("Buyer")){
-                Intent intent = new Intent(getApplicationContext(), HomeBuyer.class );
-                startActivity( intent );
+            } else if (userMode.equals("Buyer")) {
+                Intent intent = new Intent(getApplicationContext(), HomeBuyer.class);
+                startActivity(intent);
                 finish();
 
             }

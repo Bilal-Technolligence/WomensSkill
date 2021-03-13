@@ -26,18 +26,19 @@ import java.util.Calendar;
 
 public class ProductDetail extends AppCompatActivity {
     ImageView img1, profile;
-    TextView frwd, back, name, title, price ,quantity ;
-    Button contact , order;
-    String id , uid;
+    TextView frwd, back, name, title, price, quantity;
+    Button contact, order;
+    String id, uid;
     String i1, i2, i3;
-    int i=0;
-    String Name , UserName , Title , Price;
+    int i = 0;
+    String Name, UserName, Title, Price;
     FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
     DatabaseReference databaseReference = firebaseDatabase.getReference();
-
+    String img;
     private Calendar calendar;
     private SimpleDateFormat dateFormat;
     private String date;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,14 +75,14 @@ public class ProductDetail extends AppCompatActivity {
                     databaseReference.child("Users").child(uid).addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            if(snapshot.exists()){
+                            if (snapshot.exists()) {
                                 try {
                                     Name = snapshot.child("fullname").getValue().toString();
                                     name.setText(Name);
-                                    String img = snapshot.child("img").getValue().toString();
+                                    img = snapshot.child("img").getValue().toString();
                                     Picasso.get().load(img).into(profile);
+                                } catch (Exception e) {
                                 }
-                                catch (Exception e){}
                             }
                         }
 
@@ -92,6 +93,10 @@ public class ProductDetail extends AppCompatActivity {
                     });
                     try {
                         String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                        if(uid.equals(userId)){
+                            contact.setVisibility(View.GONE);
+                            order.setVisibility(View.GONE);
+                        }
                         databaseReference.child("Users").child(userId).addListenerForSingleValueEvent(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -108,26 +113,25 @@ public class ProductDetail extends AppCompatActivity {
 
                             }
                         });
-                    }
-                    catch (Exception e){
-                        Intent o = new Intent(ProductDetail.this , LoginActivity.class);
+                    } catch (Exception e) {
+                        Intent o = new Intent(ProductDetail.this, LoginActivity.class);
                         startActivity(o);
                     }
                     frwd.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
                             i++;
-                            if(i==0){
+                            if (i == 0) {
                                 Picasso.get().load(i1).into(img1);
                                 back.setVisibility(View.GONE);
                                 frwd.setVisibility(View.VISIBLE);
                             }
-                            if(i==2){
+                            if (i == 2) {
                                 Picasso.get().load(i3).into(img1);
                                 back.setVisibility(View.VISIBLE);
                                 frwd.setVisibility(View.GONE);
                             }
-                            if (i==1){
+                            if (i == 1) {
                                 Picasso.get().load(i2).into(img1);
                                 back.setVisibility(View.VISIBLE);
                                 frwd.setVisibility(View.VISIBLE);
@@ -138,17 +142,17 @@ public class ProductDetail extends AppCompatActivity {
                         @Override
                         public void onClick(View view) {
                             i--;
-                            if(i==0){
+                            if (i == 0) {
                                 Picasso.get().load(i1).into(img1);
                                 back.setVisibility(View.GONE);
                                 frwd.setVisibility(View.VISIBLE);
                             }
-                            if(i==2){
+                            if (i == 2) {
                                 Picasso.get().load(i3).into(img1);
                                 back.setVisibility(View.VISIBLE);
                                 frwd.setVisibility(View.GONE);
                             }
-                            if (i==1){
+                            if (i == 1) {
                                 Picasso.get().load(i2).into(img1);
                                 back.setVisibility(View.VISIBLE);
                                 frwd.setVisibility(View.VISIBLE);
@@ -158,7 +162,7 @@ public class ProductDetail extends AppCompatActivity {
                     contact.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            Intent o = new Intent(ProductDetail.this , Chat.class);
+                            Intent o = new Intent(ProductDetail.this, Chat.class);
                             o.putExtra("chaterId", uid);
                             startActivity(o);
                         }
@@ -181,12 +185,15 @@ public class ProductDetail extends AppCompatActivity {
                                                 orderAttr.setTitle(Title);
                                                 orderAttr.setPrice(Price);
                                                 orderAttr.setProviderId(uid);
+                                                orderAttr.setImg(i1);
+                                                orderAttr.setProviderImg(img);
                                                 orderAttr.setProviderName(Name);
                                                 orderAttr.setUserName(UserName);
                                                 orderAttr.setStatus("Active");
                                                 orderAttr.setDate(date);
                                                 databaseReference.child("Order").child(push).setValue(orderAttr);
                                                 Toast.makeText(getApplicationContext(), "Order Created", Toast.LENGTH_LONG).show();
+                                                startActivity(new Intent(ProductDetail.this , SkillOrderActivity.class));
                                             }
 
                                         })
@@ -195,10 +202,7 @@ public class ProductDetail extends AppCompatActivity {
                             }
                         });
                     }
-                    catch (Exception e){
-                        Intent o = new Intent(ProductDetail.this , LoginActivity.class);
-                        startActivity(o);
-                    }
+                    catch (Exception e){}
                 }
             }
 

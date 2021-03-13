@@ -51,7 +51,7 @@ public class MySkillOrProducts extends AppCompatActivity {
                         serviceAttrs.add(p);
                     }
                     Collections.reverse(serviceAttrs);
-                    recyclerView.setAdapter(new ServiceListAdapter(serviceAttrs, getApplicationContext()));
+                    recyclerView.setAdapter(new ServiceListAdapter(serviceAttrs, getApplicationContext() , MySkillOrProducts.this));
                     progressDialog.dismiss();
                 } else {
                     progressDialog.dismiss();

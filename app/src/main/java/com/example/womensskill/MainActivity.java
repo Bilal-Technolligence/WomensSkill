@@ -53,6 +53,12 @@ public class MainActivity extends BaseClass {
         skillMart = findViewById(R.id.skillmartCard);
         productUpload = findViewById(R.id.productUploadCard);
         manageOrder = findViewById(R.id.manageorderCard);
+        manageOrder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, SkillOrderActivity.class));
+            }
+        });
         productUpload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

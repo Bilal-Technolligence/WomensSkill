@@ -2,7 +2,7 @@ package com.example.womensskill;
 
 public class OrderAttr {
 
-    String id , userId , providerId , title , date , price , userName , providerName , status;
+    String id , userId , providerId , title , date , price , userName , providerName , status , img , providerImg;
 
     public String getId() {
         return id;
@@ -76,7 +76,23 @@ public class OrderAttr {
         this.status = status;
     }
 
-    public OrderAttr(String id, String userId, String providerId, String title, String date, String price, String userName, String providerName, String status) {
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
+    }
+
+    public String getProviderImg() {
+        return providerImg;
+    }
+
+    public void setProviderImg(String providerImg) {
+        this.providerImg = providerImg;
+    }
+
+    public OrderAttr(String id, String userId, String providerId, String title, String date, String price, String userName, String providerName, String status, String img, String providerImg) {
         this.id = id;
         this.userId = userId;
         this.providerId = providerId;
@@ -86,6 +102,8 @@ public class OrderAttr {
         this.userName = userName;
         this.providerName = providerName;
         this.status = status;
+        this.img = img;
+        this.providerImg = providerImg;
     }
 
     public OrderAttr() {

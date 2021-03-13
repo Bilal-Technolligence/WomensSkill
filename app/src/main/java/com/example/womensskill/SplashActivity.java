@@ -32,7 +32,10 @@ public class SplashActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(snapshot.exists()){
-                   userMode= snapshot.child("UserMode").getValue().toString();
+                    try {
+                        userMode = snapshot.child("UserMode").getValue().toString();
+                    }
+                    catch (Exception e){}
                 }
             }
 

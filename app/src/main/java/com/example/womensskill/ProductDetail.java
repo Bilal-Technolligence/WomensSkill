@@ -34,7 +34,7 @@ public class ProductDetail extends AppCompatActivity {
     String Name , UserName , Title , Price;
     FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
     DatabaseReference databaseReference = firebaseDatabase.getReference();
-    String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
     private Calendar calendar;
     private SimpleDateFormat dateFormat;
     private String date;
@@ -90,22 +90,29 @@ public class ProductDetail extends AppCompatActivity {
 
                         }
                     });
-                    databaseReference.child("Users").child(userId).addListenerForSingleValueEvent(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            if(snapshot.exists()){
-                                try {
-                                    UserName = snapshot.child("fullname").getValue().toString();
+                    try {
+                        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                        databaseReference.child("Users").child(userId).addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                if (snapshot.exists()) {
+                                    try {
+                                        UserName = snapshot.child("fullname").getValue().toString();
+                                    } catch (Exception e) {
+                                    }
                                 }
-                                catch (Exception e){}
                             }
-                        }
 
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
 
-                        }
-                    });
+                            }
+                        });
+                    }
+                    catch (Exception e){
+                        Intent o = new Intent(ProductDetail.this , LoginActivity.class);
+                        startActivity(o);
+                    }
                     frwd.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
@@ -156,36 +163,42 @@ public class ProductDetail extends AppCompatActivity {
                             startActivity(o);
                         }
                     });
-                    order.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            new AlertDialog.Builder(ProductDetail.this)
-                                    .setIcon(android.R.drawable.ic_dialog_alert)
-                                    .setMessage("Are you sure you want to order product?")
-                                    .setPositiveButton("Yes", new DialogInterface.OnClickListener()
-                                    {
-                                        @Override
-                                        public void onClick(DialogInterface dialog, int which) {
-                                            final String push = FirebaseDatabase.getInstance().getReference().child("Order").push().getKey();
-                                            OrderAttr orderAttr = new OrderAttr();
-                                            orderAttr.setId(push);
-                                            orderAttr.setUserId(userId);
-                                            orderAttr.setTitle(Title);
-                                            orderAttr.setPrice(Price);
-                                            orderAttr.setProviderId(uid);
-                                            orderAttr.setProviderName(Name);
-                                            orderAttr.setUserName(UserName);
-                                            orderAttr.setStatus("Active");
-                                            orderAttr.setDate(date);
-                                            databaseReference.child("Order").child(push).setValue(orderAttr);
-                                            Toast.makeText(getApplicationContext() , "Order Created" , Toast.LENGTH_LONG).show();
-                                        }
+                    try {
+                        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                        order.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                new AlertDialog.Builder(ProductDetail.this)
+                                        .setIcon(android.R.drawable.ic_dialog_alert)
+                                        .setMessage("Are you sure you want to order product?")
+                                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialog, int which) {
+                                                final String push = FirebaseDatabase.getInstance().getReference().child("Order").push().getKey();
+                                                OrderAttr orderAttr = new OrderAttr();
+                                                orderAttr.setId(push);
+                                                orderAttr.setUserId(userId);
+                                                orderAttr.setTitle(Title);
+                                                orderAttr.setPrice(Price);
+                                                orderAttr.setProviderId(uid);
+                                                orderAttr.setProviderName(Name);
+                                                orderAttr.setUserName(UserName);
+                                                orderAttr.setStatus("Active");
+                                                orderAttr.setDate(date);
+                                                databaseReference.child("Order").child(push).setValue(orderAttr);
+                                                Toast.makeText(getApplicationContext(), "Order Created", Toast.LENGTH_LONG).show();
+                                            }
 
-                                    })
-                                    .setNegativeButton("No", null)
-                                    .show();
-                        }
-                    });
+                                        })
+                                        .setNegativeButton("No", null)
+                                        .show();
+                            }
+                        });
+                    }
+                    catch (Exception e){
+                        Intent o = new Intent(ProductDetail.this , LoginActivity.class);
+                        startActivity(o);
+                    }
                 }
             }
 

@@ -23,7 +23,7 @@ public class ProductListAdapterBuyer extends RecyclerView.Adapter<ProductListAda
     private Context context;
     FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
     DatabaseReference databaseReference = firebaseDatabase.getReference();
-    final String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+//    final String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
     public ProductListAdapterBuyer(ArrayList<ServiceAttr> serviceAttrs, Context context) {
         this.context = context;

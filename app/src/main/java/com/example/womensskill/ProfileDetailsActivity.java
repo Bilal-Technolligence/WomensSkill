@@ -109,6 +109,8 @@ public class ProfileDetailsActivity extends BaseClass {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if(btnSellerMode.isChecked()){
+                    databaseReference.child("UserMode").setValue( "Seller" );
+                    startActivity(new Intent(getApplicationContext(),ProfileDetailsActivity.class));
                startActivity(new Intent(getApplicationContext(),ProfileOffSellerActivity.class));
                 }
 

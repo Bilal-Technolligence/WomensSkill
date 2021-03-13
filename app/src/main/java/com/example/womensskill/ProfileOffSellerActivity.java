@@ -7,8 +7,12 @@ import android.os.Bundle;
 import android.widget.CompoundButton;
 import android.widget.Switch;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 public class ProfileOffSellerActivity extends BaseClass {
     Switch btnSellerMode;
+    DatabaseReference dref= FirebaseDatabase.getInstance().getReference();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,6 +24,7 @@ public class ProfileOffSellerActivity extends BaseClass {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if(!btnSellerMode.isChecked()){
+                    dref.child("UserMode").setValue( "Buyer" );
                     startActivity(new Intent(getApplicationContext(),ProfileDetailsActivity.class));
                 }
 

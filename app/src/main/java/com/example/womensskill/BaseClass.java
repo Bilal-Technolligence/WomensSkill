@@ -11,6 +11,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public abstract class BaseClass extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener{
     protected BottomNavigationView navigationView;
+    Boolean session;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,9 +52,8 @@ public abstract class BaseClass extends AppCompatActivity implements BottomNavig
             startActivity(intent);
             finish();
         } else if (itemId == R.id.nav_profile) {
-            Intent intent=new Intent(this, ProfileDetailsActivity.class);
-            startActivity(intent);
-            finish();
+            SESSION();
+
         }
         else if (itemId == R.id.nav_homebuyer) {
             Intent intent=new Intent(this, HomeBuyer.class);
@@ -98,6 +99,27 @@ public abstract class BaseClass extends AppCompatActivity implements BottomNavig
 //            }
 //        }
 //    }
+
+    public void SESSION(){
+        //default value false
+        session = Boolean.valueOf(SaveLogin.read(getApplicationContext(),"session","false"));
+        if (!session){
+            //when user first or logout
+            Intent intent = new Intent(getApplicationContext(), LoginActivity.class );
+            startActivity( intent );
+            finish();
+
+
+        }
+        else{
+            //when user loged in
+            //here value true
+            //how the value can change true
+            Intent intent=new Intent(this, ProfileDetailsActivity.class);
+            startActivity(intent);
+            finish();
+        }
+    }
     abstract int getContentViewId();
 
     abstract int getNavigationMenuItemId();

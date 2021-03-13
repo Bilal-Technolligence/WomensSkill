@@ -21,6 +21,6 @@ public class EarningActivity extends BaseClass {
 
     @Override
     int getNavigationMenuItemId() {
-        return R.id.nav_profile;
+        return R.id.nav_home;
     }
 }

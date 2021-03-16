@@ -3,18 +3,25 @@ package com.example.womensskill;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.RatingBar;
+import android.widget.TextView;
 
 import com.google.android.material.tabs.TabLayout;
 
 public class ManageSkillsOrProductActivity extends AppCompatActivity {
     LinearLayout manageOrder,manageLayout;
-    Button btnSOrderManage,btnPOrderManage;
+    Button btnSOrderManage,btnPOrderManage,btnRating;
+     Dialog rankDialog;
+     RatingBar ratingBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +32,36 @@ public class ManageSkillsOrProductActivity extends AppCompatActivity {
         manageLayout =(LinearLayout) findViewById(R.id.mainLayout);
         btnSOrderManage =findViewById(R.id.btnSkillOrder);
         btnPOrderManage =findViewById(R.id.btnProductOrder);
+        btnRating =findViewById(R.id.btnRating);
+
+        btnRating.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                rankDialog = new Dialog(ManageSkillsOrProductActivity.this, R.style.FullHeightDialog);
+//                rankDialog.setContentView(R.layout.rank_dialog);
+//                rankDialog.setCancelable(true);
+//                ratingBar = (RatingBar)rankDialog.findViewById(R.id.dialog_ratingbar);
+//               // ratingBar.setRating(userRankValue);
+//
+//              //  TextView text = (TextView) rankDialog.findViewById(R.id.rank_dialog_text1);
+//              //  text.setText(name);
+//
+//                Button updateButton = (Button) rankDialog.findViewById(R.id.rank_dialog_button);
+//                updateButton.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//                        rankDialog.dismiss();
+//                    }
+//                });
+//                //now that the dialog is set up, it's time to show it
+//                rankDialog.show();
+
+
+//            }
+                ShowDialog();
+            }
+        });
+
         btnSOrderManage.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {
@@ -68,5 +105,66 @@ public class ManageSkillsOrProductActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+
+    public void ShowDialog()
+    {
+        final AlertDialog.Builder popDialog = new AlertDialog.Builder(this);
+
+        LinearLayout linearLayout = new LinearLayout(this);
+        final RatingBar rating = new RatingBar(this);
+
+        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+        );
+        rating.setLayoutParams(lp);
+        rating.setNumStars(5);
+        rating.setStepSize(1);
+
+        //add ratingBar to linearLayout
+        linearLayout.addView(rating);
+
+
+        popDialog.setIcon(android.R.drawable.btn_star_big_on);
+        popDialog.setTitle("Add Rating: ");
+
+        //add linearLayout to dailog
+        popDialog.setView(linearLayout);
+
+
+
+        rating.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+            @Override
+            public void onRatingChanged(RatingBar ratingBar, float v, boolean b) {
+                System.out.println("Rated val:"+v);
+            }
+        });
+
+
+
+        // Button OK
+        popDialog.setPositiveButton(android.R.string.ok,
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                    //    textView.setText(String.valueOf(rating.getProgress()));
+                        //here you can get rating and store it into firebase
+                        dialog.dismiss();
+                    }
+
+                })
+
+                // Button Cancel
+                .setNegativeButton("Cancel",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        });
+
+        popDialog.create();
+        popDialog.show();
+
     }
 }

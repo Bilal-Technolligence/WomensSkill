@@ -18,56 +18,27 @@ import android.widget.TextView;
 import com.google.android.material.tabs.TabLayout;
 
 public class ManageSkillsOrProductActivity extends AppCompatActivity {
-    LinearLayout manageOrder,manageLayout;
-    Button btnSOrderManage,btnPOrderManage,btnRating;
-     Dialog rankDialog;
-     RatingBar ratingBar;
+    LinearLayout manageOrder, manageLayout;
+    Button btnSOrderManage, btnPOrderManage, btnRating;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manage_skills_or_product);
 
-        manageOrder =(LinearLayout) findViewById(R.id.manageorderLayout);
-        manageLayout =(LinearLayout) findViewById(R.id.mainLayout);
-        btnSOrderManage =findViewById(R.id.btnSkillOrder);
-        btnPOrderManage =findViewById(R.id.btnProductOrder);
-        btnRating =findViewById(R.id.btnRating);
+        manageOrder = (LinearLayout) findViewById(R.id.manageorderLayout);
+        manageLayout = (LinearLayout) findViewById(R.id.mainLayout);
+        btnSOrderManage = findViewById(R.id.btnSkillOrder);
+        btnPOrderManage = findViewById(R.id.btnProductOrder);
 
-        btnRating.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-//                rankDialog = new Dialog(ManageSkillsOrProductActivity.this, R.style.FullHeightDialog);
-//                rankDialog.setContentView(R.layout.rank_dialog);
-//                rankDialog.setCancelable(true);
-//                ratingBar = (RatingBar)rankDialog.findViewById(R.id.dialog_ratingbar);
-//               // ratingBar.setRating(userRankValue);
-//
-//              //  TextView text = (TextView) rankDialog.findViewById(R.id.rank_dialog_text1);
-//              //  text.setText(name);
-//
-//                Button updateButton = (Button) rankDialog.findViewById(R.id.rank_dialog_button);
-//                updateButton.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//                        rankDialog.dismiss();
-//                    }
-//                });
-//                //now that the dialog is set up, it's time to show it
-//                rankDialog.show();
-
-
-//            }
-                ShowDialog();
-            }
-        });
 
         btnSOrderManage.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View v) {
-        startActivity(new Intent(getApplicationContext(),SkillOrderActivity.class));
-    }
-});
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), SkillOrderActivity.class));
+            }
+        });
 
         btnPOrderManage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,7 +47,7 @@ public class ManageSkillsOrProductActivity extends AppCompatActivity {
                 manageLayout.setVisibility(View.VISIBLE);
             }
         });
-        TabLayout tabLayout=(TabLayout) findViewById(R.id.productTabLayout);
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.productTabLayout);
         tabLayout.addTab(tabLayout.newTab().setText("Completed"));
         tabLayout.addTab(tabLayout.newTab().setText("Cancelled"));
         tabLayout.addTab(tabLayout.newTab().setText("Active"));
@@ -85,8 +56,8 @@ public class ManageSkillsOrProductActivity extends AppCompatActivity {
         tabLayout.setTabTextColors(Color.parseColor("#000000"), Color.parseColor("#1dbf73"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
-        final ViewPager viewPagers= (ViewPager) findViewById(R.id.productSummaryPager);
-        SkillPagerAdapter skillPagerAdapter =new SkillPagerAdapter(getSupportFragmentManager(),tabLayout.getTabCount());
+        final ViewPager viewPagers = (ViewPager) findViewById(R.id.productSummaryPager);
+        SkillPagerAdapter skillPagerAdapter = new SkillPagerAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
         viewPagers.setAdapter(skillPagerAdapter);
         viewPagers.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
@@ -108,8 +79,7 @@ public class ManageSkillsOrProductActivity extends AppCompatActivity {
     }
 
 
-    public void ShowDialog()
-    {
+    public void ShowDialog() {
         final AlertDialog.Builder popDialog = new AlertDialog.Builder(this);
 
         LinearLayout linearLayout = new LinearLayout(this);
@@ -134,21 +104,19 @@ public class ManageSkillsOrProductActivity extends AppCompatActivity {
         popDialog.setView(linearLayout);
 
 
-
         rating.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             @Override
             public void onRatingChanged(RatingBar ratingBar, float v, boolean b) {
-                System.out.println("Rated val:"+v);
+                System.out.println("Rated val:" + v);
             }
         });
-
 
 
         // Button OK
         popDialog.setPositiveButton(android.R.string.ok,
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                    //    textView.setText(String.valueOf(rating.getProgress()));
+                        //    textView.setText(String.valueOf(rating.getProgress()));
                         //here you can get rating and store it into firebase
                         dialog.dismiss();
                     }

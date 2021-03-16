@@ -41,15 +41,7 @@
         android:layout_marginStart="15dp"
         android:backgroundTint="@color/colorgreen"
         android:gravity="center"/>
-        <Button
-            android:id="@+id/btnRating"
-            android:layout_width="match_parent"
-            android:layout_height="65dp"
-            android:text="Rating"
-            android:layout_marginEnd="15dp"
-            android:layout_marginStart="15dp"
-            android:backgroundTint="@color/colorgreen"
-            android:gravity="center"/>
+
     </LinearLayout>
     <LinearLayout
         android:orientation="vertical"

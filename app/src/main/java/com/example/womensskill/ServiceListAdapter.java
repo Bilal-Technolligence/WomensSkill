@@ -24,6 +24,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class ServiceListAdapter extends RecyclerView.Adapter<ServiceListAdapter.ViewHolder> {
@@ -57,7 +58,7 @@ public class ServiceListAdapter extends RecyclerView.Adapter<ServiceListAdapter.
         holder.balance.setText("Starting from "+b);
         holder.delete.setImageResource(R.drawable.delete);
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
+        holder.delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 new AlertDialog.Builder(activity)
@@ -75,6 +76,31 @@ public class ServiceListAdapter extends RecyclerView.Adapter<ServiceListAdapter.
                         .show();
             }
         });
+        databaseReference.child("Rating").child(id).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(dataSnapshot.exists()) {
+                    long count = dataSnapshot.getChildrenCount();
+                    Double total = 0.0;
+                    for (DataSnapshot adminsnapshot : dataSnapshot.getChildren()) {
+                        Rating_Attr rating_attr = adminsnapshot.getValue(Rating_Attr.class);
+                        total += rating_attr.getRating();
+                    }
+                    String star = String.valueOf(new DecimalFormat("#.#").format(total / count));
+                    String str = String.valueOf(total / count);
+//                    ratingBar.setRating(Float.parseFloat(str));
+//                    //ratingBar.setNumStars((int) (total/count));
+//                    txtRating.setText(star);
+//                    txtNum.setText(String.valueOf(count));
+                    holder.rating.setText(star + " (" + count + ")");
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 
     @Override
@@ -84,12 +110,13 @@ public class ServiceListAdapter extends RecyclerView.Adapter<ServiceListAdapter.
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView img , delete;
-        TextView title , balance;
+        TextView title , balance , rating;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             img = (ImageView) itemView.findViewById(R.id.img);
             title = (TextView) itemView.findViewById(R.id.title);
             balance = (TextView) itemView.findViewById(R.id.balance);
+            rating = (TextView) itemView.findViewById(R.id.rating);
             delete = (ImageView) itemView.findViewById(R.id.like);
 
 

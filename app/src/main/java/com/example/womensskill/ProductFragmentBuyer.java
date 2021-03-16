@@ -66,7 +66,7 @@ public class ProductFragmentBuyer extends Fragment {
                     progressDialog.dismiss();
                 } else {
                     progressDialog.dismiss();
-                    Toast.makeText(getContext(), "Services not Found!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(), "Products not Found!", Toast.LENGTH_LONG).show();
                 }
             }
 

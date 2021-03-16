@@ -40,7 +40,7 @@ public class MySkillOrProducts extends AppCompatActivity {
         id = getIntent().getStringExtra("id");
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         serviceAttrs = new ArrayList<ServiceAttr>();
-        databaseReference.child(id).addValueEventListener(new ValueEventListener() {
+        databaseReference.child(id).orderByChild("userId").equalTo(uid).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {
@@ -55,7 +55,7 @@ public class MySkillOrProducts extends AppCompatActivity {
                     progressDialog.dismiss();
                 } else {
                     progressDialog.dismiss();
-                    Toast.makeText(getApplicationContext(), "Services not Found!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Data not Found!", Toast.LENGTH_LONG).show();
                 }
             }
 

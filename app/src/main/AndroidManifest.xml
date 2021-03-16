@@ -20,14 +20,12 @@
         <activity android:name=".StorePerformanceActivity" />
         <activity android:name=".MesgChatActivity" />
         <activity android:name=".ManageSkillsOrProductActivity" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".NotificationsActivity" />
-        <activity android:name=".SkillOrderActivity" />
+        <activity android:name=".SkillOrderActivity" >
+
+        </activity>
         <activity android:name=".MyProfileActivity" />
         <activity android:name=".MySkillOrProducts" />
         <activity android:name=".ShareMyProductActivity" />
@@ -53,7 +51,11 @@
         <activity
             android:name=".SplashActivity"
             android:theme="@style/Theme.MaterialComponents.Light.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".ProfileActivity" />
         <activity android:name=".MainActivity"></activity>

@@ -28,7 +28,7 @@ public class ServiceDetail extends AppCompatActivity {
     ImageView img1, profile;
     TextView frwd, back, name, title, description;
     Button contact, order;
-    String id, uid;
+    String id, uid,productId;
     String i1, i2, i3;
     int i = 0;
     String Name, UserName, Title, Price;
@@ -67,6 +67,7 @@ public class ServiceDetail extends AppCompatActivity {
                     description.setText(dataSnapshot.child("decription").getValue().toString());
                     title.setText(dataSnapshot.child("title").getValue().toString());
                     Title = dataSnapshot.child("title").getValue().toString();
+                    productId = dataSnapshot.child("id").getValue().toString();
                     Price = dataSnapshot.child("price").getValue().toString();
                     uid = dataSnapshot.child("userId").getValue().toString();
                     Picasso.get().load(i1).into(img1);
@@ -189,6 +190,7 @@ public class ServiceDetail extends AppCompatActivity {
                                             orderAttr.setProviderImg(img);
                                             orderAttr.setStatus("Active");
                                             orderAttr.setDate(date);
+                                            orderAttr.setProductId(productId);
                                             databaseReference.child("Order").child(push).setValue(orderAttr);
                                             Toast.makeText(getApplicationContext(), "Order Created", Toast.LENGTH_LONG).show();
                                             startActivity(new Intent(ServiceDetail.this , SkillOrderActivity.class));

@@ -1,18 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
     <item
-        android:id = "@+id/action"
+        android:id = "@+id/loginMain"
         app:showAsAction = "always"
         android:title = "Login" />
     <item
-        android:id = "@+id/action1"
+        android:id = "@+id/logoutMain"
         app:showAsAction = "always"
         android:visible="false"
         android:title = "Logout" />
-    <item
-        app:showAsAction = "never"
-        android:title = ""
-        />
+
 
 </menu>

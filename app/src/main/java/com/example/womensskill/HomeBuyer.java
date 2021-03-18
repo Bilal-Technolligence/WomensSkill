@@ -21,7 +21,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class HomeBuyer extends BaseClass {
     private Menu menu;
-    private MenuItem login,logout;
+    private MenuItem login,logout,empty;
     Boolean session;
     String uid;
     View parentLayout;
@@ -99,24 +99,34 @@ public class HomeBuyer extends BaseClass {
         if (!session) {
             login = menu.findItem(R.id.loginMain);
             logout = menu.findItem(R.id.logoutMain);
+            empty = menu.findItem(R.id.empty);
             login.setVisible(true);
             logout.setVisible(false);
+            empty.setVisible(false);
+
 
         }
         else{
             login = menu.findItem(R.id.loginMain);
             logout = menu.findItem(R.id.logoutMain);
+            empty = menu.findItem(R.id.empty);
+
             login.setVisible(false);
             logout.setVisible(true);
+            empty.setVisible(true);
+
         }
     }
     private void updateLoginMenu() {
         login = menu.findItem(R.id.loginMain);
         logout = menu.findItem(R.id.logoutMain);
+        empty = menu.findItem(R.id.empty);
 
         startActivity(new Intent(getApplicationContext(), LoginActivity.class));
         login.setVisible(false);
         logout.setVisible(true);
+        empty.setVisible(true);
+
     }
     private void updateLogoutMenu() {
         uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
@@ -132,6 +142,8 @@ public class HomeBuyer extends BaseClass {
                     SaveLogin.save(getApplicationContext(), "session", "false");
                     login.setVisible(true);
                     logout.setVisible(false);
+                    empty.setVisible(false);
+
                     startActivity(new Intent(getApplicationContext(), LoginActivity.class));
                     recreate();
                 }

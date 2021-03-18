@@ -7,10 +7,17 @@
         app:showAsAction = "always"
         android:title = "Login" />
     <item
+        app:showAsAction = "always"
+        android:title = "" />
+    <item
         android:id = "@+id/logoutMain"
         app:showAsAction = "always"
         android:visible="false"
         android:title = "Logout" />
-
+    <item
+        android:id="@+id/empty"
+        app:showAsAction = "always"
+        android:visible="false"
+        android:title = "" />
 
 </menu>

@@ -26,18 +26,19 @@ import java.util.Calendar;
 
 public class ProductDetail extends AppCompatActivity {
     ImageView img1, profile;
-    TextView frwd, back, name, title, price ,quantity ;
-    Button contact , order;
-    String id , uid;
+    TextView frwd, back, name, title, price, quantity;
+    Button contact, order;
+    String id, uid , productId;
     String i1, i2, i3;
-    int i=0;
-    String Name , UserName , Title , Price;
+    int i = 0;
+    String Name, UserName, Title, Price;
     FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
     DatabaseReference databaseReference = firebaseDatabase.getReference();
-    String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+    String img;
     private Calendar calendar;
     private SimpleDateFormat dateFormat;
     private String date;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,6 +67,7 @@ public class ProductDetail extends AppCompatActivity {
                     i3 = dataSnapshot.child("image3").getValue().toString();
                     price.setText(dataSnapshot.child("price").getValue().toString());
                     Title = dataSnapshot.child("title").getValue().toString();
+                    productId = dataSnapshot.child("id").getValue().toString();
                     Price = dataSnapshot.child("price").getValue().toString();
                     title.setText(dataSnapshot.child("title").getValue().toString());
                     quantity.setText(dataSnapshot.child("quantity").getValue().toString());
@@ -74,14 +76,14 @@ public class ProductDetail extends AppCompatActivity {
                     databaseReference.child("Users").child(uid).addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            if(snapshot.exists()){
+                            if (snapshot.exists()) {
                                 try {
                                     Name = snapshot.child("fullname").getValue().toString();
                                     name.setText(Name);
-                                    String img = snapshot.child("img").getValue().toString();
+                                    img = snapshot.child("img").getValue().toString();
                                     Picasso.get().load(img).into(profile);
+                                } catch (Exception e) {
                                 }
-                                catch (Exception e){}
                             }
                         }
 
@@ -90,37 +92,47 @@ public class ProductDetail extends AppCompatActivity {
 
                         }
                     });
-                    databaseReference.child("Users").child(userId).addListenerForSingleValueEvent(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            if(snapshot.exists()){
-                                try {
-                                    UserName = snapshot.child("fullname").getValue().toString();
+                    try {
+                        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                        if(uid.equals(userId)){
+                            contact.setVisibility(View.GONE);
+                            order.setVisibility(View.GONE);
+                        }
+                        databaseReference.child("Users").child(userId).addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                if (snapshot.exists()) {
+                                    try {
+                                        UserName = snapshot.child("fullname").getValue().toString();
+                                    } catch (Exception e) {
+                                    }
                                 }
-                                catch (Exception e){}
                             }
-                        }
 
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
 
-                        }
-                    });
+                            }
+                        });
+                    } catch (Exception e) {
+                        Intent o = new Intent(ProductDetail.this, LoginActivity.class);
+                        startActivity(o);
+                    }
                     frwd.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
                             i++;
-                            if(i==0){
+                            if (i == 0) {
                                 Picasso.get().load(i1).into(img1);
                                 back.setVisibility(View.GONE);
                                 frwd.setVisibility(View.VISIBLE);
                             }
-                            if(i==2){
+                            if (i == 2) {
                                 Picasso.get().load(i3).into(img1);
                                 back.setVisibility(View.VISIBLE);
                                 frwd.setVisibility(View.GONE);
                             }
-                            if (i==1){
+                            if (i == 1) {
                                 Picasso.get().load(i2).into(img1);
                                 back.setVisibility(View.VISIBLE);
                                 frwd.setVisibility(View.VISIBLE);
@@ -131,17 +143,17 @@ public class ProductDetail extends AppCompatActivity {
                         @Override
                         public void onClick(View view) {
                             i--;
-                            if(i==0){
+                            if (i == 0) {
                                 Picasso.get().load(i1).into(img1);
                                 back.setVisibility(View.GONE);
                                 frwd.setVisibility(View.VISIBLE);
                             }
-                            if(i==2){
+                            if (i == 2) {
                                 Picasso.get().load(i3).into(img1);
                                 back.setVisibility(View.VISIBLE);
                                 frwd.setVisibility(View.GONE);
                             }
-                            if (i==1){
+                            if (i == 1) {
                                 Picasso.get().load(i2).into(img1);
                                 back.setVisibility(View.VISIBLE);
                                 frwd.setVisibility(View.VISIBLE);
@@ -151,41 +163,70 @@ public class ProductDetail extends AppCompatActivity {
                     contact.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            Intent o = new Intent(ProductDetail.this , Chat.class);
+                            Intent o = new Intent(ProductDetail.this, Chat.class);
                             o.putExtra("chaterId", uid);
                             startActivity(o);
                         }
                     });
-                    order.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            new AlertDialog.Builder(ProductDetail.this)
-                                    .setIcon(android.R.drawable.ic_dialog_alert)
-                                    .setMessage("Are you sure you want to order product?")
-                                    .setPositiveButton("Yes", new DialogInterface.OnClickListener()
-                                    {
-                                        @Override
-                                        public void onClick(DialogInterface dialog, int which) {
-                                            final String push = FirebaseDatabase.getInstance().getReference().child("Order").push().getKey();
-                                            OrderAttr orderAttr = new OrderAttr();
-                                            orderAttr.setId(push);
-                                            orderAttr.setUserId(userId);
-                                            orderAttr.setTitle(Title);
-                                            orderAttr.setPrice(Price);
-                                            orderAttr.setProviderId(uid);
-                                            orderAttr.setProviderName(Name);
-                                            orderAttr.setUserName(UserName);
-                                            orderAttr.setStatus("Active");
-                                            orderAttr.setDate(date);
-                                            databaseReference.child("Order").child(push).setValue(orderAttr);
-                                            Toast.makeText(getApplicationContext() , "Order Created" , Toast.LENGTH_LONG).show();
-                                        }
+                    try {
+                        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                        order.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                new AlertDialog.Builder(ProductDetail.this)
+                                        .setIcon(android.R.drawable.ic_dialog_alert)
+                                        .setMessage("Are you sure you want to order product?")
+                                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialog, int which) {
+                                                databaseReference.child("Users").child(userId).addListenerForSingleValueEvent(new ValueEventListener() {
+                                                    @Override
+                                                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                                        if(dataSnapshot.exists()){
+                                                            try{
+                                                                String p = snapshot.child("balance").getValue().toString();
+                                                                if(Integer.parseInt(p)>=Integer.parseInt(Price)){
+                                                                    final String push = FirebaseDatabase.getInstance().getReference().child("Order").push().getKey();
+                                                                    OrderAttr orderAttr = new OrderAttr();
+                                                                    orderAttr.setId(push);
+                                                                    orderAttr.setUserId(userId);
+                                                                    orderAttr.setTitle(Title);
+                                                                    orderAttr.setPrice(Price);
+                                                                    orderAttr.setProviderId(uid);
+                                                                    orderAttr.setImg(i1);
+                                                                    orderAttr.setProviderImg(img);
+                                                                    orderAttr.setProviderName(Name);
+                                                                    orderAttr.setUserName(UserName);
+                                                                    orderAttr.setStatus("Active");
+                                                                    orderAttr.setDate(date);
+                                                                    orderAttr.setProductId(productId);
+                                                                    databaseReference.child("Order").child(push).setValue(orderAttr);
+                                                                    Toast.makeText(getApplicationContext(), "Order Created", Toast.LENGTH_LONG).show();
+                                                                    startActivity(new Intent(ProductDetail.this , SkillOrderActivity.class));
+                                                                }
+                                                                else{
+                                                                    Toast.makeText(getApplicationContext() , "You have low balance!",Toast.LENGTH_LONG).show();
+                                                                }
+                                                            }
+                                                            catch (Exception e){}
+                                                        }
+                                                    }
 
-                                    })
-                                    .setNegativeButton("No", null)
-                                    .show();
-                        }
-                    });
+                                                    @Override
+                                                    public void onCancelled(@NonNull DatabaseError error) {
+
+                                                    }
+                                                });
+
+                                            }
+
+                                        })
+                                        .setNegativeButton("No", null)
+                                        .show();
+                            }
+                        });
+                    }
+                    catch (Exception e){}
                 }
             }
 

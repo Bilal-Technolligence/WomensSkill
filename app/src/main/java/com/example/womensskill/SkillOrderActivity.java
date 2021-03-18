@@ -15,9 +15,9 @@ public class SkillOrderActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_skill_order);
         TabLayout tabLayout=(TabLayout) findViewById(R.id.skillTabLayout);
-        tabLayout.addTab(tabLayout.newTab().setText("Completed"));
-        tabLayout.addTab(tabLayout.newTab().setText("Cancelled"));
         tabLayout.addTab(tabLayout.newTab().setText("Active"));
+        tabLayout.addTab(tabLayout.newTab().setText("Cancelled"));
+        tabLayout.addTab(tabLayout.newTab().setText("Completed"));
         tabLayout.setSelectedTabIndicatorColor(Color.parseColor("#1dbf73"));
         tabLayout.setSelectedTabIndicatorHeight((int) (5 * getResources().getDisplayMetrics().density));
         tabLayout.setTabTextColors(Color.parseColor("#1dbf73"), Color.parseColor("#000000"));

@@ -36,7 +36,7 @@ import java.io.IOException;
 public class ProfileDetailsActivity extends BaseClass {
     CardView earning, buyerRequest, shareSkill, shareProduct, products,
             skills, profile, onlineStatus, payment, inviteFriends, support;
-    TextView userName , balance;
+    TextView userName, balance;
     ImageView userImage;
     String uid;
     Switch btnSellerMode;
@@ -47,7 +47,7 @@ public class ProfileDetailsActivity extends BaseClass {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-       // setContentView(R.layout.activity_profile_details);
+        // setContentView(R.layout.activity_profile_details);
         earning = findViewById(R.id.btnEarning);
         buyerRequest = findViewById(R.id.btnBuyerRequest);
         shareSkill = findViewById(R.id.btnShareSkills);
@@ -73,7 +73,7 @@ public class ProfileDetailsActivity extends BaseClass {
                         String bal = dataSnapshot.child("balance").getValue().toString();
                         String cur = dataSnapshot.child("currency").getValue().toString();
                         userName.setText(String.valueOf(eName));
-                        balance.setText("Your balance is "+bal+cur);
+                        balance.setText("Your balance is " + bal + cur);
                         if (dataSnapshot.child("img").getValue().toString().equals(" ")) {
                             String firstLetter = eName.substring(0, 1);
                             ColorGenerator generator = ColorGenerator.MATERIAL; // or use DEFAULT
@@ -105,47 +105,48 @@ public class ProfileDetailsActivity extends BaseClass {
             }
         });
         btnSellerMode = findViewById(R.id.btnswitchSeller);
-        btnSellerMode.setOnCheckedChangeListener( new CompoundButton.OnCheckedChangeListener() {
+        btnSellerMode.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if(btnSellerMode.isChecked()){
-                    databaseReference.child("UserMode").child(uid).child("Mode").setValue( "Seller" );
-                    startActivity(new Intent(getApplicationContext(),ProfileDetailsActivity.class));
-               startActivity(new Intent(getApplicationContext(),ProfileOffSellerActivity.class));
+                if (btnSellerMode.isChecked()) {
+                    databaseReference.child("UserMode").child(uid).child("Mode").setValue("Buyer");
+                    //startActivity(new Intent(getApplicationContext(), ProfileDetailsActivity.class));
+                    startActivity(new Intent(getApplicationContext(), ProfileOffSellerActivity.class));
+                    finish();
                 }
 
             }
-        } );
+        });
 
         earning.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),EarningActivity.class));
+                startActivity(new Intent(getApplicationContext(), EarningActivity.class));
             }
         });
         buyerRequest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),BuyersRequestActivity.class));
+                startActivity(new Intent(getApplicationContext(), BuyersRequestActivity.class));
             }
         });
         shareProduct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),ShareMyProductActivity.class));
+                startActivity(new Intent(getApplicationContext(), ShareMyProductActivity.class));
             }
         });
         shareSkill.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),ShareMyProductActivity.class));
+                startActivity(new Intent(getApplicationContext(), ShareMyProductActivity.class));
             }
         });
         products.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext() , MySkillOrProducts.class);
-                i.putExtra("id","Products");
+                Intent i = new Intent(getApplicationContext(), MySkillOrProducts.class);
+                i.putExtra("id", "Products");
                 startActivity(i);
 
             }
@@ -153,18 +154,19 @@ public class ProfileDetailsActivity extends BaseClass {
         skills.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext() , MySkillOrProducts.class);
-                i.putExtra("id","Services");
+                Intent i = new Intent(getApplicationContext(), MySkillOrProducts.class);
+                i.putExtra("id", "Services");
                 startActivity(i);
             }
         });
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),MyProfileActivity.class));
+                startActivity(new Intent(getApplicationContext(), MyProfileActivity.class));
             }
         });
     }
+
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
 
         super.onActivityResult(requestCode, resultCode, data);
@@ -196,6 +198,7 @@ public class ProfileDetailsActivity extends BaseClass {
 
         }
     }
+
     @Override
     int getContentViewId() {
         return R.layout.activity_profile_details;

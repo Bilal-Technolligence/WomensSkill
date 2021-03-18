@@ -18,14 +18,14 @@ public class SkillPagerAdapter extends FragmentStatePagerAdapter {
     public Fragment getItem(int position) {
         switch (position){
             case 0:
-                OrderCompletedFragment orderCompletedFragment=new OrderCompletedFragment();
-                return orderCompletedFragment;
+                ActiveOrderFragment activeOrderFragment=new ActiveOrderFragment();
+                return activeOrderFragment;
             case 1:
                 OrderCancelledFragment orderCancelledFragment=new OrderCancelledFragment();
                 return orderCancelledFragment;
             case 2:
-                ActiveOrderFragment activeOrderFragment=new ActiveOrderFragment();
-                return activeOrderFragment;
+                OrderCompletedFragment orderCompletedFragment=new OrderCompletedFragment();
+                return orderCompletedFragment;
             default:
                 return null;
 

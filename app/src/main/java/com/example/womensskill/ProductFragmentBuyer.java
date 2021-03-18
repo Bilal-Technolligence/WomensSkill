@@ -30,7 +30,6 @@ import java.util.Collections;
 
 public class ProductFragmentBuyer extends Fragment {
     RecyclerView recyclerView;
-    final String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
     FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
     DatabaseReference databaseReference = firebaseDatabase.getReference();
     ArrayList<ServiceAttr> serviceAttrs;
@@ -67,7 +66,7 @@ public class ProductFragmentBuyer extends Fragment {
                     progressDialog.dismiss();
                 } else {
                     progressDialog.dismiss();
-                    Toast.makeText(getContext(), "Services not Found!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(), "Products not Found!", Toast.LENGTH_LONG).show();
                 }
             }
 

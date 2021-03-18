@@ -18,6 +18,10 @@
         android:numStars="5"
         android:rating="2"
         android:stepSize="1.0" />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/edtcoment"/>
 
     <Button
         android:id="@+id/rank_dialog_button"
@@ -26,6 +30,24 @@
         android:layout_margin="5dip"
         android:focusable="false"
         android:text="Submit"
+        android:textColor="#FFF8C6"
+        android:textSize="20dip" />
+    <Button
+        android:id="@+id/rank_dialog_buttoncancel"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dip"
+        android:focusable="false"
+        android:text="End Order"
+        android:textColor="#FFF8C6"
+        android:textSize="20dip" />
+    <Button
+        android:id="@+id/rank_dialog_buttonclose"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dip"
+        android:focusable="false"
+        android:text="Close"
         android:textColor="#FFF8C6"
         android:textSize="20dip" />
 

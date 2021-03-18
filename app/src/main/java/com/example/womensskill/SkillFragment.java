@@ -54,7 +54,7 @@ public class SkillFragment extends Fragment {
                         serviceAttrs.add(p);
                     }
                     Collections.reverse(serviceAttrs);
-                    recyclerView.setAdapter(new ServiceListAdapter(serviceAttrs, getContext()));
+                    recyclerView.setAdapter(new ServiceListAdapter(serviceAttrs, getContext(),getActivity()));
                     progressDialog.dismiss();
                 } else {
                     progressDialog.dismiss();

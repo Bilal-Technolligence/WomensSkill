@@ -43,7 +43,8 @@ public class FirbaseAuthenticationClass extends AppCompatActivity {
                                     //saving value true for session
                                     SaveLogin.save(activity,"session","true");
                                     //Save.save(activity,"session","true");
-                                    activity.startActivity(new Intent(activity, MainActivity.class));
+                                    //activity.startActivity(new Intent(activity, MainActivity.class));
+                                    database.getReference().child("UserMode").child(uid).child("Mode").setValue("Seller");
                                     activity.finish();
                                     progressDialog.dismiss();
                                 }

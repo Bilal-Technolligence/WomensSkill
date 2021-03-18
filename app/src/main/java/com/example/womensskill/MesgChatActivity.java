@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -21,7 +22,7 @@ import java.util.Set;
 public class MesgChatActivity extends BaseClass {
     RecyclerView recyclerView;
     DatabaseReference dref = FirebaseDatabase.getInstance().getReference();
-    String userId= FirebaseAuth.getInstance().getCurrentUser().getUid();
+
     ArrayList<String> chaterId=new ArrayList<>();
     ArrayList<UserAttr> userAttrs=new ArrayList<>();
     @Override
@@ -31,35 +32,40 @@ public class MesgChatActivity extends BaseClass {
         ((AppCompatActivity)this).getSupportActionBar().setTitle("Inbox");
         recyclerView=(RecyclerView) findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        dref.child("ChatList").addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                try{
-                    chaterId.clear();
-                    userAttrs.clear();
-                    for(DataSnapshot ds: dataSnapshot.getChildren()) {
-                        if (ds.exists()) {
-                            if (ds.child("receiverId").getValue().equals(userId))
-                            {
-                                chaterId.add(ds.child("senderId").getValue().toString());
-                            }
-                            if(ds.child("senderId").getValue().equals(userId)) {
-                                chaterId.add(ds.child("receiverId").getValue().toString());
+        try {
+            String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+            dref.child("ChatList").addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    try {
+                        chaterId.clear();
+                        userAttrs.clear();
+                        for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                            if (ds.exists()) {
+                                if (ds.child("receiverId").getValue().equals(userId)) {
+                                    chaterId.add(ds.child("senderId").getValue().toString());
+                                }
+                                if (ds.child("senderId").getValue().equals(userId)) {
+                                    chaterId.add(ds.child("receiverId").getValue().toString());
+                                }
                             }
                         }
+                        showChatList();
+                    } catch (Exception e) {
+
                     }
-                    showChatList();
-                }catch (Exception e){
 
                 }
 
-            }
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
+                }
+            });
+        }
+        catch (Exception e){
+            startActivity(new Intent(MesgChatActivity.this , LoginActivity.class));
+        }
     }
     private void showChatList() {
         Set<String> set = new HashSet<>(chaterId);

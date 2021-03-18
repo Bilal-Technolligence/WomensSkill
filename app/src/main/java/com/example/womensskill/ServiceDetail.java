@@ -27,17 +27,18 @@ import java.util.Calendar;
 public class ServiceDetail extends AppCompatActivity {
     ImageView img1, profile;
     TextView frwd, back, name, title, description;
-    Button contact , order;
-    String id , uid;
+    Button contact, order;
+    String id, uid,productId;
     String i1, i2, i3;
-    int i=0;
-    String Name , UserName , Title , Price;
+    int i = 0;
+    String Name, UserName, Title, Price;
     FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
     DatabaseReference databaseReference = firebaseDatabase.getReference();
-    String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+    String img;
     private Calendar calendar;
     private SimpleDateFormat dateFormat;
     private String date;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,20 +67,22 @@ public class ServiceDetail extends AppCompatActivity {
                     description.setText(dataSnapshot.child("decription").getValue().toString());
                     title.setText(dataSnapshot.child("title").getValue().toString());
                     Title = dataSnapshot.child("title").getValue().toString();
+                    productId = dataSnapshot.child("id").getValue().toString();
                     Price = dataSnapshot.child("price").getValue().toString();
                     uid = dataSnapshot.child("userId").getValue().toString();
                     Picasso.get().load(i1).into(img1);
+
                     databaseReference.child("Users").child(uid).addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            if(snapshot.exists()){
+                            if (snapshot.exists()) {
                                 try {
                                     Name = snapshot.child("fullname").getValue().toString();
                                     name.setText(Name);
-                                    String img = snapshot.child("img").getValue().toString();
+                                    img = snapshot.child("img").getValue().toString();
                                     Picasso.get().load(img).into(profile);
+                                } catch (Exception e) {
                                 }
-                                catch (Exception e){}
                             }
                         }
 
@@ -88,37 +91,47 @@ public class ServiceDetail extends AppCompatActivity {
 
                         }
                     });
-                    databaseReference.child("Users").child(userId).addListenerForSingleValueEvent(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            if(snapshot.exists()){
-                                try {
-                                    UserName = snapshot.child("fullname").getValue().toString();
+                    try {
+                        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                        if(uid.equals(userId)){
+                            contact.setVisibility(View.GONE);
+                            order.setVisibility(View.GONE);
+                        }
+                        databaseReference.child("Users").child(userId).addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                if (snapshot.exists()) {
+                                    try {
+                                        UserName = snapshot.child("fullname").getValue().toString();
+                                    } catch (Exception e) {
+                                    }
                                 }
-                                catch (Exception e){}
                             }
-                        }
 
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
 
-                        }
-                    });
+                            }
+                        });
+                    } catch (Exception e) {
+                        Intent o = new Intent(ServiceDetail.this, LoginActivity.class);
+                        startActivity(o);
+                    }
                     frwd.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
                             i++;
-                            if(i==0){
+                            if (i == 0) {
                                 Picasso.get().load(i1).into(img1);
                                 back.setVisibility(View.GONE);
                                 frwd.setVisibility(View.VISIBLE);
                             }
-                            if(i==2){
+                            if (i == 2) {
                                 Picasso.get().load(i3).into(img1);
                                 back.setVisibility(View.VISIBLE);
                                 frwd.setVisibility(View.GONE);
                             }
-                            if (i==1){
+                            if (i == 1) {
                                 Picasso.get().load(i2).into(img1);
                                 back.setVisibility(View.VISIBLE);
                                 frwd.setVisibility(View.VISIBLE);
@@ -129,17 +142,17 @@ public class ServiceDetail extends AppCompatActivity {
                         @Override
                         public void onClick(View view) {
                             i--;
-                            if(i==0){
+                            if (i == 0) {
                                 Picasso.get().load(i1).into(img1);
                                 back.setVisibility(View.GONE);
                                 frwd.setVisibility(View.VISIBLE);
                             }
-                            if(i==2){
+                            if (i == 2) {
                                 Picasso.get().load(i3).into(img1);
                                 back.setVisibility(View.VISIBLE);
                                 frwd.setVisibility(View.GONE);
                             }
-                            if (i==1){
+                            if (i == 1) {
                                 Picasso.get().load(i2).into(img1);
                                 back.setVisibility(View.VISIBLE);
                                 frwd.setVisibility(View.VISIBLE);
@@ -149,19 +162,19 @@ public class ServiceDetail extends AppCompatActivity {
                     contact.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            Intent o = new Intent(ServiceDetail.this , Chat.class);
+                            Intent o = new Intent(ServiceDetail.this, Chat.class);
                             o.putExtra("chaterId", uid);
                             startActivity(o);
                         }
                     });
+                    String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
                     order.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
                             new AlertDialog.Builder(ServiceDetail.this)
                                     .setIcon(android.R.drawable.ic_dialog_alert)
                                     .setMessage("Are you sure you want to order service?")
-                                    .setPositiveButton("Yes", new DialogInterface.OnClickListener()
-                                    {
+                                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                                         @Override
                                         public void onClick(DialogInterface dialog, int which) {
                                             final String push = FirebaseDatabase.getInstance().getReference().child("Order").push().getKey();
@@ -173,10 +186,14 @@ public class ServiceDetail extends AppCompatActivity {
                                             orderAttr.setProviderId(uid);
                                             orderAttr.setProviderName(Name);
                                             orderAttr.setUserName(UserName);
+                                            orderAttr.setImg(i1);
+                                            orderAttr.setProviderImg(img);
                                             orderAttr.setStatus("Active");
                                             orderAttr.setDate(date);
+                                            orderAttr.setProductId(productId);
                                             databaseReference.child("Order").child(push).setValue(orderAttr);
-                                            Toast.makeText(getApplicationContext() , "Order Created" , Toast.LENGTH_LONG).show();
+                                            Toast.makeText(getApplicationContext(), "Order Created", Toast.LENGTH_LONG).show();
+                                            startActivity(new Intent(ServiceDetail.this , SkillOrderActivity.class));
                                         }
 
                                     })

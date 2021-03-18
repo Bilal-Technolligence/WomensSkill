@@ -143,6 +143,7 @@ public class HomeBuyer extends BaseClass {
                     login.setVisible(true);
                     logout.setVisible(false);
                     empty.setVisible(false);
+                    //
 
                     startActivity(new Intent(getApplicationContext(), LoginActivity.class));
                     recreate();

@@ -47,9 +47,9 @@ public class ProductListAdapterBuyer extends RecyclerView.Adapter<ProductListAda
         Picasso.get().load(serviceAttrs.get(position).getImage1()).into(holder.img);
         holder.title.setText(serviceAttrs.get(position).getTitle());
         String b = serviceAttrs.get(position).getPrice();
-        holder.balance.setText("Starting from "+b);
+        holder.balance.setText("Starting from " + b);
         String id = serviceAttrs.get(position).getId();
-        try{
+        try {
             final String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
             holder.like.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -57,12 +57,10 @@ public class ProductListAdapterBuyer extends RecyclerView.Adapter<ProductListAda
                     databaseReference.child("Like").child(uid).child(id).addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            if(snapshot.exists()){
+                            if (snapshot.exists()) {
                                 databaseReference.child("Like").child(uid).child(id).setValue(null);
                                 holder.like.setImageResource(R.drawable.emptyheart);
-                            }
-                            else
-                            {
+                            } else {
                                 databaseReference.child("Like").child(uid).child(id).child("id").setValue(id);
                                 holder.like.setImageResource(R.drawable.fillheart);
                             }
@@ -78,11 +76,11 @@ public class ProductListAdapterBuyer extends RecyclerView.Adapter<ProductListAda
             databaseReference.child("Like").child(uid).child(id).addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    if(snapshot.exists()){
+                    if (snapshot.exists()) {
                         holder.like.setImageResource(R.drawable.fillheart);
-                    }
-                    else
+                    } else {
                         holder.like.setImageResource(R.drawable.emptyheart);
+                    }
                 }
 
                 @Override
@@ -93,7 +91,7 @@ public class ProductListAdapterBuyer extends RecyclerView.Adapter<ProductListAda
             databaseReference.child("Rating").child(id).addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    if(dataSnapshot.exists()) {
+                    if (dataSnapshot.exists()) {
                         long count = dataSnapshot.getChildrenCount();
                         Double total = 0.0;
                         for (DataSnapshot adminsnapshot : dataSnapshot.getChildren()) {
@@ -115,16 +113,15 @@ public class ProductListAdapterBuyer extends RecyclerView.Adapter<ProductListAda
 
                 }
             });
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             holder.like.setVisibility(View.GONE);
         }
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(context , ProductDetail.class);
-                i.putExtra("id",id);
+                Intent i = new Intent(context, ProductDetail.class);
+                i.putExtra("id", id);
                 context.startActivity(i);
             }
         });
@@ -136,8 +133,9 @@ public class ProductListAdapterBuyer extends RecyclerView.Adapter<ProductListAda
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        ImageView img , like;
-        TextView title , balance ,rating;
+        ImageView img, like;
+        TextView title, balance, rating;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             img = (ImageView) itemView.findViewById(R.id.img);

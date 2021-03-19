@@ -176,7 +176,7 @@
                     android:layout_marginLeft="30dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp"
-                    android:id="@+id/skillmartCard"
+                    android:id="@+id/adminCard"
                     android:gravity="center"
                     app:cardElevation="8dp"
                     app:cardCornerRadius="20dp">
@@ -199,7 +199,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Manage \n Order"
+                            android:text="Admin \n Login"
                             android:gravity="center"/>
                     </LinearLayout>
 

@@ -25,6 +25,7 @@ public class MesgChatActivity extends BaseClass {
 
     ArrayList<String> chaterId=new ArrayList<>();
     ArrayList<UserAttr> userAttrs=new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,21 +38,22 @@ public class MesgChatActivity extends BaseClass {
             dref.child("ChatList").addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    try {
+                    try{
                         chaterId.clear();
                         userAttrs.clear();
-                        for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                        for(DataSnapshot ds: dataSnapshot.getChildren()) {
                             if (ds.exists()) {
-                                if (ds.child("receiverId").getValue().equals(userId)) {
+                                if (ds.child("receiverId").getValue().equals(userId))
+                                {
                                     chaterId.add(ds.child("senderId").getValue().toString());
                                 }
-                                if (ds.child("senderId").getValue().equals(userId)) {
+                                if(ds.child("senderId").getValue().equals(userId)) {
                                     chaterId.add(ds.child("receiverId").getValue().toString());
                                 }
                             }
                         }
                         showChatList();
-                    } catch (Exception e) {
+                    }catch (Exception e){
 
                     }
 

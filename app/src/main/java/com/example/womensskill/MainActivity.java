@@ -32,7 +32,7 @@ import com.squareup.picasso.Picasso;
 import java.io.IOException;
 
 public class MainActivity extends BaseClass {
-    CardView performanceStore, skillUpload, performanceSkill, skillMart, productUpload, manageOrder;
+    CardView performanceStore, skillUpload, performanceSkill, admin, productUpload, manageOrder;
     TextView userName;
     ImageView userImage;
     String uid;
@@ -50,13 +50,19 @@ public class MainActivity extends BaseClass {
         performanceStore = (CardView) findViewById(R.id.performanceCard);
         skillUpload = (CardView) findViewById(R.id.skilluploadCard);
         performanceSkill = findViewById(R.id.performanceSkillCard);
-        skillMart = findViewById(R.id.skillmartCard);
+        admin = findViewById(R.id.adminCard);
         productUpload = findViewById(R.id.productUploadCard);
         manageOrder = findViewById(R.id.manageorderCard);
         manageOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(MainActivity.this, SkillOrderActivity.class));
+            }
+        });
+        admin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, AdminLogin.class));
             }
         });
         productUpload.setOnClickListener(new View.OnClickListener() {

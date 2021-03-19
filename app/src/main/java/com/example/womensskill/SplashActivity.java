@@ -85,15 +85,22 @@ public class SplashActivity extends AppCompatActivity {
             //when user loged in
             //here value true
             //how the value can change true
-            if (userMode.equals("Seller")) {
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(intent);
-                finish();
-            } else if (userMode.equals("Buyer")) {
+            try {
+                if (userMode.equals("Seller")) {
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    startActivity(intent);
+                    finish();
+                } else {
+                    Intent intent = new Intent(getApplicationContext(), HomeBuyer.class);
+                    startActivity(intent);
+                    finish();
+
+                }
+            }
+            catch (Exception e ){
                 Intent intent = new Intent(getApplicationContext(), HomeBuyer.class);
                 startActivity(intent);
                 finish();
-
             }
 
 

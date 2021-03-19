@@ -160,7 +160,6 @@
                         app:cardElevation="5dp">
 
                         <LinearLayout
-                            android:id="@+id/layouta"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:orientation="horizontal"
@@ -182,6 +181,7 @@
                                 android:layout_marginTop="1dp"
                                 android:layout_weight="1"
                                 android:gravity="left"
+                                android:id="@+id/layoutSavedSkill"
                                 android:text="Saved Skill"
                                 android:textSize="18sp"
                                 android:textColor="@color/colorBlack" />
@@ -213,6 +213,7 @@
                                 android:layout_weight="1"
                                 android:gravity="left"
                                 android:textSize="18sp"
+                                android:id="@+id/layoutSavedProduct"
                                 android:text="Saved Product"
                                 android:textColor="@color/colorBlack" />
 

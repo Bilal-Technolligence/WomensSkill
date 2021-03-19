@@ -46,12 +46,13 @@ public abstract class BaseClass extends AppCompatActivity implements BottomNavig
         int itemId = item.getItemId();
         if (itemId == R.id.nav_home) {
             startActivity(new Intent(this, MainActivity.class));
+            finish();
         } else if (itemId == R.id.nav_message) {
             Intent intent=new Intent(this, MesgChatActivity.class);
             startActivity(intent);
             finish();
         } else if (itemId == R.id.nav_ordermanage) {
-            Intent intent=new Intent(this, ManageSkillsOrProductActivity.class);
+            Intent intent=new Intent(this, SkillOrderActivity.class);
             startActivity(intent);
             finish();
         } else if (itemId == R.id.nav_notification) {
@@ -59,7 +60,49 @@ public abstract class BaseClass extends AppCompatActivity implements BottomNavig
             startActivity(intent);
             finish();
         } else if (itemId == R.id.nav_profile) {
-            SESSION();
+            session = Boolean.valueOf(SaveLogin.read(getApplicationContext(),"session","false"));
+            if (!session){
+                //when user first or logout
+                Intent intent = new Intent(getApplicationContext(), LoginActivity.class );
+                startActivity( intent );
+                finish();
+
+            }
+            else{
+                DatabaseReference dref = FirebaseDatabase.getInstance().getReference();
+
+                dref.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if (snapshot.exists()) {
+                            try {
+                                String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                                userMode = snapshot.child("UserMode").child(uid).child("Mode").getValue().toString();
+                                if (userMode.equals("Seller")) {
+                                    Intent intent = new Intent(getApplicationContext(), ProfileDetailsActivity.class);
+                                    startActivity(intent);
+                                    finish();
+                                } else {
+                                    Intent intent = new Intent(getApplicationContext(), ProfileOffSellerActivity.class);
+                                    startActivity(intent);
+                                    finish();
+
+                                }
+                            } catch (Exception e) {
+                                Intent intent = new Intent(getApplicationContext(), ProfileOffSellerActivity.class);
+                                startActivity(intent);
+                                finish();
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+
+            }
 
         }
         else if (itemId == R.id.nav_homebuyer) {
@@ -126,13 +169,16 @@ public abstract class BaseClass extends AppCompatActivity implements BottomNavig
                                 Intent intent = new Intent(getApplicationContext(), ProfileDetailsActivity.class);
                                 startActivity(intent);
                                 finish();
-                            } else if (userMode.equals("Buyer")) {
+                            } else {
                                 Intent intent = new Intent(getApplicationContext(), ProfileOffSellerActivity.class);
                                 startActivity(intent);
                                 finish();
 
                             }
                         } catch (Exception e) {
+                            Intent intent = new Intent(getApplicationContext(), ProfileOffSellerActivity.class);
+                            startActivity(intent);
+                            finish();
                         }
                     }
                 }

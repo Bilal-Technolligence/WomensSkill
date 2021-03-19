@@ -9,7 +9,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.WomensSkill">
-        <activity android:name=".OrderDetail"></activity>
+        <activity android:name=".ProductSkillAdmin"></activity>
+        <activity android:name=".ProfileDetailAdmin" />
+        <activity android:name=".AdminMain">
+
+        </activity>
+        <activity android:name=".AdminLogin" >
+
+        </activity>
+        <activity android:name=".SavedProduct" />
+        <activity android:name=".SavedSkill" />
+        <activity android:name=".OrderDetail" />
         <activity android:name=".ProductDetail" />
         <activity android:name=".ServiceDetail" />
         <activity android:name=".HomeBuyer" />
@@ -19,13 +29,9 @@
         <activity android:name=".SkillFormActivity" />
         <activity android:name=".StorePerformanceActivity" />
         <activity android:name=".MesgChatActivity" />
-        <activity android:name=".ManageSkillsOrProductActivity" >
-
-        </activity>
+        <activity android:name=".ManageSkillsOrProductActivity" />
         <activity android:name=".NotificationsActivity" />
-        <activity android:name=".SkillOrderActivity" >
-
-        </activity>
+        <activity android:name=".SkillOrderActivity" />
         <activity android:name=".MyProfileActivity" />
         <activity android:name=".MySkillOrProducts" />
         <activity android:name=".ShareMyProductActivity" />
@@ -50,7 +56,7 @@
             android:theme="@style/Theme.MaterialComponents.Light.NoActionBar" />
         <activity
             android:name=".SplashActivity"
-            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar">
+            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -58,7 +64,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".ProfileActivity" />
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>

@@ -42,6 +42,7 @@ public class ProfileOffSellerActivity extends BaseClass {
     private Uri imagePath;
     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
     CardView manageOrder;
+    TextView savedSkill , savesProduct;
 
     DatabaseReference dref= FirebaseDatabase.getInstance().getReference();
     @Override
@@ -56,6 +57,23 @@ public class ProfileOffSellerActivity extends BaseClass {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(ProfileOffSellerActivity.this , SkillOrderActivity.class));
+                finish();
+            }
+        });
+        savedSkill = findViewById(R.id.layoutSavedSkill);
+        savesProduct = findViewById(R.id.layoutSavedProduct);
+        savedSkill.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(ProfileOffSellerActivity.this , SavedSkill.class));
+                finish();
+            }
+        });
+        savesProduct.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(ProfileOffSellerActivity.this , SavedProduct.class));
+                finish();
             }
         });
         uid = FirebaseAuth.getInstance().getCurrentUser().getUid();

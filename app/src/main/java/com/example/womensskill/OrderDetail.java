@@ -126,7 +126,7 @@ public class OrderDetail extends AppCompatActivity {
                                                 try{
                                                     String p = snapshot.child("balance").getValue().toString();
                                                     int total = Integer.parseInt(pp)+Integer.parseInt(p);
-                                                    databaseReference.child("Users").child(providerId).child("balance").setValue(total);
+                                                    databaseReference.child("Users").child(providerId).child("balance").setValue(String.valueOf(total));
                                                 }
                                                 catch (Exception e){}
                                             }

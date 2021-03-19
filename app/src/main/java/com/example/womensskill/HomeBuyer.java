@@ -145,7 +145,7 @@ public class HomeBuyer extends BaseClass {
                     empty.setVisible(false);
                     //
 
-                    startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+                    startActivity(new Intent(getApplicationContext(), HomeBuyer.class));
                     recreate();
                 }
             }).setNegativeButton("No", new DialogInterface.OnClickListener() {

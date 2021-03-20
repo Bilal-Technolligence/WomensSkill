@@ -8,120 +8,130 @@
     android:orientation="vertical"
     android:background="#fff"
     android:layout_margin="5dp">
-    <RelativeLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="300dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="5dp"
-            android:gravity="center"
-            android:textColor="@color/black"
-            android:textSize="50dp"
-            android:id="@+id/btnBack"
-            app:drawableEndCompat="@drawable/back_black" />
-
-        <ImageView
+        android:layout_height="match_parent">
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:id="@+id/img1"/>
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="300dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginStart="5dp"
+                    android:gravity="center"
+                    android:textColor="@color/black"
+                    android:textSize="50dp"
+                    android:id="@+id/btnBack"
+                    app:drawableEndCompat="@drawable/back_black" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:id="@+id/img1"/>
 
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginEnd="5dp"
-            android:id="@+id/btnFrwd"
-            android:gravity="center"
-            android:textColor="@color/black"
-            android:textSize="50dp"
-            app:drawableEndCompat="@drawable/forward_black" />
-    </RelativeLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:id="@+id/imgProfile"
-            android:src="@drawable/dp"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Name"
-            android:textColor="#000"
-            android:layout_gravity="center"
-            android:textSize="40dp"
-            android:id="@+id/txtName"/>
-    </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginEnd="5dp"
+                    android:id="@+id/btnFrwd"
+                    android:gravity="center"
+                    android:textColor="@color/black"
+                    android:textSize="50dp"
+                    app:drawableEndCompat="@drawable/forward_black" />
+            </RelativeLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:id="@+id/imgProfile"
+                    android:src="@drawable/dp"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Name"
+                    android:textColor="#000"
+                    android:layout_gravity="center"
+                    android:textSize="25dp"
+                    android:id="@+id/txtName"/>
+            </LinearLayout>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Title"
-        android:textColor="@color/black"
-        android:textSize="20dp"
-        android:id="@+id/txtTitle"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Description"
-        android:textSize="15dp"
-        android:textColor="@color/black"
-        android:id="@+id/txtDescription"/>
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <RatingBar
-            android:id="@+id/ratingbar"
-            android:layout_width="50dp"
-            android:layout_height="20dp"
-            android:padding="1dp"
-            android:layout_gravity="center"
-            style = "?android:attr/ratingBarStyleSmall"
-            android:numStars = "1"
-            android:theme="@style/RatingBar"
-            android:layout_marginLeft="5dp"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="0.0"
-            android:textColor="@color/black"
-            android:textSize="40dp"
-            android:id="@+id/txtRating"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="(0)"
-            android:textColor="@color/black"
-            android:textSize="40dp"
-            android:id="@+id/txtRatingNo"/>
-    </LinearLayout>
-    <Button
-        android:id="@+id/btnContact"
-        android:layout_width="match_parent"
-        android:layout_height="65dp"
-        android:text="Contact Service Provider"
-        android:layout_marginEnd="15dp"
-        android:layout_marginStart="15dp"
-        android:backgroundTint="@color/colorgreen"
-        android:gravity="center"/>
-    <Button
-        android:id="@+id/btnOrder"
-        android:layout_width="match_parent"
-        android:layout_height="65dp"
-        android:text="Order Service"
-        android:layout_marginEnd="15dp"
-        android:layout_marginStart="15dp"
-        android:backgroundTint="@color/colorgreen"
-        android:gravity="center"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Title"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:id="@+id/txtTitle"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Description"
+                android:textSize="15dp"
+                android:textColor="@color/black"
+                android:id="@+id/txtDescription"/>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <RatingBar
+                    android:id="@+id/ratingbar"
+                    android:layout_width="50dp"
+                    android:layout_height="20dp"
+                    android:padding="1dp"
+                    android:layout_gravity="center"
+                    style = "?android:attr/ratingBarStyleSmall"
+                    android:numStars = "1"
+                    android:theme="@style/RatingBar"
+                    android:layout_marginLeft="5dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0.0"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"
+                    android:id="@+id/txtRating"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="(0)"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"
+                    android:id="@+id/txtRatingNo"/>
+            </LinearLayout>
+            <Button
+                android:id="@+id/btnContact"
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
+                android:text="Contact Service Provider"
+                android:layout_marginEnd="15dp"
+                android:layout_marginStart="15dp"
+                android:backgroundTint="@color/colorgreen"
+                android:gravity="center"/>
+            <Button
+                android:id="@+id/btnOrder"
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
+                android:text="Order Service"
+                android:layout_marginEnd="15dp"
+                android:layout_marginStart="15dp"
+                android:backgroundTint="@color/colorgreen"
+                android:gravity="center"/>
+
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>

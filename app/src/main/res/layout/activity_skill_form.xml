@@ -184,6 +184,8 @@
                         android:backgroundTint="@color/white"
                         android:hint="Enter Description...."
                         android:maxLines="20"
+
+                        android:singleLine="false"
                         android:inputType="textPostalAddress"/>
                 </com.google.android.material.textfield.TextInputLayout>
 <LinearLayout

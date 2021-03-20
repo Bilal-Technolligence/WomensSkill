@@ -57,7 +57,7 @@ public class ProfileOffSellerActivity extends BaseClass {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(ProfileOffSellerActivity.this , SkillOrderActivity.class));
-                finish();
+
             }
         });
         savedSkill = findViewById(R.id.layoutSavedSkill);
@@ -66,14 +66,14 @@ public class ProfileOffSellerActivity extends BaseClass {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(ProfileOffSellerActivity.this , SavedSkill.class));
-                finish();
+
             }
         });
         savesProduct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(ProfileOffSellerActivity.this , SavedProduct.class));
-                finish();
+
             }
         });
         uid = FirebaseAuth.getInstance().getCurrentUser().getUid();

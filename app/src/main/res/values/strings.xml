@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">WomensSkill</string>
+    <string name="app_name">Skill Mart</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="country_prompt">Choose a province</string>

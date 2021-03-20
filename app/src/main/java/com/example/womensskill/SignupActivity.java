@@ -211,6 +211,11 @@ public class SignupActivity extends AppCompatActivity implements NavigationBar.O
                             //save session
                             //saving value true for session
                             //Save.save(getApplicationContext(),"session","true");
+                            SaveLogin.save(SignupActivity.this,"session","true");
+                            //Save.save(activity,"session","true");
+                            //activity.startActivity(new Intent(activity, MainActivity.class));
+                            database.getReference().child("UserMode").child(uid).child("Mode").setValue("Buyer");
+
                             Intent intent = new Intent(SignupActivity.this, MainActivity.class);
                             startActivity(intent);
                             finish();

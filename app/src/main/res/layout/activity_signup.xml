@@ -270,6 +270,7 @@
                                 android:gravity="fill_vertical"
                                 android:hint="@string/mm_dd_yyyy"
                                 android:autofillHints=""
+                                android:maxLength="10"
                                 android:inputType="date"/>
 
                         </com.google.android.material.textfield.TextInputLayout>
@@ -695,9 +696,8 @@
                         android:layout_height="wrap_content"
                         android:backgroundTint="@color/white"
                         android:hint="Rawalpindi"
-                        android:maxLength="11"
                         android:textColor="@color/black"
-                        android:inputType="number" />
+                        android:inputType="text" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <View

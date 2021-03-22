@@ -22,7 +22,8 @@
         <activity android:name=".HomeBuyer" />
         <activity android:name=".Chat" />
         <activity android:name=".SearchSkilllsActivity" />
-        <activity android:name=".ProductFormActivity" />
+        <activity android:name=".ProductFormActivity"
+            android:parentActivityName=".MainActivity"/>
         <activity
             android:name=".SkillFormActivity"
             android:parentActivityName=".MainActivity" />

@@ -83,7 +83,13 @@
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:cardElevation="2dp">
+            android:backgroundTint="@color/white"
+            app:cardPreventCornerOverlap="true"
+            app:cardUseCompatPadding="true"
+            app:cardCornerRadius="2dp"
+            android:outlineAmbientShadowColor="@color/gray"
+            android:outlineSpotShadowColor="@color/gray"
+            app:cardElevation="10dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -105,7 +111,7 @@
                     android:layout_marginTop="1dp"
                     android:layout_weight="1"
                     android:gravity="center|left"
-                    android:text="Invite Friends"
+                    android:text="Buyer Mode"
                     android:textStyle="bold"
                     android:textColor="@color/colorBlack" />
                 <Switch
@@ -258,8 +264,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 app:cardBackgroundColor="#ffffff"
-                                app:cardCornerRadius="10dp"
-                                app:cardElevation="50dp">
+                                app:cardElevation="15dp">
 
                                 <LinearLayout
                                     android:layout_width="match_parent"
@@ -291,8 +296,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 app:cardBackgroundColor="#ffffff"
-                                app:cardCornerRadius="10dp"
-                                app:cardElevation="50dp">
+                                app:cardElevation="15dp">
 
                                 <LinearLayout
                                     android:layout_width="match_parent"
@@ -324,8 +328,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 app:cardBackgroundColor="#ffffff"
-                                app:cardCornerRadius="10dp"
-                                app:cardElevation="50dp">
+                                app:cardElevation="15dp">
 
                                 <LinearLayout
                                     android:layout_width="match_parent"
@@ -370,47 +373,12 @@
                     android:textStyle="bold"
                     android:padding="20dp"
                     android:textSize="18sp" />
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/btnOnlineStatus"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:cardBackgroundColor="#ffffff"
-                    app:cardCornerRadius="10dp"
-                    app:cardElevation="50dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal"
-                        android:padding="5dp"
-                        android:weightSum="2">
-
-                        <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="25dp"
-                            android:layout_weight=".50"
-                            android:src="@drawable/online" />
-
-                        <TextView
-                            android:layout_width="220dp"
-                            android:layout_height="match_parent"
-                            android:layout_marginTop="1dp"
-                            android:layout_weight="1"
-                            android:gravity="left"
-                            android:text="Online Status"
-                            android:textColor="@color/colorBlack" />
-
-
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
                 <androidx.cardview.widget.CardView
                     android:id="@+id/btnPayment"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:cardBackgroundColor="#ffffff"
-                    app:cardCornerRadius="10dp"
-                    app:cardElevation="50dp">
+                    app:cardElevation="15dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -444,8 +412,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:cardBackgroundColor="#ffffff"
-                    app:cardCornerRadius="10dp"
-                    app:cardElevation="50dp">
+                    app:cardElevation="15dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -486,6 +453,8 @@
         android:background="?android:attr/windowBackground"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
+        app:itemIconTint="@drawable/bottom_nav_item_color"
+        app:itemTextColor="@drawable/bottom_nav_item_color"
         app:layout_constraintRight_toRightOf="parent"
         android:layout_alignParentBottom="true"
         app:menu="@menu/offnavigation"/>

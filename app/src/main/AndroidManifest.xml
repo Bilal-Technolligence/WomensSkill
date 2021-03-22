@@ -9,14 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.WomensSkill">
-        <activity android:name=".ProductSkillAdmin"></activity>
+        <activity android:name=".PostRequest"></activity>
+        <activity android:name=".ProductSkillAdmin" />
         <activity android:name=".ProfileDetailAdmin" />
-        <activity android:name=".AdminMain">
-
-        </activity>
-        <activity android:name=".AdminLogin" >
-
-        </activity>
+        <activity android:name=".AdminMain"></activity>
+        <activity android:name=".AdminLogin"></activity>
         <activity android:name=".SavedProduct" />
         <activity android:name=".SavedSkill" />
         <activity android:name=".OrderDetail" />
@@ -26,7 +23,9 @@
         <activity android:name=".Chat" />
         <activity android:name=".SearchSkilllsActivity" />
         <activity android:name=".ProductFormActivity" />
-        <activity android:name=".SkillFormActivity" />
+        <activity
+            android:name=".SkillFormActivity"
+            android:parentActivityName=".MainActivity" />
         <activity android:name=".StorePerformanceActivity" />
         <activity android:name=".MesgChatActivity" />
         <activity android:name=".ManageSkillsOrProductActivity" />
@@ -56,7 +55,7 @@
             android:theme="@style/Theme.MaterialComponents.Light.NoActionBar" />
         <activity
             android:name=".SplashActivity"
-            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar" >
+            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

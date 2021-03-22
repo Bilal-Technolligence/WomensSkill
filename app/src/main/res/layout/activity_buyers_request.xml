@@ -41,7 +41,7 @@
                 android:id="@+id/notification_title"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="Budget Alert"
+                android:text="Naveek Khan"
                 android:textColor="@color/black"
                 android:textSize="20dp"
                 android:textStyle="bold" />
@@ -66,7 +66,7 @@
         android:background="@color/lightgray"
         android:gravity="left"
         android:padding="5dp"
-        android:text="I'm looking for tickets booking system with following ......."
+        android:text="User Description looking for tickets booking system with following ......."
         android:textColor="@color/colorBlack"
         android:textSize="20dp" />
 
@@ -79,7 +79,7 @@
         android:background="@drawable/gray"
         android:gravity="left"
         android:padding="5dp"
-        android:text="E-Commerece Development /22 Offers Sent"
+        android:text="Main Category/Sub Category"
         android:textColor="@color/gray"
         android:textSize="20dp" />
 
@@ -218,6 +218,12 @@
         android:layout_marginStart="0dp"
         android:layout_marginEnd="0dp"
         android:background="?android:attr/windowBackground"
+        app:itemBackground="@color/white"
+        app:itemRippleColor="@color/colorgreen"
+        android:foregroundGravity="center_vertical"
+        android:fitsSystemWindows="true"
+        app:itemIconTint="@drawable/bottom_nav_item_color"
+        app:itemTextColor="@drawable/bottom_nav_item_color"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"

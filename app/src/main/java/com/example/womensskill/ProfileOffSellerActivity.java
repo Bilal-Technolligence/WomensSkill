@@ -41,7 +41,7 @@ public class ProfileOffSellerActivity extends BaseClass {
     int count = 0;
     private Uri imagePath;
     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
-    CardView manageOrder;
+    CardView manageOrder,btnPostRequest;
     TextView savedSkill , savesProduct;
 
     DatabaseReference dref= FirebaseDatabase.getInstance().getReference();
@@ -53,10 +53,20 @@ public class ProfileOffSellerActivity extends BaseClass {
         ((AppCompatActivity)this).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         btnSellerMode = (Switch) findViewById(R.id.btnswitchSeller);
         manageOrder = findViewById(R.id.btnManageOrder);
+        btnPostRequest = findViewById(R.id.btnPostRequest);
+
         manageOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(ProfileOffSellerActivity.this , SkillOrderActivity.class));
+
+            }
+        });
+
+        btnPostRequest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(ProfileOffSellerActivity.this , PostRequest.class));
 
             }
         });

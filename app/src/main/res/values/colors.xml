@@ -14,12 +14,10 @@
     <color name="violet">#00BCD4</color>
     <color name="dark_blue">#1F45FC</color>
     <color name="light_blue">#1F45FC</color>
-///////////
     <color name="sky_blue">#33b5e5</color>
     <color name="appblue">#000032</color>
 
     <color name="buttoncolor">#00BCD4</color>
-
     <color name="colorAccent">#417318</color>
     <color name="colorgreen">#1dbf73</color>
     <color name="colorPrimary">#d61361</color>

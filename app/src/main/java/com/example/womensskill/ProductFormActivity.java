@@ -49,7 +49,7 @@ public class ProductFormActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-       // setContentView(R.layout.activity_product_form);
+        setContentView(R.layout.activity_product_form);
         ((AppCompatActivity)this).getSupportActionBar().setTitle("Product Upload");
         ((AppCompatActivity)this).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         title = findViewById(R.id.txtTitle);

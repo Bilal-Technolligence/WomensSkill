@@ -47,7 +47,7 @@ public class SkillFormActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-      //  setContentView(R.layout.activity_skill_form);
+        setContentView(R.layout.activity_skill_form);
         ((AppCompatActivity)this).getSupportActionBar().setTitle("Skill Upload");
         ((AppCompatActivity)this).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         title = findViewById(R.id.txtTitle);

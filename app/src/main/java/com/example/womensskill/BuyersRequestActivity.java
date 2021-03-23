@@ -13,7 +13,7 @@ TextView txttext;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-      //  setContentView(R.layout.activity_buyers_request);
+        setContentView(R.layout.activity_buyers_request);
         ((AppCompatActivity)this).getSupportActionBar().setTitle("Buyer Request");
         ((AppCompatActivity)this).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         txttext =findViewById(R.id.txtbuyerRequest);

@@ -184,7 +184,7 @@ public class ProductFormActivity extends AppCompatActivity {
                                             ProductAttr productAttr = new ProductAttr();
                                             productAttr.setId(push);
                                             productAttr.setUserId(uid);
-                                            productAttr.setTitle("i will provide "+tit);
+                                            productAttr.setTitle("I WILL PROVIDE "+tit.toUpperCase());
                                             productAttr.setPrice(pri);
                                             productAttr.setCategory(cat.toUpperCase());
                                             productAttr.setSubcategory(sub.toUpperCase());

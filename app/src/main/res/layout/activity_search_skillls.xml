@@ -6,31 +6,95 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".SearchSkilllsActivity">
-    <LinearLayout
-        android:orientation="vertical"
-        android:id="@+id/mainLayout"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="60dp">
+        android:layout_height="match_parent">
 
-        <!-- our tablayout to display tabs  -->
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/productTabLayout"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="70dp"
+            android:orientation="vertical">
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_margin="10dp"
+                android:paddingLeft="10dp"
+                android:id="@+id/find"
+                android:drawableLeft="@drawable/ic_search_black_24dp"/>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:layout_weight=".28"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@color/white"
+                android:orientation="horizontal">
 
-            android:background="@color/white"
-            android:minHeight="?attr/actionBarSize"
-            android:theme="@style/Theme.MaterialComponents"/>
+                <Spinner
+                    android:id="@+id/spinner_category"
+                    android:layout_width="match_parent"
+                    android:layout_height="33dp"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center"
+                    android:background="@android:color/transparent"
+                    android:entries="@array/search_category"
+                    android:gravity="center"
+                    android:spinnerMode="dropdown" />
 
-        <!-- View pager to swipe views -->
-        <androidx.viewpager.widget.ViewPager
-            android:id="@+id/productSummaryPager"
-            android:background="#fff"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-        </androidx.viewpager.widget.ViewPager>
-    </LinearLayout>
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_gravity="right"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/down_arrow" />
+
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:layout_weight=".28"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@color/white"
+                android:orientation="horizontal">
+
+                <Spinner
+                    android:id="@+id/spinner_category2"
+                    android:layout_width="match_parent"
+                    android:layout_height="33dp"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center"
+                    android:background="@android:color/transparent"
+                    android:entries="@array/mix"
+                    android:gravity="center"
+                    android:spinnerMode="dropdown" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_gravity="right"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/down_arrow" />
+
+            </RelativeLayout>
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/searchList"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="15dp"
+                android:background="@android:color/white"
+
+                />
+        </LinearLayout>
+
+    </ScrollView>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/navigationView"

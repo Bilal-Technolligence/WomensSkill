@@ -87,9 +87,10 @@ public class RecieveRequestListAdapter extends RecyclerView.Adapter<RecieveReque
         String userId = postAttrs.get(position).getUserId();
         String UserName = postAttrs.get(position).getUserName();
 
-//        if(uid.equals(userId)){
-//            holder.send.setVisibility(View.GONE);
-//        }
+        if(uid.equals(userId)){
+            holder.send.setVisibility(View.GONE);
+            holder.reject.setVisibility(View.GONE);
+        }
         databaseReference.child("Rating").child(ProductId).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

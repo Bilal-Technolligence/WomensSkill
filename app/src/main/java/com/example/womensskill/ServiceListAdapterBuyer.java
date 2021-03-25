@@ -1,5 +1,6 @@
 package com.example.womensskill;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -29,7 +30,7 @@ public class ServiceListAdapterBuyer extends RecyclerView.Adapter<ServiceListAda
     DatabaseReference databaseReference = firebaseDatabase.getReference();
     //final String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
-    public ServiceListAdapterBuyer(ArrayList<ServiceAttr> serviceAttrs, Context context) {
+    public ServiceListAdapterBuyer(ArrayList<ServiceAttr> serviceAttrs, Context context ) {
         this.context = context;
         this.serviceAttrs = serviceAttrs;
     }

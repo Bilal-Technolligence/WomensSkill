@@ -195,6 +195,12 @@ public class ProductDetail extends AppCompatActivity {
                                                 orderAttr.setProductId(productId);
                                                 databaseReference.child("Order").child(push).setValue(orderAttr);
                                                 Toast.makeText(getApplicationContext(), "Order Created", Toast.LENGTH_LONG).show();
+                                                final String push2 = FirebaseDatabase.getInstance().getReference().child("Notification").push().getKey();
+                                                databaseReference.child("Notification").child(push2).child("description").setValue("You have a new order from "+UserName);
+                                                databaseReference.child("Notification").child(push2).child("status").setValue("unread");
+                                                databaseReference.child("Notification").child(push2).child("title").setValue("New Order Alert!");
+                                                databaseReference.child("Notification").child(push2).child("receiverid").setValue(uid);
+                                                databaseReference.child("Notification").child(push2).child("id").setValue(push2);
                                                 startActivity(new Intent(ProductDetail.this , SkillOrderActivity.class));
 
 

@@ -67,7 +67,7 @@ public class BuyersRequestActivity extends BaseClass {
                                             progressDialog.dismiss();
                                         } else {
                                             progressDialog.dismiss();
-                                            Toast.makeText(getApplicationContext(), "Posts not Found!", Toast.LENGTH_LONG).show();
+                                          //  Toast.makeText(getApplicationContext(), "Posts not Found!", Toast.LENGTH_LONG).show();
                                         }
                                     }
 

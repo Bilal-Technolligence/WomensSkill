@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -22,7 +23,7 @@ import java.util.Set;
 public class MesgChatActivity extends BaseClass {
     RecyclerView recyclerView;
     DatabaseReference dref = FirebaseDatabase.getInstance().getReference();
-
+    BottomNavigationView navigationView;
     ArrayList<String> chaterId=new ArrayList<>();
     ArrayList<UserAttr> userAttrs=new ArrayList<>();
 
@@ -32,9 +33,33 @@ public class MesgChatActivity extends BaseClass {
         //setContentView(R.layout.activity_mesg_chat);
         ((AppCompatActivity)this).getSupportActionBar().setTitle("Inbox");
         recyclerView=(RecyclerView) findViewById(R.id.recyclerView);
+        navigationView = findViewById(R.id.navigationView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         try {
             String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+            dref.child("UserMode").child(userId).addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    if(snapshot.exists()){
+                        String mode = snapshot.child("Mode").getValue().toString();
+                        if(mode.equals("Buyer")){
+                            navigationView.getMenu().clear();
+                            navigationView.inflateMenu(R.menu.offnavigation);
+                            navigationView.getMenu().getItem(1).setChecked(true);
+                        }
+                        else {
+                            navigationView.getMenu().clear();
+                            navigationView.inflateMenu(R.menu.navigation);
+                            navigationView.getMenu().getItem(1).setChecked(true);
+                        }
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
             dref.child("ChatList").addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

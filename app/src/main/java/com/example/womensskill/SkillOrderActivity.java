@@ -8,12 +8,12 @@ import android.os.Bundle;
 
 import com.google.android.material.tabs.TabLayout;
 
-public class SkillOrderActivity extends AppCompatActivity {
+public class SkillOrderActivity extends BaseClass {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_skill_order);
+       // setContentView(R.layout.activity_skill_order);
         TabLayout tabLayout=(TabLayout) findViewById(R.id.skillTabLayout);
         tabLayout.addTab(tabLayout.newTab().setText("Active"));
         tabLayout.addTab(tabLayout.newTab().setText("Cancelled"));
@@ -45,5 +45,15 @@ public class SkillOrderActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    @Override
+    int getContentViewId() {
+        return R.layout.activity_skill_order;
+    }
+
+    @Override
+    int getNavigationMenuItemId() {
+        return R.id.nav_ordermanage;
     }
 }

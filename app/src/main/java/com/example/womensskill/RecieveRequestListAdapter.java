@@ -77,6 +77,7 @@ public class RecieveRequestListAdapter extends RecyclerView.Adapter<RecieveReque
         dateFormat = new SimpleDateFormat("dd-MM-yyyy");
         date = dateFormat.format(calendar.getTime());
         String id = postAttrs.get(position).getId();
+        String postId = postAttrs.get(position).getPostId();
         String img = postAttrs.get(position).getImg();
         String Price = (postAttrs.get(position).getPrice());
         String ProductId = (postAttrs.get(position).getProductId());
@@ -87,10 +88,10 @@ public class RecieveRequestListAdapter extends RecyclerView.Adapter<RecieveReque
         String userId = postAttrs.get(position).getUserId();
         String UserName = postAttrs.get(position).getUserName();
 
-        if(uid.equals(userId)){
-            holder.send.setVisibility(View.GONE);
-            holder.reject.setVisibility(View.GONE);
-        }
+//        if(uid.equals(userId)){
+//            holder.send.setVisibility(View.GONE);
+//            holder.reject.setVisibility(View.GONE);
+//        }
         databaseReference.child("Rating").child(ProductId).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -139,7 +140,32 @@ public class RecieveRequestListAdapter extends RecyclerView.Adapter<RecieveReque
                                 orderAttr.setDate(date);
                                 orderAttr.setProductId(ProductId);
                                 databaseReference.child("Order").child(id).setValue(orderAttr);
+
+                                final String push = FirebaseDatabase.getInstance().getReference().child("Notification").push().getKey();
+                                databaseReference.child("Notification").child(push).child("description").setValue("You have a new order from "+UserName);
+                                databaseReference.child("Notification").child(push).child("status").setValue("unread");
+                                databaseReference.child("Notification").child(push).child("title").setValue("New Order Alert!");
+                                databaseReference.child("Notification").child(push).child("receiverid").setValue(ProviderId);
+                                databaseReference.child("Notification").child(push).child("id").setValue(push);
+
                                 databaseReference.child("PostOrder").child(id).setValue(null);
+                                databaseReference.child("Posts").child(postId).setValue(null);
+                                databaseReference.child("PostOrder").orderByChild("postId").equalTo(postId).addListenerForSingleValueEvent(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                        if(snapshot.exists()){
+                                            for (DataSnapshot dataSnapshot1 : snapshot.getChildren()) {
+                                                String id = dataSnapshot1.getKey();
+                                                databaseReference.child("PostOrder").child(id).setValue(null);
+                                            }
+                                        }
+                                    }
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError error) {
+
+                                    }
+                                });
                                 Toast.makeText(context, "Order Created", Toast.LENGTH_LONG).show();
 
 

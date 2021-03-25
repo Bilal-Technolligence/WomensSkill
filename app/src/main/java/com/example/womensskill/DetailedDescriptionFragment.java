@@ -1,18 +1,14 @@
 package com.example.womensskill;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
-import androidx.viewpager.widget.ViewPager;
-
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -20,99 +16,79 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
-import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
 
-public class ProductFormActivity extends AppCompatActivity {
-//    EditText title, price ,quantity ,video, description;
-//    ImageView img1, img2, img3;
-//    Spinner category, subcat;
-//    String cat = "";
-//    String sub = "";
-//    private Uri imagePath1, imagePath2, imagePath3;
-//    int count1 = 0;
-//    int count2 = 0;
-//    int count3 = 0;
-//    CardView save;
-//    String tit, pri ,qua ,vid ,des;
-//    ProgressDialog progressDialog;
-//    FirebaseDatabase database = FirebaseDatabase.getInstance();
-//    final DatabaseReference reference = database.getReference("Products");
-//    final String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+public class DetailedDescriptionFragment extends Fragment {
+    EditText title, price ,quantity ,video, description;
+    ImageView img1, img2, img3;
+    Spinner category, subcat;
+    String cat = "";
+    String sub = "";
+    private Uri imagePath1, imagePath2, imagePath3;
+    int count1 = 0;
+    int count2 = 0;
+    int count3 = 0;
+    CardView save;
+    String tit, pri ,qua ,vid ,des;
+    ProgressDialog progressDialog;
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    final DatabaseReference reference = database.getReference("Products");
+    final String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        ((AppCompatActivity)this).getSupportActionBar().setTitle("Product Upload");
-        ((AppCompatActivity)this).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.productTabLayout);
-        tabLayout.addTab(tabLayout.newTab().setText("Basic Information"));
-        tabLayout.addTab(tabLayout.newTab().setText("Detailed Description"));
-        tabLayout.addTab(tabLayout.newTab().setText("Price&Stock"));
-        tabLayout.addTab(tabLayout.newTab().setText("Serivces&Delivery"));
-        tabLayout.setSelectedTabIndicatorColor(Color.parseColor("#1dbf73"));
-        tabLayout.setSelectedTabIndicatorHeight((int) (5 * getResources().getDisplayMetrics().density));
-        tabLayout.setTabTextColors(Color.parseColor("#000000"), Color.parseColor("#1dbf73"));
-        tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
-
-        final ViewPager viewPagers = (ViewPager) findViewById(R.id.productFormPager);
-        ProductFormAdapter productFormAdapter = new ProductFormAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
-        viewPagers.setAdapter(productFormAdapter);
-        viewPagers.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
-        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-            @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                viewPagers.setCurrentItem(tab.getPosition());
-            }
-
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-
-            }
-
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-
-            }
-        });
-       // setContentView(R.layout.activity_product_form);
-//        ((AppCompatActivity)this).getSupportActionBar().setTitle("Product Upload");
-//        ((AppCompatActivity)this).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-//        title = findViewById(R.id.txtTitle);
-//        quantity = findViewById(R.id.txtQuantity);
-//        video =findViewById(R.id.txtVideo);
-//        description = findViewById(R.id.txtDes);
-//        price = findViewById(R.id.txtPrice);
-//        img1 = findViewById(R.id.img1);
-//        img2 = findViewById(R.id.img2);
-//        img3 = findViewById(R.id.img3);
-//        category = findViewById(R.id.spinner_category);
-//        subcat = findViewById(R.id.spinner_subcategory);
-//        save = findViewById(R.id.btn_save);
-//        progressDialog = new ProgressDialog(this);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        View v =  inflater.inflate(R.layout.fragment_detaileddescription, container, false);
+       // ((AppCompatActivity)this).getSupportActionBar().setTitle("Product Upload");
+       // ((AppCompatActivity)this).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        title = v.findViewById(R.id.txtTitle);
+//        quantity = v.findViewById(R.id.txtQuantity);
+//        video =v.findViewById(R.id.txtVideo);
+//        description = v.findViewById(R.id.txtDes);
+//        price = v.findViewById(R.id.txtPrice);
+//        img1 = v.findViewById(R.id.img1);
+//        img2 = v.findViewById(R.id.img2);
+//        img3 =v.findViewById(R.id.img3);
+//        category = v.findViewById(R.id.spinner_category);
+//        subcat = v.findViewById(R.id.spinner_subcategory);
+//        save = v.findViewById(R.id.btn_save);
+//        progressDialog = new ProgressDialog(getContext());
 //        progressDialog.setMessage("Uploading please wait..... ");
 //        category.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 //            @Override
 //            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 //                cat = (String) parent.getItemAtPosition(position);
 //                if (cat.equals("Handicraft")) {
-//                    ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getApplicationContext(), R.array.product_handicraft, android.R.layout.simple_spinner_item);
+//                    ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(), R.array.product_handicraft, android.R.layout.simple_spinner_item);
 //                    adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 //                    subcat.setAdapter(adapter);
 //                }
 //                if (cat.equals("Cloth Sewing")) {
-//                    ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getApplicationContext(), R.array.product_cloth, android.R.layout.simple_spinner_item);
+//                    ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(), R.array.product_cloth, android.R.layout.simple_spinner_item);
 //                    adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 //                    subcat.setAdapter(adapter);
 //                }
@@ -122,7 +98,7 @@ public class ProductFormActivity extends AppCompatActivity {
 //            @Override
 //            public void onNothingSelected(AdapterView<?> parent) {
 //                cat = "Handicraft";
-//                ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getApplicationContext(), R.array.product_handicraft, android.R.layout.simple_spinner_item);
+//                ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(), R.array.product_handicraft, android.R.layout.simple_spinner_item);
 //                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 //                subcat.setAdapter(adapter);
 //            }
@@ -234,9 +210,9 @@ public class ProductFormActivity extends AppCompatActivity {
 //                                            productAttr.setStatus("not");
 //                                            reference.child(push).setValue(productAttr);
 //
-//                                            Toast.makeText(getApplicationContext(), "Product Added", Toast.LENGTH_SHORT).show();
+//                                            Toast.makeText(getContext(), "Product Added", Toast.LENGTH_SHORT).show();
 //                                            progressDialog.dismiss();
-//                                            finish();
+//                                           // finish();
 //
 //                                        }
 //                                    });
@@ -251,10 +227,7 @@ public class ProductFormActivity extends AppCompatActivity {
 //                }
 //            }
 //        });
-    }
-    @Override
-    public void onBackPressed() {
-        finish();
+        return v;
     }
 
 //    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -266,7 +239,7 @@ public class ProductFormActivity extends AppCompatActivity {
 //                imagePath1 = data.getData();
 //                try {
 //
-//                    Bitmap bitmap = MediaStore.Images.Media.getBitmap(getApplicationContext().getContentResolver(), imagePath1);
+//                    Bitmap bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), imagePath1);
 //                    img1.setImageBitmap(bitmap);
 //                    count1 = 1;
 //
@@ -278,7 +251,7 @@ public class ProductFormActivity extends AppCompatActivity {
 //                imagePath2 = data.getData();
 //                try {
 //
-//                    Bitmap bitmap = MediaStore.Images.Media.getBitmap(getApplicationContext().getContentResolver(), imagePath2);
+//                    Bitmap bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), imagePath2);
 //                    img2.setImageBitmap(bitmap);
 //                    count2 = 1;
 //
@@ -290,7 +263,7 @@ public class ProductFormActivity extends AppCompatActivity {
 //                imagePath3 = data.getData();
 //                try {
 //
-//                    Bitmap bitmap = MediaStore.Images.Media.getBitmap(getApplicationContext().getContentResolver(), imagePath3);
+//                    Bitmap bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), imagePath3);
 //                    img3.setImageBitmap(bitmap);
 //                    count3 = 1;
 //

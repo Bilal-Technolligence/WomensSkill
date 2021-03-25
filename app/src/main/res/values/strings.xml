@@ -58,6 +58,15 @@
         <item>Shalwar Kameez</item>
         <item>Traditional dress</item>
     </string-array>
+    <string-array name="product_color">
+        <item>Red</item>
+        <item>Green</item>
+        <item>Blue</item>
+        <item>Yellow</item>
+        <item>Purple</item>
+        <item>Black</item>
+        <item>Orange</item>
+    </string-array>
     <string-array name="category">
         <item>Select category</item>
         <item>Technical</item>

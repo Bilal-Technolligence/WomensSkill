@@ -58,7 +58,7 @@ public class ProfileOffSellerActivity extends BaseClass {
         btnRecieveRequest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(ProfileOffSellerActivity.this , SkillOrderActivity.class));
+                startActivity(new Intent(ProfileOffSellerActivity.this , RecieveRequest.class));
             }
         });
 

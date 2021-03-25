@@ -144,7 +144,7 @@ public class OrderDetail extends AppCompatActivity {
                                                 try{
                                                     String p = snapshot.child("balance").getValue().toString();
                                                     int total = Integer.parseInt(p)-Integer.parseInt(pp);
-                                                    databaseReference.child("Users").child(userId).child("balance").setValue(total);
+                                                    databaseReference.child("Users").child(userId).child("balance").setValue(String.valueOf(total));
                                                 }
                                                 catch (Exception e){}
                                             }

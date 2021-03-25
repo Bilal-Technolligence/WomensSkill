@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="60dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:elevation="16dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="70dp"
+                    android:src="@drawable/logoc"
+                    android:id="@+id/imgProfile"/>
+
+                <LinearLayout
+                    android:id="@+id/linearLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="5dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:layout_weight="2">
+                        <TextView
+                            android:id="@+id/txtName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Naveed Khan"
+                            android:layout_weight="1"
+                            android:textColor="@color/black"
+                            android:textSize="20dp"
+                            android:textStyle="bold" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/rating"
+                            android:gravity="right"
+                            android:layout_weight="1"
+                            android:text="Not Rated Yet"
+                            android:textSize="18sp" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/txtDate"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:textSize="20dp"
+                        android:text="March 21,2021" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/txtbuyerRequest"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_margin="15dp"
+                android:background="@color/lightgray"
+                android:gravity="left"
+                android:padding="5dp"
+                android:text="User Description looking for tickets booking system with following ......."
+                android:textColor="@color/colorBlack"
+                android:textSize="20dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/gray"
+                android:gravity="left"
+                android:padding="5dp"
+                android:id="@+id/txtCategory"
+                android:text="Main Category/Sub Category"
+                android:textColor="@color/gray"
+                android:textSize="20dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:elevation="16dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:weightSum="3"
+                android:gravity="center"
+                android:background="@drawable/gray"
+                android:orientation="horizontal">
+
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.10"
+                    android:src="@drawable/duration" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Duration"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:textSize="20dp"
+                    android:id="@+id/txtTime"
+                    android:layout_weight="1.80"
+                    android:textColor="@color/black"
+                    android:gravity="center"
+                    android:text="7 Days" />
+
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:elevation="16dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:weightSum="3"
+                android:gravity="center"
+                android:background="@drawable/gray"
+                android:orientation="horizontal">
+
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.10"
+                    android:src="@drawable/budget" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Budget"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:textSize="20dp"
+                    android:layout_weight="1.81"
+                    android:textColor="@color/black"
+                    android:gravity="center"
+                    android:id="@+id/txtPrice"
+                    android:text="$157" />
+
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:elevation="16dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:weightSum="3"
+                android:gravity="center"
+                android:background="@drawable/gray"
+                android:orientation="horizontal">
+
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.10"
+                    android:src="@drawable/criteria" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Criteria"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:textSize="20dp"
+                    android:layout_weight="1.82"
+                    android:textColor="@color/black"
+                    android:gravity="center"
+                    android:id="@+id/txtCriteria"
+                    android:text="N/A" />
+
+
+
+            </LinearLayout>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
+                android:text="Confirm Offer"
+                android:id="@+id/btnConfirmOffer"
+                android:layout_marginEnd="15dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginBottom="15dp"
+                android:layout_marginTop="15dp"
+                android:backgroundTint="@color/colorgreen"
+                android:gravity="center"/>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
+                android:text="Reject Offer"
+                android:id="@+id/btnDeleteOffer"
+                android:layout_marginEnd="15dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginBottom="15dp"
+                android:layout_marginTop="15dp"
+                android:backgroundTint="@color/colorgreen"
+                android:gravity="center"/>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".PostRequest">
+    android:layout_height="wrap_content">
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -25,7 +21,11 @@
                 android:gravity="center"
                 android:orientation="horizontal">
 
-
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="70dp"
+                    android:src="@drawable/logoc"
+                    android:id="@+id/imgProfile"/>
 
                 <LinearLayout
                     android:id="@+id/linearLayout"
@@ -35,78 +35,51 @@
                     android:padding="5dp">
 
                     <TextView
-                        android:id="@+id/notification_title"
+                        android:id="@+id/txtName"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="Post Or Request"
+                        android:text="Naveek Khan"
                         android:textColor="@color/black"
                         android:textSize="20dp"
                         android:textStyle="bold" />
 
-
+                    <TextView
+                        android:id="@+id/txtDate"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:textSize="20dp"
+                        android:text="March 21,2021" />
 
                 </LinearLayout>
 
             </LinearLayout>
 
 
-            <EditText
-                android:id="@+id/edtTitle"
+            <TextView
+                android:id="@+id/txtbuyerRequest"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
                 android:layout_margin="15dp"
                 android:background="@color/lightgray"
                 android:gravity="left"
                 android:padding="5dp"
-                android:maxLines="5"
-                android:hint="I'm looking for tickets booking system with following ......."
+                android:text="User Description looking for tickets booking system with following ......."
                 android:textColor="@color/colorBlack"
                 android:textSize="20dp" />
 
-
-            <LinearLayout
+            <TextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_margin="15dp">
-                <TextView
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="left"
-                    android:text="CATEGORY"
-                    android:textColor="@color/buttoncolor"/>
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
-                    android:layout_weight=".28"
-                    android:background="@color/white"
-                    android:orientation="horizontal">
-
-                    <Spinner
-                        android:id="@+id/spinner_category"
-                        android:layout_width="match_parent"
-                        android:layout_height="33dp"
-                        android:layout_centerVertical="true"
-                        android:layout_gravity="center"
-                        android:background="@android:color/transparent"
-                        android:entries="@array/service_category"
-                        android:gravity="center"
-                        android:prompt="@string/country_prompt"
-                        android:spinnerMode="dropdown" />
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:layout_gravity="right"
-
-                        android:layout_marginTop="10dp"
-                        android:src="@drawable/down_arrow" />
-
-                </RelativeLayout>
-            </LinearLayout>
+                android:layout_height="80dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/gray"
+                android:gravity="left"
+                android:padding="5dp"
+                android:id="@+id/txtCategory"
+                android:text="Main Category/Sub Category"
+                android:textColor="@color/gray"
+                android:textSize="20dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -134,15 +107,15 @@
                     android:textSize="20dp"
                     android:textStyle="bold" />
 
-                <EditText
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:textSize="20dp"
+                    android:id="@+id/txtTime"
                     android:layout_weight="1.80"
                     android:textColor="@color/black"
                     android:gravity="center"
-                    android:id="@+id/edtDays"
-                    android:hint="7 Days" />
+                    android:text="7 Days" />
 
 
 
@@ -173,16 +146,15 @@
                     android:textSize="20dp"
                     android:textStyle="bold" />
 
-                <EditText
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:textSize="20dp"
                     android:layout_weight="1.81"
                     android:textColor="@color/black"
                     android:gravity="center"
-                    android:inputType="number"
-                    android:id="@+id/edtPrice"
-                    android:hint="157" />
+                    android:id="@+id/txtPrice"
+                    android:text="$157" />
 
 
 
@@ -213,46 +185,30 @@
                     android:textSize="20dp"
                     android:textStyle="bold" />
 
-                <EditText
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:textSize="20dp"
                     android:layout_weight="1.82"
                     android:textColor="@color/black"
                     android:gravity="center"
-                    android:id="@+id/edtCriteria"
+                    android:id="@+id/txtCriteria"
                     android:text="N/A" />
 
 
 
             </LinearLayout>
-
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="65dp"
-                android:text="Post Request"
-                android:id="@+id/btnSave"
+                android:text="Send Offer"
+                android:id="@+id/btnSendOffer"
                 android:layout_marginEnd="15dp"
                 android:layout_marginStart="15dp"
                 android:layout_marginBottom="15dp"
-                android:layout_marginTop="110dp"
+                android:layout_marginTop="15dp"
                 android:backgroundTint="@color/colorgreen"
                 android:gravity="center"/>
         </LinearLayout>
     </ScrollView>
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/navigationView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:layout_marginStart="0dp"
-        android:layout_marginEnd="0dp"
-        android:background="?android:attr/windowBackground"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_alignParentBottom="true"
-        app:itemIconTint="@drawable/bottom_nav_item_color"
-        app:itemTextColor="@drawable/bottom_nav_item_color"
-        app:menu="@menu/offnavigation"/>
-</RelativeLayout>
+</LinearLayout>

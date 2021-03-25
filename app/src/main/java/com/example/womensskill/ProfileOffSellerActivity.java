@@ -67,7 +67,6 @@ public class ProfileOffSellerActivity extends BaseClass {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(ProfileOffSellerActivity.this , PostRequest.class));
-
             }
         });
         savedSkill = findViewById(R.id.layoutSavedSkill);

@@ -55,9 +55,9 @@ public class ProfileDetailsActivity extends BaseClass {
         products = findViewById(R.id.btnProducts);
         skills = findViewById(R.id.btnSkills);
         profile = findViewById(R.id.btnprofile);
-        onlineStatus = findViewById(R.id.btnOnlineStatus);
+
         payment = findViewById(R.id.btnPayment);
-        inviteFriends = findViewById(R.id.btnInviteFriends);
+
         support = findViewById(R.id.btnSupport);
         userName = findViewById(R.id.txtName);
         balance = findViewById(R.id.txtBalance);

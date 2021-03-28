@@ -49,6 +49,33 @@
         <item>Wood Carvings</item>
         <item>Earthen Pots</item>
     </string-array>
+    <string-array name="mix">
+        <item>Website</item>
+        <item>Mobile</item>
+        <item>Writing</item>
+        <item>Art and Design</item>
+        <item>Data Entry</item>
+        <item>Sales</item>
+        <item>Bussiness</item>
+        <item>Local Job</item>
+        <item>Embroidery</item>
+        <item>Carpets</item>
+        <item>Cotton Garments</item>
+        <item>Camel Lamps</item>
+        <item>Khussa</item>
+        <item>Wood Carvings</item>
+        <item>Earthen Pots</item>
+        <item>T-Shirts</item>
+        <item>Skirts</item>
+        <item>Pants</item>
+        <item>Shorts</item>
+        <item>Jeans</item>
+        <item>Shalwar Kameez</item>
+        <item>Traditional dress</item>
+    </string-array>
+    <string-array name="search_category">
+        <item>Title</item>
+    </string-array>
     <string-array name="product_cloth">
         <item>T-Shirts</item>
         <item>Skirts</item>

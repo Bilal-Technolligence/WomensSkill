@@ -9,7 +9,7 @@ public class EarningActivity extends BaseClass {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-       // setContentView(R.layout.activity_earning);
+        setContentView(R.layout.activity_earning);
         ((AppCompatActivity)this).getSupportActionBar().setTitle("Earnings");
         ((AppCompatActivity)this).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }

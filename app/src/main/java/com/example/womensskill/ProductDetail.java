@@ -179,44 +179,30 @@ public class ProductDetail extends AppCompatActivity {
                                         .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                                             @Override
                                             public void onClick(DialogInterface dialog, int which) {
-                                                databaseReference.child("Users").child(userId).addListenerForSingleValueEvent(new ValueEventListener() {
-                                                    @Override
-                                                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                                        if(dataSnapshot.exists()){
-                                                            try{
-                                                                String p = snapshot.child("balance").getValue().toString();
-                                                                if(Integer.parseInt(p)>=Integer.parseInt(Price)){
-                                                                    final String push = FirebaseDatabase.getInstance().getReference().child("Order").push().getKey();
-                                                                    OrderAttr orderAttr = new OrderAttr();
-                                                                    orderAttr.setId(push);
-                                                                    orderAttr.setUserId(userId);
-                                                                    orderAttr.setTitle(Title);
-                                                                    orderAttr.setPrice(Price);
-                                                                    orderAttr.setProviderId(uid);
-                                                                    orderAttr.setImg(i1);
-                                                                    orderAttr.setProviderImg(img);
-                                                                    orderAttr.setProviderName(Name);
-                                                                    orderAttr.setUserName(UserName);
-                                                                    orderAttr.setStatus("Active");
-                                                                    orderAttr.setDate(date);
-                                                                    orderAttr.setProductId(productId);
-                                                                    databaseReference.child("Order").child(push).setValue(orderAttr);
-                                                                    Toast.makeText(getApplicationContext(), "Order Created", Toast.LENGTH_LONG).show();
-                                                                    startActivity(new Intent(ProductDetail.this , SkillOrderActivity.class));
-                                                                }
-                                                                else{
-                                                                    Toast.makeText(getApplicationContext() , "You have low balance!",Toast.LENGTH_LONG).show();
-                                                                }
-                                                            }
-                                                            catch (Exception e){}
-                                                        }
-                                                    }
+                                                final String push = FirebaseDatabase.getInstance().getReference().child("Order").push().getKey();
+                                                OrderAttr orderAttr = new OrderAttr();
+                                                orderAttr.setId(push);
+                                                orderAttr.setUserId(userId);
+                                                orderAttr.setTitle(Title);
+                                                orderAttr.setPrice(Price);
+                                                orderAttr.setProviderId(uid);
+                                                orderAttr.setImg(i1);
+                                                orderAttr.setProviderImg(img);
+                                                orderAttr.setProviderName(Name);
+                                                orderAttr.setUserName(UserName);
+                                                orderAttr.setStatus("Active");
+                                                orderAttr.setDate(date);
+                                                orderAttr.setProductId(productId);
+                                                databaseReference.child("Order").child(push).setValue(orderAttr);
+                                                Toast.makeText(getApplicationContext(), "Order Created", Toast.LENGTH_LONG).show();
+                                                final String push2 = FirebaseDatabase.getInstance().getReference().child("Notification").push().getKey();
+                                                databaseReference.child("Notification").child(push2).child("description").setValue("You have a new order from "+UserName);
+                                                databaseReference.child("Notification").child(push2).child("status").setValue("unread");
+                                                databaseReference.child("Notification").child(push2).child("title").setValue("New Order Alert!");
+                                                databaseReference.child("Notification").child(push2).child("receiverid").setValue(uid);
+                                                databaseReference.child("Notification").child(push2).child("id").setValue(push2);
+                                                startActivity(new Intent(ProductDetail.this , SkillOrderActivity.class));
 
-                                                    @Override
-                                                    public void onCancelled(@NonNull DatabaseError error) {
-
-                                                    }
-                                                });
 
                                             }
 

@@ -116,8 +116,11 @@ public class OrderDetail extends AppCompatActivity {
                                     databaseReference.child("Rating").child(productId).child(userId).child("rating").setValue(ratingBar.getRating());
                                     databaseReference.child("Rating").child(productId).child(userId).child("comment").setValue(comment.getText().toString());
                                     final String push = FirebaseDatabase.getInstance().getReference().child("Payment").push().getKey();
-                                    databaseReference.child("Payment").child(providerId).child(String.valueOf(year)).child(String.valueOf(month+1)).child(push).child("id").setValue(push);
-                                    databaseReference.child("Payment").child(providerId).child(String.valueOf(year)).child(String.valueOf(month+1)).child(push).child("price").setValue(pp);
+                                    databaseReference.child("Payment").child(push).child("id").setValue(push);
+                                    databaseReference.child("Payment").child(push).child("userId").setValue(providerId);
+                                    databaseReference.child("Payment").child(push).child("price").setValue(pp);
+                                    databaseReference.child("Payment").child(push).child("year").setValue(String.valueOf(year));
+                                    databaseReference.child("Payment").child(push).child("month").setValue(String.valueOf(month+1));
 
                                     databaseReference.child("Users").child(providerId).addListenerForSingleValueEvent(new ValueEventListener() {
                                         @Override
@@ -144,7 +147,7 @@ public class OrderDetail extends AppCompatActivity {
                                                 try{
                                                     String p = snapshot.child("balance").getValue().toString();
                                                     int total = Integer.parseInt(p)-Integer.parseInt(pp);
-                                                    databaseReference.child("Users").child(userId).child("balance").setValue(total);
+                                                    databaseReference.child("Users").child(userId).child("balance").setValue(String.valueOf(total));
                                                 }
                                                 catch (Exception e){}
                                             }

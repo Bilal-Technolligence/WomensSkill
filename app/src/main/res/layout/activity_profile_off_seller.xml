@@ -18,6 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="280dp"
             android:layout_marginBottom="10dp"
+
             app:cardElevation="2dp">
 
             <LinearLayout
@@ -36,8 +37,8 @@
 
                     <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
                         android:id="@+id/txtImg"
-                        android:layout_width="120dp"
-                        android:layout_height="120dp"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
                         android:src="@drawable/logoc"
                         app:civ_border_color="#FFF"
                         app:civ_border_width="2dp" />
@@ -161,7 +162,6 @@
                         android:id="@+id/summarycard"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="10dp"
                         android:backgroundTint="@color/white"
                         app:cardElevation="5dp">
 
@@ -222,10 +222,6 @@
                                 android:id="@+id/layoutSavedProduct"
                                 android:text="Saved Product"
                                 android:textColor="@color/colorBlack" />
-
-
-
-
                         </LinearLayout>
 
                     </androidx.cardview.widget.CardView>
@@ -266,7 +262,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 app:cardBackgroundColor="#ffffff"
-                                app:cardElevation="15dp">
+                                app:cardElevation="1dp">
 
                                 <LinearLayout
                                     android:layout_width="match_parent"
@@ -373,7 +369,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 app:cardBackgroundColor="#ffffff"
-                                app:cardElevation="15dp">
+                                app:cardElevation="1dp">
 
                                 <LinearLayout
                                     android:layout_width="match_parent"

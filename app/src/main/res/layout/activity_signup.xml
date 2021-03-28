@@ -23,7 +23,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
-                android:background="@color/dark_blue"
+                android:background="@color/white"
                 android:gravity="center"
                 android:orientation="vertical">
 
@@ -41,7 +41,7 @@
                     android:layout_gravity="center"
                     android:layout_marginTop="5dp"
                     android:text="Create"
-                    android:textColor="@color/white"
+                    android:textColor="@color/colorgreen"
                     android:textSize="25sp"
                     android:textStyle="bold" />
 
@@ -52,7 +52,7 @@
                     android:layout_gravity="center"
                     android:layout_marginTop="5dp"
                     android:text="your account in just few easy steps"
-                    android:textColor="@color/white"
+                    android:textColor="@color/colorgreen"
                     android:textSize="15sp"
                     android:textStyle="bold" />
 
@@ -122,10 +122,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:hint="Full Name"
-                    app:boxStrokeColor="#000032"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    app:endIconMode="clear_text"
-                    app:endIconTint="@color/appblue">
+                    app:boxStrokeColor="@color/colorgreen"
+                    style="@style/LoginTextInputLayoutStyle"
+                    app:endIconMode="clear_text">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/txtName"
@@ -260,9 +259,8 @@
                             android:layout_marginBottom="8dp"
                             android:id="@+id/txtDob"
                             app:boxStrokeColor="#000032"
-                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                            app:endIconMode="clear_text"
-                            app:endIconTint="@color/appblue">
+                            style="@style/LoginTextInputLayoutStyle"
+                            app:endIconMode="clear_text">
 
                             <com.google.android.material.textfield.TextInputEditText
                                 android:id="@+id/datepicker"
@@ -366,7 +364,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    style="@style/LoginTextInputLayoutStyle"
                     android:backgroundTint="@color/white">
 
                     <EditText
@@ -414,7 +412,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        style="@style/LoginTextInputLayoutStyle"
                         android:backgroundTint="@color/white">
 
                         <EditText
@@ -463,7 +461,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
                         app:passwordToggleEnabled="true"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        style="@style/LoginTextInputLayoutStyle"
                         android:backgroundTint="@color/white">
 
                         <EditText
@@ -504,7 +502,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
                         app:passwordToggleEnabled="true"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        style="@style/LoginTextInputLayoutStyle"
                         android:backgroundTint="@color/white">
 
                         <EditText
@@ -587,7 +585,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    style="@style/LoginTextInputLayoutStyle"
                     android:backgroundTint="@color/white">
 
                     <EditText
@@ -693,7 +691,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    style="@style/LoginTextInputLayoutStyle"
                     android:backgroundTint="@color/white">
 
                     <EditText
@@ -734,7 +732,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    style="@style/LoginTextInputLayoutStyle"
                     android:backgroundTint="@color/white">
 
                     <EditText
@@ -743,7 +741,7 @@
                         android:layout_height="wrap_content"
                         android:backgroundTint="@color/white"
                         android:hint="Enter Address...."
-                        app:endIconTint="@color/appblue"
+                        app:endIconTint="@color/colorgreen"
                         android:inputType="textPostalAddress"/>
                 </com.google.android.material.textfield.TextInputLayout>
 

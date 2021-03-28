@@ -8,18 +8,18 @@
         android:layout_height="wrap_content"
         android:padding="10dp"
         android:id="@+id/layout"
-        android:orientation="horizontal"
-        >
+        android:orientation="horizontal">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/circle_background"
             android:orientation="horizontal">
 
             <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/imgProfile"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:src="@drawable/logoc"
                 app:civ_border_color="#FFF"
                 app:civ_border_width="2dp" />

@@ -55,7 +55,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
                 android:layout_margin="15dp"
-                android:background="@color/lightgray"
+                android:background="@color/white"
                 android:gravity="left"
                 android:padding="5dp"
                 android:maxLines="5"
@@ -74,7 +74,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="left"
                     android:text="CATEGORY"
-                    android:textColor="@color/buttoncolor"/>
+                    android:textColor="@color/colorgreen"/>
 
                 <RelativeLayout
                     android:layout_width="match_parent"

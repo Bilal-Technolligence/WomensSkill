@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@id/nameLayout"
-        android:background="@color/colorPrimary"
+        android:background="@color/colorgreen"
         android:padding="10dp">
         <de.hdodenhof.circleimageview.CircleImageView
             xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -56,9 +56,9 @@
         <ImageView
             xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/imgSend"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@drawable/sent"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/chatmessage"
             android:layout_weight="1"
             android:layout_gravity="center"
             />

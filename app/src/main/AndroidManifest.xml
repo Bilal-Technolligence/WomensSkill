@@ -9,12 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.WomensSkill">
-        <activity android:name=".RecieveRequest"></activity>
-        <activity android:name=".PostRequest" />
+        <activity android:name=".PostRequest"></activity>
         <activity android:name=".ProductSkillAdmin" />
         <activity android:name=".ProfileDetailAdmin" />
-        <activity android:name=".AdminMain" />
-        <activity android:name=".AdminLogin" />
+        <activity android:name=".AdminMain"></activity>
+        <activity android:name=".AdminLogin"></activity>
         <activity android:name=".SavedProduct" />
         <activity android:name=".SavedSkill" />
         <activity android:name=".OrderDetail" />
@@ -23,9 +22,14 @@
         <activity android:name=".HomeBuyer" />
         <activity android:name=".Chat" />
         <activity android:name=".SearchSkilllsActivity" />
-        <activity
-            android:name=".ProductFormActivity"
-            android:parentActivityName=".MainActivity" />
+        <activity android:name=".ProductFormActivity"
+            android:parentActivityName=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".SkillFormActivity"
             android:parentActivityName=".MainActivity" />
@@ -59,14 +63,16 @@
         <activity
             android:name=".SplashActivity"
             android:theme="@style/Theme.MaterialComponents.Light.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
         </activity>
         <activity android:name=".ProfileActivity" />
-        <activity android:name=".MainActivity" />
+        <activity android:name=".MainActivity" >
+
+        </activity>
     </application>
 
 </manifest>

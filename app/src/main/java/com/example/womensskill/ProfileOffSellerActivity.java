@@ -143,7 +143,7 @@ public class ProfileOffSellerActivity extends BaseClass {
                 if(!btnSellerMode.isChecked()){
                     dref.child("UserMode").child(uid).child("Mode").setValue( "Seller" );
                     startActivity(new Intent(getApplicationContext(),ProfileDetailsActivity.class));
-                    finish();
+                   finish();
                 }
 
             }

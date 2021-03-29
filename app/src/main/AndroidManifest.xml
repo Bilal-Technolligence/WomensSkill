@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.WomensSkill">
-        <activity android:name=".RecieveRequest"></activity>
+        <activity android:name=".SearchResultActivity"></activity>
+        <activity android:name=".RecieveRequest" />
         <activity android:name=".PostRequest" />
         <activity android:name=".ProductSkillAdmin" />
         <activity android:name=".ProfileDetailAdmin" />

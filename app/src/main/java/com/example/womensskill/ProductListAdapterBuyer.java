@@ -122,6 +122,7 @@ public class ProductListAdapterBuyer extends RecyclerView.Adapter<ProductListAda
             public void onClick(View view) {
                 Intent i = new Intent(context, ProductDetail.class);
                 i.putExtra("id", id);
+                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(i);
             }
         });

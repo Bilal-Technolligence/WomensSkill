@@ -18,6 +18,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:elevation="16dp"
+                android:id="@+id/mobile"
                 android:layout_marginTop="15dp"
                 android:layout_marginStart="15dp"
                 android:layout_marginEnd="15dp"
@@ -38,7 +39,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="Mobile &amp; Web"
+                        android:text="Mobile"
                         android:textColor="@color/black"
                         android:textSize="20dp"
                         android:textStyle="bold" />
@@ -47,7 +48,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:textSize="20dp"
-                        android:text="Design Mobile app and Websites" />
+                        android:text="Design Mobile" />
 
                 </LinearLayout>
 
@@ -56,6 +57,85 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:elevation="16dp"
+                android:id="@+id/website"
+                android:layout_marginTop="15dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="60dp"
+                    android:src="@drawable/logoc" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="Website"
+                        android:textColor="@color/black"
+                        android:textSize="20dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:textSize="20dp"
+                        android:text="Design Website" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:elevation="16dp"
+                android:id="@+id/writing"
+                android:layout_marginTop="15dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="60dp"
+                    android:src="@drawable/logoc" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="Writing"
+                        android:textColor="@color/black"
+                        android:textSize="20dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:textSize="20dp"
+                        android:text="Documentation jobs" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:elevation="16dp"
+                android:id="@+id/art"
                 android:layout_marginTop="15dp"
                 android:layout_marginStart="15dp"
                 android:layout_marginEnd="15dp"
@@ -85,7 +165,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:textSize="20dp"
-                        android:text="Logo and brand identity,Art" />
+                        android:text="Deigning related jobs" />
 
                 </LinearLayout>
 
@@ -94,6 +174,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:elevation="16dp"
+                android:id="@+id/dataentry"
                 android:layout_marginTop="15dp"
                 android:layout_marginStart="15dp"
                 android:layout_marginEnd="15dp"
@@ -123,7 +204,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:textSize="20dp"
-                        android:text="Logo and brand identity,Art" />
+                        android:text="Web research Excel Sheet etc" />
 
                 </LinearLayout>
 
@@ -132,6 +213,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:elevation="16dp"
+                android:id="@+id/sales"
                 android:layout_marginTop="15dp"
                 android:layout_marginStart="15dp"
                 android:layout_marginEnd="15dp"
@@ -152,7 +234,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="Local Job"
+                        android:text="Sales"
                         android:textColor="@color/black"
                         android:textSize="20dp"
                         android:textStyle="bold" />
@@ -161,7 +243,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:textSize="20dp"
-                        android:text="Logo and brand identity,Art" />
+                        android:text="Sales Jobs" />
 
                 </LinearLayout>
 
@@ -170,6 +252,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:elevation="16dp"
+                android:id="@+id/bussiness"
                 android:layout_marginTop="15dp"
                 android:layout_marginStart="15dp"
                 android:layout_marginEnd="15dp"
@@ -190,7 +273,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="Carpets"
+                        android:text="Bussines"
                         android:textColor="@color/black"
                         android:textSize="20dp"
                         android:textStyle="bold" />
@@ -199,7 +282,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:textSize="20dp"
-                        android:text="Logo and brand identity,Art" />
+                        android:text="Bussiness Jobs" />
 
                 </LinearLayout>
 
@@ -208,6 +291,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:elevation="16dp"
+                android:id="@+id/localjob"
                 android:layout_marginTop="15dp"
                 android:layout_marginStart="15dp"
                 android:layout_marginEnd="15dp"
@@ -228,7 +312,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="Camel Lamps"
+                        android:text="Local Jobs"
                         android:textColor="@color/black"
                         android:textSize="20dp"
                         android:textStyle="bold" />
@@ -237,7 +321,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:textSize="20dp"
-                        android:text="Logo and brand identity,Art" />
+                        android:text="Other Jobs" />
 
                 </LinearLayout>
 
@@ -246,6 +330,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:elevation="16dp"
+                android:id="@+id/Handicraft"
                 android:layout_marginTop="15dp"
                 android:layout_marginStart="15dp"
                 android:layout_marginEnd="15dp"
@@ -266,7 +351,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="Cotton Garments"
+                        android:text="Handicraft"
                         android:textColor="@color/black"
                         android:textSize="20dp"
                         android:textStyle="bold" />
@@ -275,7 +360,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:textSize="20dp"
-                        android:text="Logo and brand identity,Art" />
+                        android:text="Embroidery , Carpets, Cotton Garments etc" />
 
                 </LinearLayout>
 
@@ -284,6 +369,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:elevation="16dp"
+                android:id="@+id/clothSewing"
                 android:layout_marginTop="15dp"
                 android:layout_marginStart="15dp"
                 android:layout_marginEnd="15dp"
@@ -304,7 +390,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="T-Shirts"
+                        android:text="Cloth Sewing"
                         android:textColor="@color/black"
                         android:textSize="20dp"
                         android:textStyle="bold" />
@@ -313,7 +399,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:textSize="20dp"
-                        android:text="Logo and brand identity,Art" />
+                        android:text="T-Shirts, Skirts, Pants, Shorts etc" />
 
                 </LinearLayout>
 

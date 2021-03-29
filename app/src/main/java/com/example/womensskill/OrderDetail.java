@@ -71,6 +71,8 @@ public class OrderDetail extends AppCompatActivity {
                     String status = dataSnapshot.child("status").getValue().toString();
                     productId = dataSnapshot.child("productId").getValue().toString();
                     String id = dataSnapshot.child("id").getValue().toString();
+                    String userName = dataSnapshot.child("userName").getValue().toString();
+
                     try{
                     if (!status.equals("Active")) {
                         end.setVisibility(View.GONE);
@@ -122,6 +124,13 @@ public class OrderDetail extends AppCompatActivity {
                                     databaseReference.child("Payment").child(push).child("year").setValue(String.valueOf(year));
                                     databaseReference.child("Payment").child(push).child("month").setValue(String.valueOf(month+1));
 
+                                    final String push2 = FirebaseDatabase.getInstance().getReference().child("Notification").push().getKey();
+                                    databaseReference.child("Notification").child(push2).child("description").setValue("Your order is completed by "+userName);
+                                    databaseReference.child("Notification").child(push2).child("status").setValue("unread");
+                                    databaseReference.child("Notification").child(push2).child("title").setValue("New Order Alert!");
+                                    databaseReference.child("Notification").child(push2).child("receiverid").setValue(providerId);
+                                    databaseReference.child("Notification").child(push2).child("id").setValue(push2);
+
                                     databaseReference.child("Users").child(providerId).addListenerForSingleValueEvent(new ValueEventListener() {
                                         @Override
                                         public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -170,8 +179,19 @@ public class OrderDetail extends AppCompatActivity {
                                     cancel.setVisibility(View.GONE);
                                     databaseReference.child("Order").child(id).child("status").setValue("Completed");
                                     final String push = FirebaseDatabase.getInstance().getReference().child("Payment").push().getKey();
-                                    databaseReference.child("Payment").child(providerId).child(String.valueOf(year)).child(String.valueOf(month+1)).child(push).child("id").setValue(push);
-                                    databaseReference.child("Payment").child(providerId).child(String.valueOf(year)).child(String.valueOf(month+1)).child(push).child("price").setValue(pp);
+                                    databaseReference.child("Payment").child(push).child("id").setValue(push);
+                                    databaseReference.child("Payment").child(push).child("userId").setValue(providerId);
+                                    databaseReference.child("Payment").child(push).child("price").setValue(pp);
+                                    databaseReference.child("Payment").child(push).child("year").setValue(String.valueOf(year));
+                                    databaseReference.child("Payment").child(push).child("month").setValue(String.valueOf(month+1));
+
+                                    final String push2 = FirebaseDatabase.getInstance().getReference().child("Notification").push().getKey();
+                                    databaseReference.child("Notification").child(push2).child("description").setValue("Your order is completed by "+userName);
+                                    databaseReference.child("Notification").child(push2).child("status").setValue("unread");
+                                    databaseReference.child("Notification").child(push2).child("title").setValue("New Order Alert!");
+                                    databaseReference.child("Notification").child(push2).child("receiverid").setValue(providerId);
+                                    databaseReference.child("Notification").child(push2).child("id").setValue(push2);
+
                                     databaseReference.child("Users").child(providerId).addListenerForSingleValueEvent(new ValueEventListener() {
                                         @Override
                                         public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -232,6 +252,13 @@ public class OrderDetail extends AppCompatActivity {
                                 public void onClick(DialogInterface dialog, int which) {
 
                                     databaseReference.child("Order").child(id).child("status").setValue("Cancelled");
+                                    final String push2 = FirebaseDatabase.getInstance().getReference().child("Notification").push().getKey();
+                                    databaseReference.child("Notification").child(push2).child("description").setValue("Your order is cancelled by "+userName);
+                                    databaseReference.child("Notification").child(push2).child("status").setValue("unread");
+                                    databaseReference.child("Notification").child(push2).child("title").setValue("Order Alert!");
+                                    databaseReference.child("Notification").child(push2).child("receiverid").setValue(providerId);
+                                    databaseReference.child("Notification").child(push2).child("id").setValue(push2);
+
                                     end.setVisibility(View.GONE);
                                     cancel.setVisibility(View.GONE);
                                     dialog.dismiss();

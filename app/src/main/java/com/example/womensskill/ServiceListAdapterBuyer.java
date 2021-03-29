@@ -125,7 +125,9 @@ public class ServiceListAdapterBuyer extends RecyclerView.Adapter<ServiceListAda
             public void onClick(View view) {
                 Intent i = new Intent(context, ServiceDetail.class);
                 i.putExtra("id", id);
+                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(i);
+
             }
         });
     }

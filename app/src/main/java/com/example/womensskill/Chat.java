@@ -50,79 +50,84 @@ public class Chat extends AppCompatActivity {
         final String chaterId=getIntent().getStringExtra("chaterId");
         editText=(EditText) findViewById(R.id.message);
         imageView=(ImageView) findViewById(R.id.imgSend);
-        dref.child("Users").child(chaterId).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if(dataSnapshot.exists()){
-                    try {
-                        String name = dataSnapshot.child("fullname").getValue().toString();
-                        String pic = dataSnapshot.child("img").getValue().toString();
-                        textName.setText(name);
-                        Picasso.get().load(pic).into(imageProfile);
-                    }
-                    catch (Exception e){}
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-        dref.child("ChatList").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                messageAttrs.clear();
-                try{
-                    for(DataSnapshot ds: dataSnapshot.getChildren()) {
-                        if (ds.exists()) {
-                            if (ds.child("receiverId").getValue().equals(chaterId) && ds.child("senderId").getValue().equals(userId)) {
-                                MessageAttr p = ds.getValue(MessageAttr.class);
-                                messageAttrs.add(p);
-                            }
-                            if (ds.child("receiverId").getValue().equals(userId) && ds.child("senderId").getValue().equals(chaterId)) {
-                                MessageAttr p = ds.getValue(MessageAttr.class);
-                                messageAttrs.add(p);
-                            }
+        try {
+            dref.child("Users").child(chaterId).addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    if (dataSnapshot.exists()) {
+                        try {
+                            String name = dataSnapshot.child("fullname").getValue().toString();
+                            String pic = dataSnapshot.child("img").getValue().toString();
+                            textName.setText(name);
+                            Picasso.get().load(pic).into(imageProfile);
+                        } catch (Exception e) {
                         }
                     }
-                    ChatAdapter  chatAdapter=new ChatAdapter(messageAttrs , getApplicationContext() , Chat.this);
-                    recyclerView.setAdapter(chatAdapter);
-                }catch(Exception e){
-
                 }
 
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
 
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-        imageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                try{
-                    if(!editText.getText().toString().equals(null)) {
-                        calendar = Calendar.getInstance();
-                        dateFormat = new SimpleDateFormat("dd-MM-yyyy");
-                        date = dateFormat.format(calendar.getTime());
-                        String push = dref.child("ChatList").push().getKey();
-                        dref.child("ChatList").child(push).child("id").setValue(push);
-                        dref.child("ChatList").child(push).child("receiverId").setValue(chaterId);
-                        dref.child("ChatList").child(push).child("senderId").setValue(userId);
-                        dref.child("ChatList").child(push).child("date").setValue(date);
-                        dref.child("ChatList").child(push).child("message").setValue(editText.getText().toString());
-                        final String uper =editText.getText().toString().toUpperCase();
-                        editText.setText("");
+                }
+            });
+            dref.child("ChatList").addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    messageAttrs.clear();
+                    try {
+                        for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                            if (ds.exists()) {
+                                if (ds.child("receiverId").getValue().equals(chaterId) && ds.child("senderId").getValue().equals(userId)) {
+                                    MessageAttr p = ds.getValue(MessageAttr.class);
+                                    messageAttrs.add(p);
+                                }
+                                if (ds.child("receiverId").getValue().equals(userId) && ds.child("senderId").getValue().equals(chaterId)) {
+                                    MessageAttr p = ds.getValue(MessageAttr.class);
+                                    messageAttrs.add(p);
+                                }
+                            }
+                        }
+                        ChatAdapter chatAdapter = new ChatAdapter(messageAttrs, getApplicationContext(), Chat.this);
+                        recyclerView.setAdapter(chatAdapter);
+                    } catch (Exception e) {
 
                     }
-                }catch(Exception e){
+
 
                 }
 
-            }
-        });
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
+            imageView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    try {
+                        if (!editText.getText().toString().equals(null)) {
+                            calendar = Calendar.getInstance();
+                            dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+                            date = dateFormat.format(calendar.getTime());
+                            String push = dref.child("ChatList").push().getKey();
+                            dref.child("ChatList").child(push).child("id").setValue(push);
+                            dref.child("ChatList").child(push).child("receiverId").setValue(chaterId);
+                            dref.child("ChatList").child(push).child("senderId").setValue(userId);
+                            dref.child("ChatList").child(push).child("date").setValue(date);
+                            dref.child("ChatList").child(push).child("message").setValue(editText.getText().toString());
+                            final String uper = editText.getText().toString().toUpperCase();
+                            editText.setText("");
+
+                        }
+                    } catch (Exception e) {
+
+                    }
+
+                }
+            });
+        }
+        catch (Exception e){
+
+        }
     }
 }

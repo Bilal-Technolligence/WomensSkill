@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -36,73 +37,77 @@ public class NotificationsActivity extends BaseClass {
         notificationAttrs = new ArrayList<notificationAttr>();
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         //Toast.makeText(getApplicationContext() , "Noti" , Toast.LENGTH_LONG).show();
-        final String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        databaseReference.child("UserMode").child(uid).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(snapshot.exists()){
-                    String mode = snapshot.child("Mode").getValue().toString();
-                    if(mode.equals("Buyer")){
-                        navigationView.getMenu().clear();
-                        navigationView.inflateMenu(R.menu.offnavigation);
-                        navigationView.getMenu().getItem(3).setChecked(true);
-                    }
-                    else {
-                        navigationView.getMenu().clear();
-                        navigationView.inflateMenu(R.menu.navigation);
-                        navigationView.getMenu().getItem(3).setChecked(true);
-                    }
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-        databaseReference.child("Notification").orderByChild("receiverid").equalTo(uid).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if(dataSnapshot.exists()) {
-                    notificationAttrs.clear();
-                    //profiledata.clear();
-                    for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
-                        notificationAttr p = dataSnapshot1.getValue(notificationAttr.class);
-                        notificationAttrs.add(p);
-                    }
-                    Collections.reverse(notificationAttrs);
-                    recyclerView.setAdapter(new NotificationAdapter(notificationAttrs,NotificationsActivity.this));
-                }
-                else
-                    Toast.makeText(getApplicationContext() , "No notification found!" , Toast.LENGTH_LONG).show();
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-
-        databaseReference.child("Notification").orderByChild("receiverid").equalTo(uid).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (dataSnapshot.exists()) {
-                    int a = 0;
-                    try {
-                        for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
-                            databaseReference.child("Notification").child(dataSnapshot1.getKey()).child("status").setValue("read");
+        try {
+            final String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+            databaseReference.child("UserMode").child(uid).addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    if (snapshot.exists()) {
+                        String mode = snapshot.child("Mode").getValue().toString();
+                        if (mode.equals("Buyer")) {
+                            navigationView.getMenu().clear();
+                            navigationView.inflateMenu(R.menu.offnavigation);
+                            navigationView.getMenu().getItem(3).setChecked(true);
+                        } else {
+                            navigationView.getMenu().clear();
+                            navigationView.inflateMenu(R.menu.navigation);
+                            navigationView.getMenu().getItem(3).setChecked(true);
                         }
-
-                    } catch (Exception e) {
                     }
                 }
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
 
-            }
-        });
+                }
+            });
+            databaseReference.child("Notification").orderByChild("receiverid").equalTo(uid).addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    if (dataSnapshot.exists()) {
+                        notificationAttrs.clear();
+                        //profiledata.clear();
+                        for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
+                            notificationAttr p = dataSnapshot1.getValue(notificationAttr.class);
+                            notificationAttrs.add(p);
+                        }
+                        Collections.reverse(notificationAttrs);
+                        recyclerView.setAdapter(new NotificationAdapter(notificationAttrs, NotificationsActivity.this));
+                    } else
+                        Toast.makeText(getApplicationContext(), "No notification found!", Toast.LENGTH_LONG).show();
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
+
+            databaseReference.child("Notification").orderByChild("receiverid").equalTo(uid).addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    if (dataSnapshot.exists()) {
+                        int a = 0;
+                        try {
+                            for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
+                                databaseReference.child("Notification").child(dataSnapshot1.getKey()).child("status").setValue("read");
+                            }
+
+                        } catch (Exception e) {
+                        }
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
+
+        }catch (Exception e){
+            startActivity(new Intent(NotificationsActivity.this , LoginActivity.class));
+        }
+
     }
 
     @Override

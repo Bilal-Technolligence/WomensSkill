@@ -42,7 +42,7 @@ public class SearchSkilllsActivity extends BaseClass {
     DatabaseReference databaseReference = firebaseDatabase.getReference();
     ArrayList<ServiceAttr> serviceAttrs;
     ProgressDialog progressDialog;
-    String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,8 +52,8 @@ public class SearchSkilllsActivity extends BaseClass {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 cat = (String) parent.getItemAtPosition(position);
-                if (cat.contains("Title"))
-                    databaseReference.child("Search").child(uid).child("1").setValue("Title");
+               // if (cat.contains("Title"))
+                   // databaseReference.child("Search").child(uid).child("1").setValue("Title");
             }
 
             @Override
@@ -69,7 +69,7 @@ public class SearchSkilllsActivity extends BaseClass {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                         cat2 = (String) parent.getItemAtPosition(position);
-                        databaseReference.child("Search").child(uid).child("2").setValue(cat2.toUpperCase());
+                        //databaseReference.child("Search").child(uid).child("2").setValue(cat2.toUpperCase());
                     }
 
                     @Override
@@ -84,8 +84,8 @@ public class SearchSkilllsActivity extends BaseClass {
                 cat = "Title";
             }
         });
-        databaseReference.child("Search").child(uid).child("1").setValue("Title");
-        databaseReference.child("Search").child(uid).child("2").setValue("WEBSITE");
+//        databaseReference.child("Search").child(uid).child("1").setValue("Title");
+//        databaseReference.child("Search").child(uid).child("2").setValue("WEBSITE");
         find = findViewById(R.id.find);
         recyclerView = findViewById(R.id.searchList);
         progressDialog = new ProgressDialog(this);
@@ -158,8 +158,8 @@ public class SearchSkilllsActivity extends BaseClass {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     if(snapshot.exists()) {
-                        String cat = snapshot.child(uid).child("1").getValue().toString();
-                        String cat2 = snapshot.child(uid).child("2").getValue().toString();
+//                        String cat = snapshot.child(uid).child("1").getValue().toString();
+//                        String cat2 = snapshot.child(uid).child("2").getValue().toString();
                         if(cat.equals("Title")){
                             Query query = FirebaseDatabase.getInstance().getReference("Services")
                                     .orderByChild("title")

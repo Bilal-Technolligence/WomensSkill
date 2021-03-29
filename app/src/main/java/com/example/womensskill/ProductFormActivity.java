@@ -56,36 +56,36 @@ public class ProductFormActivity extends AppCompatActivity {
         ((AppCompatActivity)this).getSupportActionBar().setTitle("Product Upload");
         ((AppCompatActivity)this).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.productTabLayout);
-        tabLayout.addTab(tabLayout.newTab().setText("Basic Information"));
-        tabLayout.addTab(tabLayout.newTab().setText("Detailed Description"));
-        tabLayout.addTab(tabLayout.newTab().setText("Price&Stock"));
-        tabLayout.addTab(tabLayout.newTab().setText("Serivces&Delivery"));
-        tabLayout.setSelectedTabIndicatorColor(Color.parseColor("#1dbf73"));
-        tabLayout.setSelectedTabIndicatorHeight((int) (5 * getResources().getDisplayMetrics().density));
-        tabLayout.setTabTextColors(Color.parseColor("#000000"), Color.parseColor("#1dbf73"));
-        tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
+        //TabLayout tabLayout = (TabLayout) findViewById(R.id.productTabLayout);
+//        tabLayout.addTab(tabLayout.newTab().setText("Basic Information"));
+//        tabLayout.addTab(tabLayout.newTab().setText("Detailed Description"));
+//        tabLayout.addTab(tabLayout.newTab().setText("Price&Stock"));
+//        tabLayout.addTab(tabLayout.newTab().setText("Serivces&Delivery"));
+//        tabLayout.setSelectedTabIndicatorColor(Color.parseColor("#1dbf73"));
+//        tabLayout.setSelectedTabIndicatorHeight((int) (5 * getResources().getDisplayMetrics().density));
+//        tabLayout.setTabTextColors(Color.parseColor("#000000"), Color.parseColor("#1dbf73"));
+//        tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
-        final ViewPager viewPagers = (ViewPager) findViewById(R.id.productFormPager);
-        ProductFormAdapter productFormAdapter = new ProductFormAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
-        viewPagers.setAdapter(productFormAdapter);
-        viewPagers.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
-        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-            @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                viewPagers.setCurrentItem(tab.getPosition());
-            }
-
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-
-            }
-
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-
-            }
-        });
+        //final ViewPager viewPagers = (ViewPager) findViewById(R.id.productFormPager);
+//        ProductFormAdapter productFormAdapter = new ProductFormAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
+//        viewPagers.setAdapter(productFormAdapter);
+//        viewPagers.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+//        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+//            @Override
+//            public void onTabSelected(TabLayout.Tab tab) {
+//                viewPagers.setCurrentItem(tab.getPosition());
+//            }
+//
+//            @Override
+//            public void onTabUnselected(TabLayout.Tab tab) {
+//
+//            }
+//
+//            @Override
+//            public void onTabReselected(TabLayout.Tab tab) {
+//
+//            }
+//        });
        // setContentView(R.layout.activity_product_form);
 //        ((AppCompatActivity)this).getSupportActionBar().setTitle("Product Upload");
 //        ((AppCompatActivity)this).getSupportActionBar().setDisplayHomeAsUpEnabled(true);

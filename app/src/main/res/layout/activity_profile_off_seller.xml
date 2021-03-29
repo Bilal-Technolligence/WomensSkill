@@ -75,7 +75,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:background="#ffffff"
+        android:background="@drawable/circle_background"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginTop="200dp"
@@ -91,7 +91,11 @@
             android:outlineAmbientShadowColor="@color/gray"
             android:outlineSpotShadowColor="@color/gray"
             app:cardElevation="10dp">
-
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/circle_background"
+    android:orientation="vertical">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -123,7 +127,7 @@
                     android:layout_height="match_parent"/>
 
             </LinearLayout>
-
+</LinearLayout>
         </androidx.cardview.widget.CardView>
 
     </RelativeLayout>
@@ -250,7 +254,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="10dp"
                         android:backgroundTint="@color/white"
-                        app:cardElevation="5dp">
+                        app:cardElevation="1dp">
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -305,7 +309,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 app:cardBackgroundColor="#ffffff"
-                                app:cardElevation="15dp">
+                                app:cardElevation="1dp">
 
                                 <LinearLayout
                                     android:layout_width="match_parent"
@@ -337,7 +341,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 app:cardBackgroundColor="#ffffff"
-                                app:cardElevation="15dp">
+                                app:cardElevation="1dp">
 
                                 <LinearLayout
                                     android:layout_width="match_parent"

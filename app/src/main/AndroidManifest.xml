@@ -9,11 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.WomensSkill">
-        <activity android:name=".PostRequest"></activity>
+        <activity android:name=".RecieveRequest"></activity>
+        <activity android:name=".PostRequest" />
         <activity android:name=".ProductSkillAdmin" />
         <activity android:name=".ProfileDetailAdmin" />
-        <activity android:name=".AdminMain"></activity>
-        <activity android:name=".AdminLogin"></activity>
+        <activity android:name=".AdminMain" />
+        <activity android:name=".AdminLogin" />
         <activity android:name=".SavedProduct" />
         <activity android:name=".SavedSkill" />
         <activity android:name=".OrderDetail" />
@@ -22,10 +23,9 @@
         <activity android:name=".HomeBuyer" />
         <activity android:name=".Chat" />
         <activity android:name=".SearchSkilllsActivity" />
-        <activity android:name=".ProductFormActivity"
-            android:parentActivityName=".MainActivity">
-
-        </activity>
+        <activity
+            android:name=".ProductFormActivity"
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".SkillFormActivity"
             android:parentActivityName=".MainActivity" />
@@ -66,9 +66,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".ProfileActivity" />
-        <activity android:name=".MainActivity" >
-
-        </activity>
+        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>

@@ -17,7 +17,7 @@
     <string name="finish">Finish</string>
     <string name="mm_dd_yyyy">MM - DD - YYYY</string>
     <string name="todo">TODO</string>
-    <string name="full_name">Full Name</string>
+    <string name="full_name">Login Name</string>
     <string name="save_continue">Submit</string>
 
     <string-array name="distric_array">

@@ -25,12 +25,15 @@
                 android:layout_height="250dp"
                 android:gravity="center"
                 android:orientation="vertical"
-                android:background="@color/dark_blue">
-                <ImageView
-                    android:id="@+id/imagelogo"
+                android:background="@color/white">
+                <de.hdodenhof.circleimageview.CircleImageView
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/imgProfile"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
-                    android:src="@drawable/logoc"/>
+                    android:src="@drawable/logoc"
+                    app:civ_border_color="#FFF"
+                    app:civ_border_width="2dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -39,7 +42,7 @@
                     android:layout_gravity="center"
                     android:layout_marginTop="5dp"
                     android:text="Login"
-                    android:textColor="@color/white"
+                    android:textColor="@color/colorgreen"
                     android:textSize="25dp"
                     android:textStyle="bold" />
 
@@ -82,7 +85,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:backgroundTint="@color/white"
-                  style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                  style="@style/LoginTextInputLayoutStyle"
+                  app:boxStrokeColor="@color/colorgreen"
                   android:layout_marginBottom="8dp">
                     <EditText android:id="@+id/input_email"
                         android:layout_width="match_parent"
@@ -122,7 +126,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     app:passwordToggleEnabled="true"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    style="@style/LoginTextInputLayoutStyle"
                     android:layout_marginBottom="8dp">
                     <EditText android:id="@+id/input_password"
                         android:layout_width="match_parent"

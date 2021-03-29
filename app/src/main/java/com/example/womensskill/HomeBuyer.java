@@ -38,6 +38,9 @@ public class HomeBuyer extends BaseClass {
         TabLayout tabLayout=(TabLayout) findViewById(R.id.summaryTabLayout);
         tabLayout.addTab(tabLayout.newTab().setText("Products"));
         tabLayout.addTab(tabLayout.newTab().setText("Services"));
+        tabLayout.setSelectedTabIndicatorColor(Color.parseColor("#1dbf73"));
+        tabLayout.setSelectedTabIndicatorHeight((int) (5 * getResources().getDisplayMetrics().density));
+        tabLayout.setTabTextColors(Color.parseColor("#000000"), Color.parseColor("#1dbf73"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
         final ViewPager viewPager= (ViewPager) findViewById(R.id.summaryPager);

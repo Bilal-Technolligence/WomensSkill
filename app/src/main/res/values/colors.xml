@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <color name="purple_200">#00BCD4</color>
+    <color name="purple_200">#1dbf73</color>
     <color name="purple_500">#1dbf73</color>
     <color name="purple_700">#129A5A</color>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
+    <color name="teal_200">#1dbf73</color>
+    <color name="teal_700">#417318</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="lightgray">#C3C3C3</color>
     <color name="mtrl_textinput_default_box_stroke_color" tools:override="true">#1dbf73</color>
     <color name="gray">#777</color>
     <color name="navigationBarColorSkipped">#129A5A</color>
-    <color name="violet">#00BCD4</color>
+    <color name="violet">#1dbf73</color>
     <color name="dark_blue">#129A5A</color>
     <color name="light_blue">#1dbf73</color>
-    <color name="sky_blue">#33b5e5</color>
+    <color name="sky_blue">#1dbf73</color>
     <color name="appblue">#000032</color>
 
     <color name="buttoncolor">#00BCD4</color>
@@ -22,14 +22,14 @@
     <color name="colorgreen">#1dbf73</color>
     <color name="colorgreenDark">#129A5A</color>
 
-    <color name="colorPrimary">#d61361</color>
-    <color name="colorPrimaryDark">#800a39</color>
-    <color name="sky_blue_pressed">#245e61</color>
+    <color name="colorPrimary">#1dbf73</color>
+    <color name="colorPrimaryDark">#129A5A</color>
+    <color name="sky_blue_pressed">#417318</color>
     <color name="orange">#DF8602</color>
-    <color name="light_blue_600">#FF039BE5</color>
-    <color name="light_blue_900">#FF01579B</color>
-    <color name="light_blue_A200">#FF40C4FF</color>
-    <color name="light_blue_A400">#FF00B0FF</color>
+    <color name="light_blue_600">#1dbf73</color>
+    <color name="light_blue_900">#129A5A</color>
+    <color name="light_blue_A200">#1dbf73</color>
+    <color name="light_blue_A400">#1dbf73</color>
     <color name="black_overlay">#66000000</color>
     <color name="colorBlack">#000000</color>
 </resources>

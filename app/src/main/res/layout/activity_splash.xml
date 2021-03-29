@@ -12,10 +12,16 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:orientation="vertical">
+        <ImageView
+            android:id="@+id/imagelogo"
+            android:layout_width="200sp"
+            android:layout_height="200sp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/smlogo"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text=" Skill Mart"
+            android:text="Skill Mart"
             android:gravity="center"
             android:textSize="40sp"
             android:textColor="@color/white"/>

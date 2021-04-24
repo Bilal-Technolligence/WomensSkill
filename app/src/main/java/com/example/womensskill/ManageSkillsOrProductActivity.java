@@ -51,9 +51,9 @@ public class ManageSkillsOrProductActivity extends AppCompatActivity {
         tabLayout.addTab(tabLayout.newTab().setText("Completed"));
         tabLayout.addTab(tabLayout.newTab().setText("Cancelled"));
         tabLayout.addTab(tabLayout.newTab().setText("Active"));
-        tabLayout.setSelectedTabIndicatorColor(Color.parseColor("#1dbf73"));
+        tabLayout.setSelectedTabIndicatorColor(Color.parseColor("#ffffff"));
         tabLayout.setSelectedTabIndicatorHeight((int) (5 * getResources().getDisplayMetrics().density));
-        tabLayout.setTabTextColors(Color.parseColor("#000000"), Color.parseColor("#1dbf73"));
+        tabLayout.setTabTextColors(Color.parseColor("#000000"), Color.parseColor("#ffffff"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
         final ViewPager viewPagers = (ViewPager) findViewById(R.id.productSummaryPager);

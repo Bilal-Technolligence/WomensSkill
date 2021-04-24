@@ -14,6 +14,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.tabs.TabLayout;
@@ -38,9 +39,9 @@ public class HomeBuyer extends BaseClass {
         TabLayout tabLayout=(TabLayout) findViewById(R.id.summaryTabLayout);
         tabLayout.addTab(tabLayout.newTab().setText("Products"));
         tabLayout.addTab(tabLayout.newTab().setText("Services"));
-        tabLayout.setSelectedTabIndicatorColor(Color.parseColor("#1dbf73"));
+        tabLayout.setSelectedTabIndicatorColor(Color.parseColor("#ffffff"));
         tabLayout.setSelectedTabIndicatorHeight((int) (5 * getResources().getDisplayMetrics().density));
-        tabLayout.setTabTextColors(Color.parseColor("#000000"), Color.parseColor("#1dbf73"));
+        tabLayout.setTabTextColors(Color.parseColor("#000000"), Color.parseColor("#ffffff"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
         final ViewPager viewPager= (ViewPager) findViewById(R.id.summaryPager);
@@ -78,6 +79,24 @@ public class HomeBuyer extends BaseClass {
         return super.onCreateOptionsMenu(menu);
 
     }
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        switch(item.getItemId()) {
+//            case R.id.loginMain:
+//                Intent intent = new Intent(this, LoginActivity.class);
+//                this.startActivity(intent);
+//                Toast.makeText(this, "clicked", Toast.LENGTH_SHORT).show();
+//                break;
+//            case R.id.logoutMain:
+//                // another startActivity, this is for item with id "menu_item2"
+//                updateLogoutMenu();
+//                break;
+//            default:
+//                return super.onOptionsItemSelected(item);
+//        }
+//
+//        return true;
+//    }
 
     @Override
     public boolean onOptionsItemSelected (MenuItem item) {
@@ -85,15 +104,19 @@ public class HomeBuyer extends BaseClass {
         switch (item.getItemId()) {
 
             case R.id. loginMain :
+                Toast.makeText(this, "Clicked", Toast.LENGTH_SHORT).show();
                 updateLoginMenu();
                 // startActivity(new Intent(getApplicationContext(),MainActivity.class));
-                return true;
+              //  return true;
+                break;
             case R.id. logoutMain :
                 updateLogoutMenu();
-                return true;
+               // return true;
+                break;
             default :
                 return super .onOptionsItemSelected(item) ;
         }
+        return true;
     }
 
     public void SESSION() {
@@ -121,14 +144,15 @@ public class HomeBuyer extends BaseClass {
         }
     }
     private void updateLoginMenu() {
-        login = menu.findItem(R.id.loginMain);
-        logout = menu.findItem(R.id.logoutMain);
-        empty = menu.findItem(R.id.empty);
+//        login = menu.findItem(R.id.loginMain);
+//        logout = menu.findItem(R.id.logoutMain);
+//        empty = menu.findItem(R.id.empty);
 
-        startActivity(new Intent(getApplicationContext(), LoginActivity.class));
-        login.setVisible(false);
-        logout.setVisible(true);
-        empty.setVisible(true);
+        startActivity(new Intent(this, LoginActivity.class));
+       // finish();
+//        login.setVisible(false);
+//        logout.setVisible(true);
+//        empty.setVisible(true);
 
     }
     private void updateLogoutMenu() {
@@ -136,20 +160,17 @@ public class HomeBuyer extends BaseClass {
         login = menu.findItem(R.id.loginMain);
         logout = menu.findItem(R.id.logoutMain);
         //when user first or logout
-        if (!uid.equals("")) {
-
+        if (!uid.equals("")&& uid!=null) {
             final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
             alertDialogBuilder.setMessage("Are you sure want to logout?").setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int which) {
-                    Snackbar.make(parentLayout, "Logout ok", Snackbar.LENGTH_LONG).show();
+
                     SaveLogin.save(getApplicationContext(), "session", "false");
+                    startActivity(new Intent(HomeBuyer.this, LoginActivity.class));
                     login.setVisible(true);
                     logout.setVisible(false);
                     empty.setVisible(false);
-                    //
-
-                    startActivity(new Intent(getApplicationContext(), LoginActivity.class));
-                    recreate();
+                    Snackbar.make(parentLayout, "Logout ok", Snackbar.LENGTH_LONG).show();
                 }
             }).setNegativeButton("No", new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int which) {

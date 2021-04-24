@@ -18,7 +18,6 @@ import com.google.firebase.auth.FirebaseAuth;
 public class ForgetPassword extends AppCompatActivity {
     private Button mForgetButton;
     private EditText mEmail;
-    private String masterEmail, masterPassword;
     private FirebaseAuth mAuth;
 
     @Override

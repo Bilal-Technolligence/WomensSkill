@@ -14,9 +14,10 @@
     </style>
     <style name="IconOnlyButton" parent="Widget.MaterialComponents.Button.OutlinedButton">
         <item name="iconPadding">0dp</item>
-        <item name="backgroundColor">@color/colorgreen</item>
-        <item name="background">@color/colorgreen</item>
+        <item name="backgroundTint">@color/selector_color</item>
         <item name="iconTint">@color/colorgreenDark</item>
+        <item name="colorSurface">@android:color/white</item>
+        <item name="android:textColor">@color/text_selector</item>
         <item name="itemFillColor">@color/colorgreen</item>
         <item name="iconGravity">textStart</item>
     </style>

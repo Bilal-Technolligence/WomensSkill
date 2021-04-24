@@ -236,7 +236,7 @@
                 android:padding="20dp"
                 android:layout_margin="10dp"
                 android:id="@+id/btnDelete"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:text="Delete User" />
 
             <LinearLayout

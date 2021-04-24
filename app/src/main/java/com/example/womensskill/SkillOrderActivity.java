@@ -18,9 +18,9 @@ public class SkillOrderActivity extends BaseClass {
         tabLayout.addTab(tabLayout.newTab().setText("Active"));
         tabLayout.addTab(tabLayout.newTab().setText("Cancelled"));
         tabLayout.addTab(tabLayout.newTab().setText("Completed"));
-        tabLayout.setSelectedTabIndicatorColor(Color.parseColor("#1dbf73"));
+        tabLayout.setSelectedTabIndicatorColor(Color.parseColor("#ffffff"));
         tabLayout.setSelectedTabIndicatorHeight((int) (5 * getResources().getDisplayMetrics().density));
-        tabLayout.setTabTextColors(Color.parseColor("#1dbf73"), Color.parseColor("#000000"));
+        tabLayout.setTabTextColors(Color.parseColor("#000000"), Color.parseColor("#ffffff"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
         final ViewPager viewPager= (ViewPager) findViewById(R.id.skillSummaryPager);

@@ -1,35 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <color name="purple_200">#1dbf73</color>
-    <color name="purple_500">#1dbf73</color>
-    <color name="purple_700">#129A5A</color>
-    <color name="teal_200">#1dbf73</color>
-    <color name="teal_700">#417318</color>
+    <color name="purple_200">#f62681</color>
+    <color name="purple_500">#f62681</color>
+    <color name="purple_700">#f10066</color>
+    <color name="teal_200">#f62681</color>
+    <color name="teal_700">#F81176</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="lightgray">#C3C3C3</color>
-    <color name="mtrl_textinput_default_box_stroke_color" tools:override="true">#1dbf73</color>
+    <color name="mtrl_textinput_default_box_stroke_color" tools:override="true">#f62681</color>
     <color name="gray">#777</color>
-    <color name="navigationBarColorSkipped">#129A5A</color>
-    <color name="violet">#1dbf73</color>
-    <color name="dark_blue">#129A5A</color>
-    <color name="light_blue">#1dbf73</color>
-    <color name="sky_blue">#1dbf73</color>
+    <color name="navigationBarColorSkipped">#f10066</color>
+    <color name="violet">#f62681</color>
+    <color name="dark_blue">#f10066</color>
+    <color name="light_blue">#f62681</color>
+    <color name="sky_blue">#f62681</color>
     <color name="appblue">#000032</color>
 
     <color name="buttoncolor">#00BCD4</color>
-    <color name="colorAccent">#417318</color>
-    <color name="colorgreen">#1dbf73</color>
-    <color name="colorgreenDark">#129A5A</color>
+    <color name="colorAccent">#9A1844</color>
+    <color name="colorgreen">#f62681</color>
+    <color name="colorgreenDark">#f10066</color>
 
-    <color name="colorPrimary">#1dbf73</color>
-    <color name="colorPrimaryDark">#129A5A</color>
-    <color name="sky_blue_pressed">#417318</color>
+    <color name="colorPrimary">#f62681</color>
+    <color name="colorPrimaryDark">#f10066</color>
+    <color name="sky_blue_pressed">#6C1734</color>
     <color name="orange">#DF8602</color>
-    <color name="light_blue_600">#1dbf73</color>
-    <color name="light_blue_900">#129A5A</color>
-    <color name="light_blue_A200">#1dbf73</color>
-    <color name="light_blue_A400">#1dbf73</color>
+    <color name="light_blue_600">#f62681</color>
+    <color name="light_blue_900">#f10066</color>
+    <color name="light_blue_A200">#f62681</color>
+    <color name="light_blue_A400">#f62681</color>
     <color name="black_overlay">#66000000</color>
     <color name="colorBlack">#000000</color>
 </resources>

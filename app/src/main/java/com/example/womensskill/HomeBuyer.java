@@ -156,30 +156,32 @@ public class HomeBuyer extends BaseClass {
 
     }
     private void updateLogoutMenu() {
-        uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        login = menu.findItem(R.id.loginMain);
-        logout = menu.findItem(R.id.logoutMain);
-        //when user first or logout
-        if (!uid.equals("")&& uid!=null) {
-            final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-            alertDialogBuilder.setMessage("Are you sure want to logout?").setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                public void onClick(DialogInterface dialog, int which) {
-
-                    SaveLogin.save(getApplicationContext(), "session", "false");
-                    startActivity(new Intent(HomeBuyer.this, LoginActivity.class));
-                    login.setVisible(true);
-                    logout.setVisible(false);
-                    empty.setVisible(false);
-                    Snackbar.make(parentLayout, "Logout ok", Snackbar.LENGTH_LONG).show();
-                }
-            }).setNegativeButton("No", new DialogInterface.OnClickListener() {
-                public void onClick(DialogInterface dialog, int which) {
-                    dialog.dismiss();
-                }
-            }).show();
-        } else {
-            Snackbar.make(parentLayout, "You are not login", Snackbar.LENGTH_LONG).show();
-        }
+        startActivity(new Intent(this, LoginActivity.class));
+         finish();
+//        uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+//        login = menu.findItem(R.id.loginMain);
+//        logout = menu.findItem(R.id.logoutMain);
+//        //when user first or logout
+//        if (!uid.equals("")&& uid!=null) {
+//            final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+//            alertDialogBuilder.setMessage("Are you sure want to logout?").setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+//                public void onClick(DialogInterface dialog, int which) {
+//
+//                    SaveLogin.save(getApplicationContext(), "session", "false");
+//                    startActivity(new Intent(HomeBuyer.this, LoginActivity.class));
+//                    login.setVisible(true);
+//                    logout.setVisible(false);
+//                    empty.setVisible(false);
+//                    Snackbar.make(parentLayout, "Logout ok", Snackbar.LENGTH_LONG).show();
+//                }
+//            }).setNegativeButton("No", new DialogInterface.OnClickListener() {
+//                public void onClick(DialogInterface dialog, int which) {
+//                    dialog.dismiss();
+//                }
+//            }).show();
+//        } else {
+//            Snackbar.make(parentLayout, "You are not login", Snackbar.LENGTH_LONG).show();
+//        }
     }
 
 

@@ -157,6 +157,7 @@ public class HomeBuyer extends BaseClass {
     }
     private void updateLogoutMenu() {
         startActivity(new Intent(this, LoginActivity.class));
+        SaveLogin.save(getApplicationContext(), "session", "false");
          finish();
 //        uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
 //        login = menu.findItem(R.id.loginMain);

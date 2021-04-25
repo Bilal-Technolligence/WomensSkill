@@ -74,19 +74,19 @@ public class MainActivity extends BaseClass {
                         final String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
 //                        Toast.makeText(MainActivity.this, ""+uid, Toast.LENGTH_LONG).show();
                         final DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
-                        databaseReference.child("ExpenseNoti").addValueEventListener(new ValueEventListener() {
+                        databaseReference.child("Notification").addValueEventListener(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                 if (dataSnapshot.exists()) {
                                     for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
                                         try {
                                             String status = dataSnapshot1.child("status").getValue().toString();
-                                            String senderId = dataSnapshot1.child("senderid").getValue().toString();
+                                            String senderId = dataSnapshot1.child("receiverid").getValue().toString();
                                             if (status.equals("unread") && uid.equals(senderId)) {
                                                 String id = dataSnapshot1.child("id").getValue().toString();
                                                 // String name = dataSnapshot1.child("name").getValue().toString();
                                                 String msg = dataSnapshot1.child("description").getValue().toString();
-                                                databaseReference.child("ExpenseNoti").child(id).child("status").setValue("read");
+                                                databaseReference.child("Notification").child(id).child("status").setValue("read");
                                                 scheduleNotification(getNotification(msg), 5000);
 
                                             }

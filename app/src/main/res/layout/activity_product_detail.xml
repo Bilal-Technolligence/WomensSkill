@@ -55,8 +55,8 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
                 <de.hdodenhof.circleimageview.CircleImageView
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
                     android:id="@+id/imgProfile"
                     android:src="@drawable/dp"/>
                 <TextView
@@ -65,7 +65,7 @@
                     android:text="Name"
                     android:textColor="@color/black"
                     android:layout_gravity="center"
-                    android:textSize="40dp"
+                    android:textSize="18dp"
                     android:id="@+id/txtName"/>
             </LinearLayout>
             <TextView
@@ -74,14 +74,14 @@
                 android:text="Title"
                 android:textStyle="bold"
                 android:textColor="@color/black"
-                android:textSize="20dp"
+                android:textSize="18dp"
                 android:id="@+id/txtTitle"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Price"
                 android:textColor="@color/black"
-                android:textSize="20dp"
+                android:textSize="16dp"
                 android:id="@+id/txtPrice"/>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -94,7 +94,7 @@
                     android:text="Quantity"
                     android:layout_weight="1"
                     android:textColor="@color/black"
-                    android:textSize="20dp"/>
+                    android:textSize="16dp"/>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -123,14 +123,14 @@
                     android:layout_height="wrap_content"
                     android:text="0.0"
                     android:textColor="@color/black"
-                    android:textSize="20dp"
+                    android:textSize="16dp"
                     android:id="@+id/txtRating"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="(0)"
                     android:textColor="@color/black"
-                    android:textSize="20dp"
+                    android:textSize="16dp"
                     android:id="@+id/txtRatingNo"/>
             </LinearLayout>
             <Button

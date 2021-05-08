@@ -5,6 +5,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -20,6 +22,7 @@ import com.amulyakhare.textdrawable.TextDrawable;
 import com.amulyakhare.textdrawable.util.ColorGenerator;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -42,12 +45,15 @@ public class ProfileDetailsActivity extends BaseClass {
     Switch btnSellerMode;
     int count = 0;
     private Uri imagePath;
+    Boolean session;
+    View parentLayout;
     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // setContentView(R.layout.activity_profile_details);
+        parentLayout = findViewById(android.R.id.content);
         earning = findViewById(R.id.btnEarning);
         buyerRequest = findViewById(R.id.btnBuyerRequest);
         shareSkill = findViewById(R.id.btnShareSkills);
@@ -162,9 +168,10 @@ public class ProfileDetailsActivity extends BaseClass {
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), MyProfileActivity.class));
+                startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
             }
         });
+
     }
 
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {

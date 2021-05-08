@@ -68,6 +68,7 @@
         </activity>
         <activity android:name=".ProfileActivity" />
         <activity android:name=".MainActivity" />
+        <receiver android:name=".NotificationGernetor" />
     </application>
 
 </manifest>

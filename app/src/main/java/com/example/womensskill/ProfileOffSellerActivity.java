@@ -5,6 +5,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -20,6 +22,7 @@ import com.amulyakhare.textdrawable.TextDrawable;
 import com.amulyakhare.textdrawable.util.ColorGenerator;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -43,18 +46,23 @@ public class ProfileOffSellerActivity extends BaseClass {
     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
     CardView manageOrder,btnPostRequest , btnRecieveRequest;
     TextView savedSkill , savesProduct;
+    View parentLayout;
 
     DatabaseReference dref= FirebaseDatabase.getInstance().getReference();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
        // setContentView(R.layout.activity_profile_off_seller);
         ((AppCompatActivity)this).getSupportActionBar().setTitle("Seller Mode");
         ((AppCompatActivity)this).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        parentLayout = findViewById(android.R.id.content);
         btnSellerMode = (Switch) findViewById(R.id.btnswitchSeller);
         manageOrder = findViewById(R.id.btnManageOrder);
         btnPostRequest = findViewById(R.id.btnPostRequest);
         btnRecieveRequest = findViewById(R.id.btnRecieveRequest);
+
+
         btnRecieveRequest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -148,7 +156,10 @@ public class ProfileOffSellerActivity extends BaseClass {
 
             }
         } );
+
     }
+
+
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
 
         super.onActivityResult(requestCode, resultCode, data);

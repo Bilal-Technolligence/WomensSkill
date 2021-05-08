@@ -21,12 +21,14 @@
                 android:layout_marginEnd="15dp"
                 android:gravity="center"
                 android:orientation="horizontal">
-
-                <ImageView
+                <de.hdodenhof.circleimageview.CircleImageView
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/imgProfile"
                     android:layout_width="80dp"
                     android:layout_height="70dp"
                     android:src="@drawable/logoc"
-                    android:id="@+id/imgProfile"/>
+                    app:civ_border_color="#FFF"
+                    app:civ_border_width="2dp" />
 
                 <LinearLayout
                     android:id="@+id/linearLayout"
@@ -48,7 +50,7 @@
                         android:id="@+id/txtDate"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:textSize="20dp"
+                        android:textSize="16dp"
                         android:text="March 21,2021" />
 
                 </LinearLayout>
@@ -66,7 +68,7 @@
                 android:padding="5dp"
                 android:text="User Description looking for tickets booking system with following ......."
                 android:textColor="@color/colorBlack"
-                android:textSize="20dp" />
+                android:textSize="16dp" />
 
             <TextView
                 android:layout_width="match_parent"

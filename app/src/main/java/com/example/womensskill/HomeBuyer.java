@@ -1,15 +1,22 @@
 package com.example.womensskill;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
 import androidx.viewpager.widget.ViewPager;
 
 import android.app.ActionBar;
+import android.app.AlarmManager;
 import android.app.AlertDialog;
+import android.app.Notification;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -19,6 +26,11 @@ import android.widget.Toast;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class HomeBuyer extends BaseClass {
     private Menu menu;
@@ -26,6 +38,9 @@ public class HomeBuyer extends BaseClass {
     Boolean session;
     String uid;
     View parentLayout;
+    /////Only for Notification////
+    public static final String NOTIFICATION_CHANNEL_ID = "10001";
+    private final static String default_notification_channel_id = "default";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,6 +93,7 @@ public class HomeBuyer extends BaseClass {
         SESSION();
         return super.onCreateOptionsMenu(menu);
 
+
     }
 //    @Override
 //    public boolean onOptionsItemSelected(MenuItem item) {
@@ -103,15 +119,19 @@ public class HomeBuyer extends BaseClass {
 
         switch (item.getItemId()) {
 
-            case R.id. loginMain :
+            case R.id.loginMain :
                 Toast.makeText(this, "Clicked", Toast.LENGTH_SHORT).show();
-                updateLoginMenu();
+               // updateLoginMenu();
+                startActivity(new Intent(this, LoginActivity.class));
                 // startActivity(new Intent(getApplicationContext(),MainActivity.class));
               //  return true;
                 break;
-            case R.id. logoutMain :
-                updateLogoutMenu();
-               // return true;
+            case R.id.logoutMain :
+                Toast.makeText(this, "Clicked", Toast.LENGTH_SHORT).show();
+                 updateLogoutMenu();
+              //  startActivity(new Intent(this, LoginActivity.class));
+                // startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                //  return true;
                 break;
             default :
                 return super .onOptionsItemSelected(item) ;
@@ -136,10 +156,60 @@ public class HomeBuyer extends BaseClass {
             login = menu.findItem(R.id.loginMain);
             logout = menu.findItem(R.id.logoutMain);
             empty = menu.findItem(R.id.empty);
-
             login.setVisible(false);
             logout.setVisible(true);
             empty.setVisible(true);
+
+            //Check and generate Notifications
+            ////////////////////
+            Thread thread = new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    while (0 <= 1) {
+                        try {
+                            Thread.sleep(5000);
+                            final String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+//                        Toast.makeText(MainActivity.this, ""+uid, Toast.LENGTH_LONG).show();
+                            final DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
+                            databaseReference.child("Notification").addValueEventListener(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                    if (dataSnapshot.exists()) {
+                                        for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
+                                            try {
+                                                String status = dataSnapshot1.child("status").getValue().toString();
+                                                String senderId = dataSnapshot1.child("receiverid").getValue().toString();
+                                                if (status.equals("unread") && uid.equals(senderId)) {
+                                                    String id = dataSnapshot1.child("id").getValue().toString();
+                                                    // String name = dataSnapshot1.child("name").getValue().toString();
+                                                    String msg = dataSnapshot1.child("description").getValue().toString();
+                                                    databaseReference.child("Notification").child(id).child("status").setValue("read");
+                                                    scheduleNotification(getNotification(msg), 5000);
+
+                                                }
+                                            } catch (Exception e) {
+                                            }
+                                        }
+
+                                    }
+                                }
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                }
+                            });
+
+
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+            });
+            thread.start();
+            // return START_STICKY;
+////////////////////////////////////////////
 
         }
     }
@@ -149,40 +219,64 @@ public class HomeBuyer extends BaseClass {
 //        empty = menu.findItem(R.id.empty);
 
         startActivity(new Intent(this, LoginActivity.class));
-       // finish();
-//        login.setVisible(false);
-//        logout.setVisible(true);
-//        empty.setVisible(true);
+
 
     }
     private void updateLogoutMenu() {
-        startActivity(new Intent(this, LoginActivity.class));
-        SaveLogin.save(getApplicationContext(), "session", "false");
-         finish();
-//        uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-//        login = menu.findItem(R.id.loginMain);
-//        logout = menu.findItem(R.id.logoutMain);
-//        //when user first or logout
-//        if (!uid.equals("")&& uid!=null) {
-//            final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-//            alertDialogBuilder.setMessage("Are you sure want to logout?").setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-//                public void onClick(DialogInterface dialog, int which) {
-//
-//                    SaveLogin.save(getApplicationContext(), "session", "false");
-//                    startActivity(new Intent(HomeBuyer.this, LoginActivity.class));
-//                    login.setVisible(true);
-//                    logout.setVisible(false);
-//                    empty.setVisible(false);
-//                    Snackbar.make(parentLayout, "Logout ok", Snackbar.LENGTH_LONG).show();
-//                }
-//            }).setNegativeButton("No", new DialogInterface.OnClickListener() {
-//                public void onClick(DialogInterface dialog, int which) {
-//                    dialog.dismiss();
-//                }
-//            }).show();
-//        } else {
-//            Snackbar.make(parentLayout, "You are not login", Snackbar.LENGTH_LONG).show();
-//        }
+      //  startActivity(new Intent(this, LoginActivity.class));
+      //  SaveLogin.save(getApplicationContext(), "session", "false");
+      //   finish();
+        uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        login = menu.findItem(R.id.loginMain);
+        logout = menu.findItem(R.id.logoutMain);
+        //when user first or logout
+        if (!uid.equals("")&& uid!=null) {
+            final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+            alertDialogBuilder.setMessage("Are you sure want to logout?").setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int which) {
+
+                    SaveLogin.save(getApplicationContext(), "session", "false");
+                    startActivity(new Intent(HomeBuyer.this, LoginActivity.class));
+                    login.setVisible(true);
+                    logout.setVisible(false);
+                    empty.setVisible(false);
+                    Snackbar.make(parentLayout, "Logout ok", Snackbar.LENGTH_LONG).show();
+                }
+            }).setNegativeButton("No", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                }
+            }).show();
+        } else {
+            Snackbar.make(parentLayout, "You are not login", Snackbar.LENGTH_LONG).show();
+        }
+    }
+
+    //Notification function
+
+    private void scheduleNotification(Notification notification, int delay) {
+        Intent notificationIntent = new Intent(this, NotificationGernetor.class);
+        // Intent notificationIintent = new Intent(this, NotificationActivity.class);
+        notificationIntent.putExtra(NotificationGernetor.NOTIFICATION_ID, 1);
+        notificationIntent.putExtra(NotificationGernetor.NOTIFICATION, notification);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+        long futureInMillis = SystemClock.elapsedRealtime() + delay;
+        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        assert alarmManager != null;
+        alarmManager.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, futureInMillis, pendingIntent);
+    }
+
+    private Notification getNotification(String content) {
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, default_notification_channel_id);
+        builder.setContentTitle("Notification");
+        Intent intent = new Intent(this, NotificationsActivity.class);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, 0);
+        builder.setContentIntent(pendingIntent);
+        builder.setContentText(content);
+        builder.setSmallIcon(R.drawable.ic_launcher_foreground);
+        builder.setAutoCancel(true);
+        builder.setChannelId(NOTIFICATION_CHANNEL_ID);
+        return builder.build();
     }
 
 

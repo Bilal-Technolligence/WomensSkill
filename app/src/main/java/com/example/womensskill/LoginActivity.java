@@ -67,14 +67,14 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
-        try {
-            String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-            if(!userId.equals(""))
-                LoginActivity.this.finish();
-        }
-        catch (Exception e){
-
-        }
+//        try {
+//            String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+//            if(!userId.equals(""))
+//                LoginActivity.this.finish();
+//        }
+//        catch (Exception e){
+//
+//        }
     }
 
     @Override

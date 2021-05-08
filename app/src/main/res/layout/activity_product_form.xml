@@ -198,6 +198,7 @@
                         android:backgroundTint="@color/white"
                         android:hint="Enter Description...."
                         android:maxLines="10"
+                        android:scrollbars="vertical"
                         android:id="@+id/txtDes"
                         android:textColor="@color/black"
                         android:textSize="10dp"

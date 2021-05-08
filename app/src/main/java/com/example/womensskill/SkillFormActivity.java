@@ -10,6 +10,7 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
@@ -93,6 +94,7 @@ public class SkillFormActivity extends AppCompatActivity {
                 startActivityForResult(intent, 4);
             }
         });
+        description.setMovementMethod(new ScrollingMovementMethod());
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

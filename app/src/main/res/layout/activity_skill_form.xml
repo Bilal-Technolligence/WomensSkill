@@ -180,6 +180,7 @@
                         android:layout_marginLeft="5dp"
                         android:backgroundTint="@color/white"
                         android:hint="Enter Description...."
+                        android:scrollbars="vertical"
                         android:maxLines="10"
                         android:id="@+id/txtDes"
                         android:textColor="@color/black"

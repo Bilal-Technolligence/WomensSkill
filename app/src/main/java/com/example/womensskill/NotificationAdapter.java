@@ -62,6 +62,7 @@ public class NotificationAdapter extends RecyclerView.Adapter<com.example.womens
 
     }
 
+
     @Override
     public int getItemCount() {
         return notificationAttrs.size();

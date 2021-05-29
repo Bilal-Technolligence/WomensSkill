@@ -5,12 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:layout_margin="5dp"
     tools:context=".SkillOrderActivity">
     <LinearLayout
         android:orientation="vertical"
         android:id="@+id/mainLayout"
-        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="60dp">
@@ -20,7 +18,7 @@
             android:id="@+id/skillTabLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/white"
+            android:background="@color/dark_blue"
             android:minHeight="?attr/actionBarSize"
             android:theme="@style/Theme.MaterialComponents"/>
 

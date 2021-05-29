@@ -33,7 +33,7 @@
 
                 <ImageView
                     android:layout_width="match_parent"
-                    android:layout_height="300dp"
+                    android:layout_height="295dp"
                     android:id="@+id/img1"/>
 
 
@@ -53,16 +53,18 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
                 android:orientation="horizontal">
                 <de.hdodenhof.circleimageview.CircleImageView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
                     android:id="@+id/imgProfile"
                     android:src="@drawable/dp"/>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Name"
+                    android:layout_marginStart="10dp"
                     android:textColor="@color/black"
                     android:layout_gravity="center"
                     android:textSize="18dp"
@@ -73,19 +75,31 @@
                 android:layout_height="wrap_content"
                 android:text="Title"
                 android:textStyle="bold"
+                android:layout_marginTop="5dp"
                 android:textColor="@color/black"
                 android:textSize="18dp"
                 android:id="@+id/txtTitle"/>
             <TextView
+                android:background="@drawable/circle_background"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Description"
+                android:padding="2dp"
+                android:textSize="16dp"
+                android:textColor="@color/black"
+                android:id="@+id/txtDescription"/>
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Price"
+                android:layout_marginTop="5dp"
                 android:textColor="@color/black"
                 android:textSize="16dp"
                 android:id="@+id/txtPrice"/>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
                 android:orientation="horizontal"
                 android:weightSum="2">
                 <TextView
@@ -106,6 +120,7 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
                 android:orientation="horizontal">
 
                 <RatingBar
@@ -136,6 +151,7 @@
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
                 android:text="Contact Product Provider"
                 android:background="@color/buttoncolor"
                 android:id="@+id/btnContact"/>
@@ -143,7 +159,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Order Product"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="15dp"
                 android:background="@color/buttoncolor"
                 android:id="@+id/btnOrder"/>
         </LinearLayout>

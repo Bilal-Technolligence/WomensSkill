@@ -33,93 +33,13 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class SearchSkilllsActivity extends BaseClass {
-    LinearLayout website , mobile ,Writing , Art , dataentry , sales , bussiness , localjobs , handicraft , cloth;
+    LinearLayout handicraft , cloth;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //setContentView(R.layout.activity_search_skillls);
-        website = findViewById(R.id.website);
-        website.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(SearchSkilllsActivity.this , SearchResultActivity.class);
-                i.putExtra("id" , "Services");
-                i.putExtra("cat" , "WEBSITE");
-                startActivity(i);
-            }
-        });
-        mobile = findViewById(R.id.mobile);
-        mobile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(SearchSkilllsActivity.this , SearchResultActivity.class);
-                i.putExtra("id" , "Services");
-                i.putExtra("cat" , "MOBILE");
-                startActivity(i);
-            }
-        });
-        Writing = findViewById(R.id.writing);
-        Writing.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(SearchSkilllsActivity.this , SearchResultActivity.class);
-                i.putExtra("id" , "Services");
-                i.putExtra("cat" , "WRITING");
-                startActivity(i);
-            }
-        });
-        Art = findViewById(R.id.art);
-        Art.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(SearchSkilllsActivity.this , SearchResultActivity.class);
-                i.putExtra("id" , "Services");
-                i.putExtra("cat" , "ART AND DESIGN");
-                startActivity(i);
-            }
-        });
-        dataentry = findViewById(R.id.dataentry);
-        dataentry.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(SearchSkilllsActivity.this , SearchResultActivity.class);
-                i.putExtra("id" , "Services");
-                i.putExtra("cat" , "DATAENTRY");
-                startActivity(i);
-            }
-        });
-        sales = findViewById(R.id.sales);
-        sales.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(SearchSkilllsActivity.this , SearchResultActivity.class);
-                i.putExtra("id" , "Services");
-                i.putExtra("cat" , "SALES");
-                startActivity(i);
-            }
-        });
-        bussiness = findViewById(R.id.bussiness);
-        bussiness.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(SearchSkilllsActivity.this , SearchResultActivity.class);
-                i.putExtra("id" , "Services");
-                i.putExtra("cat" , "BUSSINESS");
-                startActivity(i);
-            }
-        });
-        localjobs = findViewById(R.id.localjob);
-        localjobs.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(SearchSkilllsActivity.this , SearchResultActivity.class);
-                i.putExtra("id" , "Services");
-                i.putExtra("cat" , "LOCAL JOBS");
-                startActivity(i);
-            }
-        });
         handicraft = findViewById(R.id.Handicraft);
         handicraft.setOnClickListener(new View.OnClickListener() {
             @Override

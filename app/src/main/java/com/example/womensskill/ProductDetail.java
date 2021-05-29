@@ -26,7 +26,7 @@ import java.util.Calendar;
 
 public class ProductDetail extends AppCompatActivity {
     ImageView img1, profile;
-    TextView frwd, back, name, title, price, quantity;
+    TextView frwd, back, name, title, price, quantity,description;
     Button contact, order;
     String id, uid , productId;
     String i1, i2, i3;
@@ -47,6 +47,7 @@ public class ProductDetail extends AppCompatActivity {
         img1 = (ImageView) findViewById(R.id.img1);
         profile = (ImageView) findViewById(R.id.imgProfile);
         name = (TextView) findViewById(R.id.txtName);
+        description = (TextView) findViewById(R.id.txtDescription);
         title = (TextView) findViewById(R.id.txtTitle);
         price = (TextView) findViewById(R.id.txtPrice);
         frwd = (TextView) findViewById(R.id.btnFrwd);
@@ -65,6 +66,7 @@ public class ProductDetail extends AppCompatActivity {
                     i1 = dataSnapshot.child("image1").getValue().toString();
                     i2 = dataSnapshot.child("image2").getValue().toString();
                     i3 = dataSnapshot.child("image3").getValue().toString();
+                    description.setText(dataSnapshot.child("description").getValue().toString());
                     price.setText(dataSnapshot.child("price").getValue().toString());
                     Title = dataSnapshot.child("title").getValue().toString();
                     productId = dataSnapshot.child("id").getValue().toString();

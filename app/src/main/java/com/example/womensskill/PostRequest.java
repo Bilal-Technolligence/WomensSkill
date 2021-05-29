@@ -65,7 +65,7 @@ public class PostRequest extends BaseClass {
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-                cat = "Website";
+                cat = "Embroidery";
             }
         });
         save.setOnClickListener(new View.OnClickListener() {

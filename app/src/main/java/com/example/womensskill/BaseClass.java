@@ -125,63 +125,7 @@ public abstract class BaseClass extends AppCompatActivity implements BottomNavig
         MenuItem item = navigationView.getMenu().findItem(itemId);
         item.setChecked(true);
     }
-    //    void selectBottomNavigationBarItem(int itemId) {
-//        Menu menu = navigationView.getMenu();
-//        for (int i = 0, size = menu.size(); i < size; i++) {
-//            MenuItem item = menu.getItem(i);
-//            boolean shouldBeChecked = item.getItemId() == itemId;
-//            if (shouldBeChecked) {
-//                item.setChecked(true);
-//                break;
-//            }
-//        }
-//    }
 
-    public void SESSION(){
-        //default value false
-        session = Boolean.valueOf(SaveLogin.read(getApplicationContext(),"session","false"));
-        if (!session){
-            //when user first or logout
-            Intent intent = new Intent(getApplicationContext(), LoginActivity.class );
-            startActivity( intent );
-
-        }
-        else{
-            DatabaseReference dref = FirebaseDatabase.getInstance().getReference();
-
-            dref.addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    if (snapshot.exists()) {
-                        try {
-                            String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-                            userMode = snapshot.child("UserMode").child(uid).child("Mode").getValue().toString();
-                            if (userMode.equals("Seller")) {
-                                Intent intent = new Intent(getApplicationContext(), ProfileDetailsActivity.class);
-                                startActivity(intent);
-                                finish();
-                            } else {
-                                Intent intent = new Intent(getApplicationContext(), ProfileOffSellerActivity.class);
-                                startActivity(intent);
-                                finish();
-
-                            }
-                        } catch (Exception e) {
-                            Intent intent = new Intent(getApplicationContext(), ProfileOffSellerActivity.class);
-                            startActivity(intent);
-                            finish();
-                        }
-                    }
-                }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) {
-
-                }
-            });
-
-        }
-    }
     abstract int getContentViewId();
 
     abstract int getNavigationMenuItemId();
